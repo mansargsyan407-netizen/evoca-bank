@@ -1,9 +1,11 @@
-import { auth, db } from './firebase';
+import Header from './Header';
+import HeroSlider from './HeroSlider';
 
 export default function App() {
   return (
     <div>
-      {/* Քո UI-ն հավաքիր այստեղ */}
+      <Header />
+      <HeroSlider />
     </div>
   );
 }
