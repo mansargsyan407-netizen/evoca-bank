@@ -210,9 +210,12 @@ export default function EvocaSalaryPage() {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-black text-gray-900">Վերջին նորությունները</h2>
-            <button className="bg-purple-100 text-[#6b21a8] px-4 py-2 rounded-full text-xs font-bold hover:bg-purple-200 transition flex items-center gap-1">
+            <Link
+              to="/news"
+              className="bg-purple-100 text-[#6b21a8] px-4 py-2 rounded-full text-xs font-bold hover:bg-purple-200 transition flex items-center gap-1"
+            >
               Բոլոր նորությունները <span>›</span>
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
