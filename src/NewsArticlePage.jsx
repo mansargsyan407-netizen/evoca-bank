@@ -15,17 +15,16 @@ export default function NewsArticlePage() {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-          {/* Breadcrumb Navigation */}
-              <div className="px-8 md:px-20 py-4 text-xs text-gray-500 flex items-center gap-2">
-                <Link to="/" className="hover:underline">Վերադառնալ</Link>
-                <span>›</span>
-                <span>Նորություններ</span>
-                <span>›</span>
-                <span>Պրոդուկտներ</span>
-                <span>›</span>
-                <span>Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով</span>
-                <span>›</span>
-              </div>
+        {/* Breadcrumb Navigation */}
+        <div className="px-8 md:px-20 py-4 text-xs text-gray-500 flex items-center gap-2">
+          <Link to="/" className="hover:underline">Վերադառնալ</Link>
+          <span>›</span>
+          <span>Նորություններ</span>
+          <span>›</span>
+          <span>Պրոդուկտներ</span>
+          <span>›</span>
+          <span>Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով</span>
+        </div>
 
         {/* Top Hero Layout (Header + Image Grid) */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
@@ -149,8 +148,8 @@ export default function NewsArticlePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* Card 1 */}
-            <div className="space-y-3 group cursor-pointer">
+            {/* Card 1 - Ուղղորդում է Wilco քարտի էջ */}
+            <Link to="/news/evocabank-wilco" className="space-y-3 group cursor-pointer block">
               <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3]">
                 <img 
                   src="https://www.evoca.am/images-cache/news/1/17815163976713/428x321.png" 
@@ -162,37 +161,37 @@ export default function NewsArticlePage() {
                 Evocabank-ն ու Wilco-ն ներկայացնում են բացառիկ համատեղ քարտ
               </h3>
               <p className="text-xs text-gray-400">15.06.2026</p>
-            </div>
+            </Link>
 
-            {/* Card 2 */}
-            <div className="space-y-3 group cursor-pointer">
-              <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3]">
-                <img 
-                  src="https://www.evoca.am/images-cache/news/1/17804748057663/428x321.png" 
-                  alt="Adidas Armenia" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                />
-              </div>
-              <h3 className="font-bold text-sm sm:text-base text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
-                Վճարիր Evoca Mastercard-ով Adidas Armenia-ում և ստացիր 10% զեղչ
-              </h3>
-              <p className="text-xs text-gray-400">03.06.2026</p>
-            </div>
+           {/* Card 2 - Ուղղորդում է Adidas-ի էջ */}
+<Link to="/news/adidas-armenia" className="space-y-3 group cursor-pointer block">
+  <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3]">
+    <img 
+      src="https://www.evoca.am/images-cache/news/1/17804748057663/428x321.png" 
+      alt="Adidas Armenia" 
+      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+    />
+  </div>
+  <h3 className="font-bold text-sm sm:text-base text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
+    Վճարիր Evoca Mastercard-ով Adidas Armenia-ում և ստացիր 10% զեղչ
+  </h3>
+  <p className="text-xs text-gray-400">03.06.2026</p>
+</Link>
 
-            {/* Card 3 */}
-            <div className="space-y-3 group cursor-pointer">
-              <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3]">
-                <img 
-                  src="https://www.evoca.am/images-cache/news/1/1778751542792/780x585.png" 
-                  alt="Globbing" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                />
-              </div>
-              <h3 className="font-bold text-sm sm:text-base text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
-                Վճարիր Evoca Visa քարտով և ստացիր առավելություններ Globbing-ում
-              </h3>
-              <p className="text-xs text-gray-400">14.05.2026</p>
-            </div>
+         {/* Card 3 - Globbing */}
+<Link to="/news/globbing" className="space-y-3 group cursor-pointer block">
+  <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3]">
+    <img 
+      src="https://www.evoca.am/images-cache/news/1/1778751542792/780x585.png" 
+      alt="Globbing" 
+      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+    />
+  </div>
+  <h3 className="font-bold text-sm sm:text-base text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
+    Վճարիր Evoca Visa քարտով և ստացիր առավելություններ Globbing-ում
+  </h3>
+  <p className="text-xs text-gray-400">14.05.2026</p>
+</Link>
 
           </div>
 
