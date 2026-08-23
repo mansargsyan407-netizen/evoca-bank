@@ -8,10 +8,12 @@ import EvocaSalaryPage from './EvocaSalaryPage';
 import NewsListPage from './NewsListPage'; 
 import NewsArticlePage from './NewsArticlePage';
 import MoodysNewsPage from './MoodysNewsPage';
-import FirebirdNewsPage from './FirebirdNewsPage';
+import FirebirdAiFactoryPage from './FirebirdAiFactoryPage';
+import GreenRockNewsPage from './GreenRockNewsPage';
+import MitCertifiedPage from './MitCertifiedPage'; // Ավելացված է
 import WilcoCardPage from './WilcoCardPage';
 import AdidasNewsPage from './AdidasNewsPage';
-import GlobbingNewsPage from './GlobbingNewsPage'; // Globbing-ի էջը
+import GlobbingNewsPage from './GlobbingNewsPage';
 
 export default function App() {
   return (
@@ -34,8 +36,16 @@ export default function App() {
           <Route path="/news/banking/ba3-rating-from-moodys-to-evocabank" element={<MoodysNewsPage />} />
           
           {/* Firebird AI-ի երթուղիները */}
-          <Route path="/news/firebird-ai" element={<FirebirdNewsPage />} />
-          <Route path="/news/banking/ai-factory-of-firebird-has-launched-in-armenia" element={<FirebirdNewsPage />} />
+          <Route path="/news/firebird-ai" element={<FirebirdAiFactoryPage />} />
+          <Route path="/news/banking/ai-factory-of-firebird-has-launched-in-armenia" element={<FirebirdAiFactoryPage />} />
+
+          {/* Green Rock-ի երթուղիները */}
+          <Route path="/news/green-rock" element={<GreenRockNewsPage />} />
+          <Route path="/news/banking/evocabank-and-green-rock-launched-the-banks-new-headquarters-project" element={<GreenRockNewsPage />} />
+
+          {/* MIT Certified-ի երթուղիները */}
+          <Route path="/news/mit-certified" element={<MitCertifiedPage />} />
+          <Route path="/news/banking/evoca-executives-completed-generative-ai-course" element={<MitCertifiedPage />} />
 
           {/* Wilco Card-ի երթուղիները */}
           <Route path="/news/evocabank-wilco" element={<WilcoCardPage />} />
