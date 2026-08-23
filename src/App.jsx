@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import HeroSlider from './HeroSlider';
 import TravelCardPage from './TravelCardPage';
+import VisaVisionPage from './VisaVisionPage'; // Ավելացված է Visa Vision էջը
 import EvocaOnlineLoginPage from './EvocaOnlineLoginPage';
 import EvocaSalaryPage from './EvocaSalaryPage';
 import NewsListPage from './NewsListPage'; 
@@ -10,10 +11,11 @@ import NewsArticlePage from './NewsArticlePage';
 import MoodysNewsPage from './MoodysNewsPage';
 import FirebirdAiFactoryPage from './FirebirdAiFactoryPage';
 import GreenRockNewsPage from './GreenRockNewsPage';
-import MitCertifiedPage from './MitCertifiedPage'; // Ավելացված է
+import MitCertifiedPage from './MitCertifiedPage';
 import WilcoCardPage from './WilcoCardPage';
 import AdidasNewsPage from './AdidasNewsPage';
 import GlobbingNewsPage from './GlobbingNewsPage';
+import ShortNumberDetails from './ShortNumberDetails';
 
 export default function App() {
   return (
@@ -23,6 +25,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HeroSlider />} />
           <Route path="/travel-card" element={<TravelCardPage />} />
+          <Route path="/visa-vision" element={<VisaVisionPage />} />
           <Route path="/evoca-online" element={<EvocaOnlineLoginPage />} />
           <Route path="/evoca-salary" element={<EvocaSalaryPage />} />
 
@@ -58,6 +61,8 @@ export default function App() {
           {/* Globbing-ի երթուղիները */}
           <Route path="/news/globbing" element={<GlobbingNewsPage />} />
           <Route path="/news/products/globbing" element={<GlobbingNewsPage />} />
+          
+          <Route path="/short-number" element={<ShortNumberDetails />} />
         </Routes>
       </div>
     </Router>
