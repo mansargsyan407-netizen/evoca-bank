@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronDown, MapPin, HelpCircle, Globe, Search, Menu } from 'lucide-react';
 
 export default function Header() {
@@ -14,7 +15,7 @@ export default function Header() {
           <a href="#" className="hover:text-purple-700 transition">Բիզնես</a>
           <a href="#" className="hover:text-purple-700 transition">Ակնթարթային վճարումներ</a>
           <a href="#" className="hover:text-purple-700 transition">Մեր մասին</a>
-          <a href="#" className="hover:text-purple-700 transition">Նորություններ</a>
+          <Link to="/news" className="hover:text-purple-700 transition">Նորություններ</Link>
           <a href="#" className="hover:text-purple-700 transition">Բլոգ</a>
           <a href="#" className="hover:text-purple-700 transition">Կարիերա</a>
         </nav>
@@ -53,7 +54,7 @@ export default function Header() {
           <a href="#" className="hover:text-purple-700 transition">Հաշիվներ</a>
           <a href="#" className="hover:text-purple-700 transition">Փոխանցումներ</a>
           <a href="#" className="hover:text-purple-700 transition">Արժեթղթեր</a>
-          <a href="#" className="hover:text-purple-700 transition">EvocaSALARY</a>
+          <Link to="/evoca-salary" className="hover:text-purple-700 transition">EvocaSALARY</Link>
           <a href="#" className="hover:text-purple-700 transition">EvocaTOUCH</a>
         </nav>
 

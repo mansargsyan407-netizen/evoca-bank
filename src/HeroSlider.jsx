@@ -28,30 +28,30 @@ const slidesData = [
     textColor: "text-white",
     btnBg: "bg-white text-purple-900 hover:bg-gray-100",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17740137222872/7152cafab4609e8483a365f79ecf04cb-577x486.png",
-    link: "#"
+    link: "/evoca-salary"
   },
   {
-    id: "short-num",
-    title: "Կարճ հեռախոսահամար՝ 8444",
-    description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
-    btnText: "Իմանալ ավելին",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    btnBg: "bg-white text-black hover:bg-gray-200",
-    imgUrl: "https://www.evoca.am/images-cache/sliders/1/17612202124044/b74e87ec0e83aa10cb128d41f0ada026-577x486.png",
-    link: "#"
-  },
-  {
-    id: "visa-vision",
-    title: "Visa Vision",
-    description: "Ձեռք բեր Visa Vision քարտ քո նախընտրած գույնով, դիզայնով ու ոճով և օգտվիր բազմաթիվ առավելություններից",
-    btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#27272a]", // dark slate
-    textColor: "text-white",
-    btnBg: "bg-white text-purple-900 hover:bg-gray-100",
-    imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
-    link: "#"
-  },
+  id: "short-num",
+  title: "Կարճ հեռախոսահամար՝ 8444",
+  description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
+  btnText: "Իմանալ ավելին",
+  bgColor: "bg-black",
+  textColor: "text-white",
+  btnBg: "bg-white text-black hover:bg-gray-200",
+  imgUrl: "https://www.evoca.am/images-cache/sliders/1/17612202124044/b74e87ec0e83aa10cb128d41f0ada026-577x486.png",
+  link: "/short-number"
+},
+{
+  id: "visa-vision",
+  title: "Visa Vision",
+  description: "Ձեռք բեր Visa Vision քարտ քո նախընտրած գույնով, դիզայնով ու ոճով և օգտվիր բազմաթիվ առավելություններից",
+  btnText: "Իմանալ ավելին",
+  bgColor: "bg-[#27272a]", // dark slate
+  textColor: "text-white",
+  btnBg: "bg-white text-purple-900 hover:bg-gray-100",
+  imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
+  link: "/visa-vision"
+},
   {
     id: "visa-infinite",
     title: "Visa Infinite",
