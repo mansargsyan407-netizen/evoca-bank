@@ -11,67 +11,124 @@ export default function TravelCardPage() {
   const cardsData = [
     {
       id: 1,
-      name: "Arca Classic",
-      brand: "arca",
-      number: "1000 2345 6000 7890",
-      style: "bg-gradient-to-br from-[#0a0a1a] via-[#1a1440] to-[#0a0a1a]",
-      pattern: true,
+      name: "Evoca Travel Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17479817930565/415x261.jpg",
     },
     {
       id: 2,
-      name: "Visa Digital",
-      brand: "VISA",
-      number: "0.00 $  •  000",
-      style: "bg-gradient-to-br from-[#5eead4] via-[#a78bfa] to-[#f472b6]",
-      holo: true,
+      name: "Evoca Visa Platinum",
+      image: "https://www.evoca.am/images-cache/cards/1/17798007931247/415x261.png",
     },
     {
       id: 3,
-      name: "4U.am Gift card",
-      brand: "arca",
-      number: "1000 2345 6000 7890",
-      style: "bg-gradient-to-br from-white to-gray-100 border border-gray-200",
-      light: true,
-      logo4u: true,
+      name: "Wilco Visa Infinite",
+      image: "https://www.evoca.am/images-cache/cards/1/17815131185095/415x261.png",
     },
     {
       id: 4,
-      name: "Evoca Visa Platinum",
-      brand: "VISA",
-      number: "",
-      style: "bg-gradient-to-br from-black via-[#111] to-black",
-      lines: true,
+      name: "Evoca Gift Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17767720288483/415x261.png",
     },
     {
       id: 5,
-      name: "Evoca Gift Card",
-      brand: "arca",
-      number: "1000 2345 6000 7890",
-      style: "bg-gradient-to-br from-black via-[#2e1065] to-[#6d28d9]",
-      stacked: true,
+      name: "Digital Gift Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17282986912132/415x261.png",
     },
     {
       id: 6,
-      name: "Rio Gift Card",
-      brand: "arca",
-      number: "1000 2345 6000 7890",
-      style: "bg-gradient-to-br from-gray-50 to-white border border-gray-200",
-      light: true,
-      triangles: true,
+      name: "Visa Infinite",
+      image: "https://www.evoca.am/images-cache/cards/1/1772717001933/415x261.png",
     },
     {
       id: 7,
-      name: "Digital Gift Card",
-      brand: "mastercard",
-      number: "**** 1234",
-      style: "bg-gradient-to-br from-black via-[#1a1a2e] to-black",
-      script: true,
+      name: "Visa Vision",
+      image: "https://www.evoca.am/images-cache/cards/1/1714986482757/415x261.png",
+    },
+      {
+      id: 8,
+      name: "UnionPay Business Platinum",
+      image: "https://www.evoca.am/images-cache/cards/1/17249401821904/415x261.png",
+    },
+  {
+      id: 9,
+      name: "Mastercard World Digital",
+      image: "https://www.evoca.am/images-cache/cards/1/17639683196125/415x261.png",
+    },
+     {
+      id: 10,
+      name: "MyLer Gift Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17655348192361/415x261.png",
+    },
+    
+    {
+      id: 11,
+      name: "UnionPay Gold",
+      image: "https://www.evoca.am/images-cache/cards/1/17262129422977/415x261.png",
+    },
+
+     {
+      id: 12,
+      name: "4U.am Gift card",
+      image: "https://www.evoca.am/images-cache/cards/1/17485032554482/415x261.png",
+    },
+  {
+      id: 13,
+      name: "Mastercard Gold",
+      image: "https://www.evoca.am/images-cache/cards/1/17149865321136/415x261.png",
+    },
+ {
+      id: 14,
+      name: "Mastercard Standard",
+      image: "https://www.evoca.am/images-cache/cards/1/17149866652788/415x261.png",
+    },
+
+
+{
+      id: 15,
+      name: "Visa Digital",
+      image: "https://www.evoca.am/images-cache/cards/1/17485025148319/415x261.png",
+    },
+
+
+   
+    {
+      id: 16,
+      name: "Visa Classic",
+      image: " https://www.evoca.am/images-cache/cards/1/1714986642953/415x261.png",
+    },
+
+    {
+      id: 17,
+      name: "Arca Classic",
+      image: "https://www.evoca.am/images-cache/cards/1/17404717644263/415x261.png",
+    },
+
+ {
+      id: 18,
+      name: "Visa Business",
+      image: "https://www.evoca.am/images-cache/cards/1/17149865475676/415x261.png",
+    },
+{
+      id: 19,
+      name: "Dalma Gift Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17404717113297/415x261.png",
+    },
+{
+      id: 20,
+      name: " Rio Gift Card",
+      image: "https://www.evoca.am/images-cache/cards/1/17404717289057/415x261.png",
+    },
+
+{
+      id: 21,
+      name: "Visa Gold",
+      image: "https://www.evoca.am/images-cache/cards/1/17149865646885/415x261.png",
     },
   ];
 
   return (
     <div className="w-full bg-white text-gray-800 font-sans">
-      
+
       {/* Sub Header Navigation */}
       <div className="bg-[#6b21a8] text-white px-8 py-3 flex items-center gap-8 text-sm font-semibold">
         <span className="bg-[#581c87] px-4 py-1 rounded cursor-pointer">Քարտեր</span>
@@ -89,9 +146,9 @@ export default function TravelCardPage() {
           </p>
         </div>
         <div className="mt-6 md:mt-0">
-          <img 
-            src="https://www.evoca.am/images-cache/cards/1/17479817930565/415x261.jpg" 
-            alt="Evoca Travel Card" 
+          <img
+            src="https://www.evoca.am/images-cache/cards/1/17479817930565/415x261.jpg"
+            alt="Evoca Travel Card"
             className="w-80 md:w-96 object-contain drop-shadow-xl"
           />
         </div>
@@ -114,13 +171,13 @@ export default function TravelCardPage() {
       <div className="px-8 md:px-20 py-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-7">
           <div className="border-b border-gray-200 flex gap-8 mb-6">
-            <button 
+            <button
               onClick={() => setActiveTab('about')}
               className={`pb-3 font-bold text-sm transition-colors ${activeTab === 'about' ? 'border-b-2 border-purple-600 text-purple-700' : 'text-gray-500'}`}
             >
               Քարտի մասին
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('rates')}
               className={`pb-3 font-bold text-sm transition-colors ${activeTab === 'rates' ? 'border-b-2 border-purple-600 text-purple-700' : 'text-gray-500'}`}
             >
@@ -372,10 +429,10 @@ export default function TravelCardPage() {
           </p>
           <p className="text-gray-600">
             Առաջարկներին կարող եք ծանոթանալ հղմամբ՝{" "}
-            <a 
-              href="https://benefits.evoca.am" 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href="https://benefits.evoca.am"
+              target="_blank"
+              rel="noreferrer"
               className="text-[#7c3aed] font-semibold underline hover:text-purple-800"
             >
               benefits.evoca.am
@@ -385,97 +442,53 @@ export default function TravelCardPage() {
       </section>
 
       {/* 2. Այլ քարտեր (Swiper Slider) */}
-      <section className="max-w-6xl mx-auto px-6 py-12 relative">
-        <h2 className="text-2xl font-bold mb-8 text-gray-900">Այլ քարտեր</h2>
+      <section className="max-w-6xl mx-auto px-6 md:px-10 py-14">
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-gray-900">Այլ քարտեր</h2>
 
-        <div className="relative group">
+        <div className="relative">
+          {/* Prev / Next - simple chevrons, no circle, like evoca.am */}
+          <button
+            className="cards-prev absolute -left-2 md:-left-8 top-[35%] -translate-y-1/2 z-20
+                       text-3xl font-bold text-[#7c3aed] hover:scale-125 transition cursor-pointer
+                       w-8 h-8 flex items-center justify-center"
+            aria-label="Նախորդ"
+          >
+            ‹
+          </button>
+          <button
+            className="cards-next absolute -right-2 md:-right-8 top-[35%] -translate-y-1/2 z-20
+                       text-3xl font-bold text-[#7c3aed] hover:scale-125 transition cursor-pointer
+                       w-8 h-8 flex items-center justify-center"
+            aria-label="Հաջորդ"
+          >
+            ›
+          </button>
+
           <Swiper
             modules={[Navigation]}
-            spaceBetween={24}
-            slidesPerView={1}
+            spaceBetween={16}
+            slidesPerView={1.3}
             navigation={{
               nextEl: ".cards-next",
               prevEl: ".cards-prev",
             }}
             breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 3 },
+              480: { slidesPerView: 1.8 },
+              640: { slidesPerView: 2.3 },
+              1024: { slidesPerView: 3.3 },
+              1280: { slidesPerView: 4 },
             }}
-            className="w-full"
+            className="w-full px-1"
           >
             {cardsData.map((card) => (
               <SwiperSlide key={card.id}>
-                <div className="flex flex-col items-center text-center cursor-pointer group/card p-2">
-                  <div className="w-full h-44 flex items-center justify-center mb-4 transition-transform duration-300 group-hover/card:scale-105">
-                    <div
-                      className={`relative w-64 h-40 rounded-2xl shadow-lg overflow-hidden p-4 flex flex-col justify-between ${card.style}`}
-                    >
-                      {/* Brand logo */}
-                      <div className="flex justify-between items-start">
-                        <span
-                          className={`text-xs font-bold tracking-wide ${
-                            card.light ? "text-gray-800" : "text-white"
-                          }`}
-                        >
-                          evoca
-                        </span>
-                        {card.brand === "VISA" && (
-                          <span className="text-white italic font-black text-sm">VISA</span>
-                        )}
-                        {card.brand === "arca" && (
-                          <span
-                            className={`font-black text-sm ${
-                              card.light ? "text-purple-700" : "text-lime-400"
-                            }`}
-                          >
-                            arca
-                          </span>
-                        )}
-                        {card.brand === "mastercard" && (
-                          <div className="flex -space-x-2">
-                            <span className="w-4 h-4 rounded-full bg-red-500 inline-block"></span>
-                            <span className="w-4 h-4 rounded-full bg-orange-400 inline-block opacity-90"></span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Decorative pattern layer */}
-                      {card.pattern && (
-                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent_60%)]" />
-                      )}
-                      {card.holo && (
-                        <div className="absolute inset-0 opacity-40 bg-[linear-gradient(120deg,rgba(255,255,255,0.6),transparent_40%,rgba(255,255,255,0.3)_70%)]" />
-                      )}
-                      {card.lines && (
-                        <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.15)_0px,rgba(255,255,255,0.15)_1px,transparent_1px,transparent_10px)]" />
-                      )}
-                      {card.triangles && (
-                        <div className="absolute top-2 right-2 w-10 h-10 bg-gradient-to-br from-pink-400 via-blue-400 to-orange-300 opacity-70 [clip-path:polygon(0_0,100%_0,100%_100%)]" />
-                      )}
-                      {card.logo4u && (
-                        <div className="absolute top-3 left-3 text-[10px] font-black text-blue-600">
-                          4U<span className="text-gray-400">.am</span>
-                        </div>
-                      )}
-                      {card.stacked && (
-                        <div className="absolute -bottom-4 -right-4 w-24 h-16 rounded-xl bg-purple-700/60 rotate-6" />
-                      )}
-                      {card.script && (
-                        <p className="text-white/90 italic text-lg font-light leading-none">
-                          Uber Byte
-                        </p>
-                      )}
-
-                      {/* Card number */}
-                      <p
-                        className={`relative z-10 tracking-widest text-sm font-mono ${
-                          card.light ? "text-gray-700" : "text-white/90"
-                        }`}
-                      >
-                        {card.number}
-                      </p>
-                    </div>
+                <div className="flex flex-col items-center text-center cursor-pointer group/card">
+                  <div className="w-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover/card:scale-[1.03]">
+                    <img
+                      src={card.image}
+                      alt={card.name}
+                      className="w-full h-auto object-contain drop-shadow-lg"
+                    />
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm md:text-base">
                     {card.name}
@@ -484,13 +497,6 @@ export default function TravelCardPage() {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          <button className="cards-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 text-2xl text-[#7c3aed] font-bold hover:scale-125 transition cursor-pointer bg-white rounded-full p-1 shadow-md">
-            &larr;
-          </button>
-          <button className="cards-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 text-2xl text-[#7c3aed] font-bold hover:scale-125 transition cursor-pointer bg-white rounded-full p-1 shadow-md">
-            &rarr;
-          </button>
         </div>
       </section>
 
@@ -501,46 +507,33 @@ export default function TravelCardPage() {
 
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
           <div className="w-full lg:w-1/2 flex items-center justify-center gap-4">
-            {/* Laptop mockup */}
-            <div className="relative">
-              <div className="w-[380px] max-w-[80vw] rounded-t-xl border-[8px] border-b-0 border-neutral-800 bg-neutral-800">
-                <div className="bg-neutral-100 aspect-[16/10] overflow-hidden flex rounded-t-sm">
-                  <div className="flex-1 bg-[#EFEDF3] flex flex-col items-center justify-center gap-2">
-                    <span className="text-3xl">🏠</span>
-                    <span className="text-2xl font-black text-purple-800">%</span>
-                  </div>
-                  <div className="flex-1 bg-[#D9CFF2] flex flex-col items-center justify-center relative">
-                    <div className="w-14 h-8 rounded-md bg-gradient-to-br from-purple-700 to-purple-900 shadow-md -rotate-6"></div>
-                    <div className="w-14 h-8 rounded-md bg-gradient-to-br from-amber-300 to-amber-500 shadow-md rotate-6 -mt-2 ml-5"></div>
-                    <div className="absolute w-9 h-9 rounded-full bg-neutral-500/40 flex items-center justify-center">
-                      <div className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[10px] border-l-cyan-300"></div>
-                    </div>
-                  </div>
-                  <div className="flex-1 bg-[#EFEDF3] flex flex-col items-center justify-center gap-1">
-                    <svg viewBox="0 0 60 40" className="w-14 h-9 stroke-purple-700 fill-none stroke-[3]">
-                      <polyline points="2,35 18,20 30,28 45,10 58,4" />
-                      <polygon points="46,4 58,4 58,15" className="fill-purple-700 stroke-none" />
-                    </svg>
-                    <div className="flex gap-1 items-end">
-                      <div className="w-1.5 h-2.5 rounded-full bg-yellow-400"></div>
-                      <div className="w-1.5 h-4 rounded-full bg-yellow-400"></div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-yellow-400"></div>
-                    </div>
-                  </div>
-                </div>
+            {/* Laptop Mockup with YouTube Video */}
+            <div className="relative w-full max-w-[480px]">
+              {/* Laptop Screen Frame */}
+              <div className="relative rounded-t-2xl border-[10px] border-b-0 border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden aspect-[16/10]">
+                <iframe
+                  src="https://www.youtube.com/embed/KwAgMHEx8ys?enablejsapi=1&origin=https%3A%2F%2Fwww.evoca.am&widgetid=1&forigin=https%3A%2F%2Fwww.evoca.am%2Fhy%2Fcards%2Fmaster%2Ftravel-card&aoriginsup=1&gporigin=https%3A%2F%2Fwww.evoca.am%2Fhy&vf=6"
+                  title="EvocaTOUCH Video"
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
               </div>
-              <div className="w-[420px] max-w-[88vw] -translate-x-[20px] h-2.5 bg-neutral-700 rounded-b-2xl"></div>
+              {/* Laptop Base */}
+              <div className="w-[108%] -translate-x-[4%] h-3 bg-neutral-700 rounded-b-xl border-t border-neutral-600 shadow-md relative">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-neutral-500 rounded-b-md"></div>
+              </div>
             </div>
 
-            {/* Phone mockup */}
-            <div className="hidden md:block relative -ml-8 mb-1">
-              <div className="w-32 aspect-[9/19] rounded-[1.6rem] border-[5px] border-neutral-900 bg-gradient-to-b from-indigo-700 via-purple-700 to-fuchsia-700 relative overflow-hidden shadow-xl">
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-11 h-2.5 bg-neutral-900 rounded-full"></div>
+            {/* Phone Mockup */}
+            <div className="hidden md:block relative -ml-6 mb-2 shrink-0">
+              <div className="w-28 aspect-[9/19] rounded-[1.6rem] border-[5px] border-neutral-900 bg-gradient-to-b from-indigo-700 via-purple-700 to-fuchsia-700 relative overflow-hidden shadow-2xl">
+                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-9 h-2 bg-neutral-900 rounded-full"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white font-extrabold text-base tracking-wide">evoca</span>
+                 <img src="https://www.evoca.am/images-cache/banners/1/16153622710205/140x300.jpg" alt="" />
                 </div>
-                <div className="absolute top-8 left-5 w-2.5 h-2.5 rounded-full bg-white/60"></div>
-                <div className="absolute bottom-14 left-4 w-3 h-3 rounded-full bg-white/40"></div>
+                <div className="absolute top-8 left-4 w-2 h-2 rounded-full bg-white/60"></div>
+                <div className="absolute bottom-12 left-3 w-2.5 h-2.5 rounded-full bg-white/40"></div>
               </div>
             </div>
           </div>
@@ -552,12 +545,59 @@ export default function TravelCardPage() {
               տեղեկատվական նորագույն տեխնոլոգիաների ակտիվ կիրառմամբ։
             </p>
 
-            <Link
-              to="/evoca-online"
-              className="inline-block bg-white text-purple-900 px-8 py-3 rounded-full font-bold hover:bg-purple-50 transition shadow-lg text-center"
-            >
-              Դառնալ հաճախորդ
-            </Link>
+            <div>
+              <Link
+                to="/evoca-online"
+                className="inline-block bg-white text-purple-900 px-8 py-3 rounded-full font-bold hover:bg-purple-50 transition shadow-lg text-center"
+              >
+                Դառնալ հաճախորդ
+              </Link>
+            </div>
+
+            {/* QR & Mobile Apps Download Section */}
+            <div className="flex items-center gap-4 pt-4">
+              {/* QR Code */}
+              <div className="bg-white p-1.5 rounded-xl shadow-md shrink-0">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.evoca.am"
+                  alt="QR Code"
+                  className="w-20 h-20"
+                />
+              </div>
+
+              {/* Text & Store Buttons */}
+              <div className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-purple-100">
+                  Ներբեռնել հավելվածները`
+                </span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://apps.apple.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-80 transition"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                      className="h-8"
+                    />
+                  </a>
+                  <a
+                    href="https://play.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-80 transition"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                      className="h-8"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -565,7 +605,7 @@ export default function TravelCardPage() {
       {/* Footer */}
       <footer className="w-full bg-white text-gray-700 py-12 px-6 border-t border-gray-100">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
+
           <div className="space-y-4">
             <h3 className="text-xl font-extrabold text-[#7c3aed]">evocaBANK</h3>
             <p className="text-xs text-gray-500">
