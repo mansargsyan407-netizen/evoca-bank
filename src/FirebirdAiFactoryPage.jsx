@@ -7,10 +7,10 @@ export default function FirebirdAiFactoryPage() {
       
       {/* Floating Social Media Side Icons */}
       <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-gray-100/80 backdrop-blur-sm p-1.5 rounded-r-lg flex flex-col gap-3 text-gray-600 text-xs shadow-sm">
-        <span className="cursor-pointer hover:text-purple-700 font-bold">f</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">t</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">in</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">p</span>
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">f</a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">t</a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">in</a>
+        <a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">p</a>
       </div>
 
       {/* Breadcrumb Navigation */}
@@ -92,8 +92,8 @@ export default function FirebirdAiFactoryPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* News Card 1 - Moody's (Link-ով) */}
-          <Link to="/news/moodys-rating" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
+          {/* News Card 1 - Moody's */}
+          <Link to="/news/moodys-rating" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group cursor-pointer">
             <img 
               src="https://www.evoca.am/images-cache/news/1/17870544210976/439x320.png" 
               alt="Moody's Ratings" 
@@ -107,8 +107,8 @@ export default function FirebirdAiFactoryPage() {
             </div>
           </Link>
 
-          {/* News Card 2 - Green Rock (Link-ով) */}
-          <Link to="/news/green-rock" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
+          {/* News Card 2 - Green Rock */}
+          <Link to="/news/green-rock" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group cursor-pointer">
             <img 
               src="https://www.evoca.am/images-cache/news/1/17854167235525/780x585.png" 
               alt="Green Rock" 
@@ -122,8 +122,8 @@ export default function FirebirdAiFactoryPage() {
             </div>
           </Link>
 
-          {/* News Card 3 - MIT Certified (Link-ով) */}
-          <Link to="/news/mit-certified" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
+          {/* News Card 3 - MIT Certified */}
+          <Link to="/news/mit-certified" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group cursor-pointer">
             <img 
               src="https://www.evoca.am/images-cache/news/1/17842875742396/428x321.png" 
               alt="MIT Certified" 
@@ -162,24 +162,24 @@ export default function FirebirdAiFactoryPage() {
 
           <div className="space-y-2">
             <h4 className="font-bold text-gray-900 mb-3 text-sm">Բանկի մասին</h4>
-            <p className="hover:text-purple-700 cursor-pointer">Մեր մասին</p>
-            <p className="hover:text-purple-700 cursor-pointer">Ղեկավարություն</p>
-            <p className="hover:text-purple-700 cursor-pointer">Բաժնետերեր</p>
-            <p className="hover:text-purple-700 cursor-pointer">Հաշվետվություններ</p>
+            <Link to="/about" className="block hover:text-purple-700">Մեր մասին</Link>
+            <Link to="/management" className="block hover:text-purple-700">Ղեկավարություն</Link>
+            <Link to="/shareholders" className="block hover:text-purple-700">Բաժնետերեր</Link>
+            <Link to="/reports" className="block hover:text-purple-700">Հաշվետվություններ</Link>
           </div>
 
           <div className="space-y-2">
             <h4 className="font-bold text-gray-900 mb-3 text-sm">Օգտակար հղումներ</h4>
-            <p className="hover:text-purple-700 cursor-pointer">Հաճախորդի իրավունքները</p>
-            <p className="hover:text-purple-700 cursor-pointer">Գաղտնիության քաղաքականություն</p>
+            <Link to="/rights" className="block hover:text-purple-700">Հաճախորդի իրավունքները</Link>
+            <Link to="/privacy" className="block hover:text-purple-700">Գաղտնիության քաղաքականություն</Link>
           </div>
 
           <div className="space-y-3">
             <h4 className="font-bold text-gray-900 mb-3 text-sm">Այլ հղումներ</h4>
-            <p className="hover:text-purple-700 cursor-pointer">EvocaONLINE</p>
-            <p className="hover:text-purple-700 cursor-pointer">Հետադարձ կապ</p>
-            <p className="font-bold text-gray-900 text-sm">+374 10 605555</p>
-            <p className="text-[#6b21a8] font-black text-base">8444</p>
+            <a href="https://evocaonline.am" target="_blank" rel="noreferrer" className="block hover:text-purple-700">EvocaONLINE</a>
+            <Link to="/contact" className="block hover:text-purple-700">Հետադարձ կապ</Link>
+            <p className="font-bold text-gray-900 text-sm"><a href="tel:+37410605555">+374 10 605555</a></p>
+            <p className="text-[#6b21a8] font-black text-base"><a href="tel:8444">8444</a></p>
           </div>
 
         </div>
@@ -187,9 +187,9 @@ export default function FirebirdAiFactoryPage() {
 
       {/* Floating Call & Online Chat Button */}
       <div className="fixed bottom-4 right-4 z-50 flex items-center gap-3">
-        <button className="w-12 h-12 bg-purple-200 text-[#6b21a8] rounded-full flex items-center justify-center text-lg shadow-lg hover:bg-purple-300 transition">
+        <a href="tel:8444" className="w-12 h-12 bg-purple-200 text-[#6b21a8] rounded-full flex items-center justify-center text-lg shadow-lg hover:bg-purple-300 transition">
           📞
-        </button>
+        </a>
         <button className="bg-[#6b21a8] text-white px-5 py-3 rounded-full font-bold text-xs shadow-xl hover:bg-purple-900 transition flex items-center gap-2">
           Գրեք մեզ, մենք օնլայն ենք !
         </button>
