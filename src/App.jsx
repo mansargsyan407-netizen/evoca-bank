@@ -6,7 +6,6 @@ import TravelCardPage from './TravelCardPage';
 import VisaVisionPage from './VisaVisionPage'; // Ավելացված է Visa Vision էջը
 import EvocaOnlineLoginPage from './EvocaOnlineLoginPage';
 import EvocaSalaryPage from './EvocaSalaryPage';
-import NewsListPage from './NewsListPage'; 
 import NewsArticlePage from './NewsArticlePage';
 import MoodysNewsPage from './MoodysNewsPage';
 import FirebirdAiFactoryPage from './FirebirdAiFactoryPage';
@@ -29,8 +28,7 @@ export default function App() {
           <Route path="/evoca-online" element={<EvocaOnlineLoginPage />} />
           <Route path="/evoca-salary" element={<EvocaSalaryPage />} />
 
-          {/* Նորությունների ցանկի էջը */}
-          <Route path="/news" element={<NewsListPage />} />
+         
 
           {/* Նորությունների Route-ները */}
           <Route path="/news/back-to-school" element={<NewsArticlePage />} />
