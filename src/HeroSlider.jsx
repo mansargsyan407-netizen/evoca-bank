@@ -31,7 +31,7 @@ const slidesData = [
     link: "/evoca-salary"
   },
   {
-<<<<<<< HEAD
+
   id: "short-num",
   title: "Կարճ հեռախոսահամար՝ 8444",
   description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
@@ -53,7 +53,7 @@ const slidesData = [
   imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
   link: "/visa-vision"
 },
-=======
+{
     id: "short-num",
     title: "Կարճ հեռախոսահամար՝ 8444",
     description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
@@ -75,7 +75,7 @@ const slidesData = [
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
     link: "/visa-vision"
   },
->>>>>>> feature/cards-and-services
+
   {
     id: "visa-infinite",
     title: "Visa Infinite",
