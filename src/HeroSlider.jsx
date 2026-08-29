@@ -79,11 +79,11 @@ const slidesData = [
     title: "UnionPay Gold",
     description: "Ամբողջ աշխարհում քո արագ և հարմար վճարումների ուղեկիցը",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#b45309]",
+    bgColor: "bg-[#b6a44f]",
     textColor: "text-white",
     btnBg: "bg-[#7c3aed] text-white hover:bg-purple-800",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17262130779724/2fee1054871280f57daf5204f901c563-577x486.png",
-    link: "/unionpay"
+    link: "/unionpay-gold"
   },
   {
     id: "deposit",
