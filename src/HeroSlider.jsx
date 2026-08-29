@@ -13,7 +13,7 @@ const slidesData = [
     title: "Evoca Travel Card",
     description: "Այս քարտն իր բազմաթիվ առավելություններով կդառնա քո ճամփորդական անբաժան ընկերը",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#d1d5db]", // light gray/silver
+    bgColor: "bg-[#d1d5db]",
     textColor: "text-gray-900",
     btnBg: "bg-[#7c3aed] text-white hover:bg-purple-800",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17480089224912/4012c7541d8db15b5666bb0e4f4bdf7a-576x486.png",
@@ -24,13 +24,14 @@ const slidesData = [
     title: "Evoca Աշխատավարձային Նախագիծ",
     description: "Բեր աշխատավարձդ Evoca: Տար շատ ավելին...",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#6b21a8]", // deep purple
+    bgColor: "bg-[#6b21a8]",
     textColor: "text-white",
     btnBg: "bg-white text-purple-900 hover:bg-gray-100",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17740137222872/7152cafab4609e8483a365f79ecf04cb-577x486.png",
     link: "/evoca-salary"
   },
   {
+<<<<<<< HEAD
   id: "short-num",
   title: "Կարճ հեռախոսահամար՝ 8444",
   description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
@@ -52,49 +53,72 @@ const slidesData = [
   imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
   link: "/visa-vision"
 },
+=======
+    id: "short-num",
+    title: "Կարճ հեռախոսահամար՝ 8444",
+    description: "Բարի գալուստ, Evocabank: Մենք սպասում ենք Ձեր զանգին...",
+    btnText: "Իմանալ ավելին",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    btnBg: "bg-white text-black hover:bg-gray-200",
+    imgUrl: "https://www.evoca.am/images-cache/sliders/1/17612202124044/b74e87ec0e83aa10cb128d41f0ada026-577x486.png",
+    link: "/short-number"
+  },
+  {
+    id: "visa-vision",
+    title: "Visa Vision",
+    description: "Ձեռք բեր Visa Vision քարտ քո նախընտրած գույնով, դիզայնով ու ոճով և օգտվիր բազմաթիվ առավելություններից",
+    btnText: "Իմանալ ավելին",
+    bgColor: "bg-[#27272a]",
+    textColor: "text-white",
+    btnBg: "bg-white text-purple-900 hover:bg-gray-100",
+    imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
+    link: "/visa-vision"
+  },
+>>>>>>> feature/cards-and-services
   {
     id: "visa-infinite",
     title: "Visa Infinite",
     description: "Ձեռք բեր Visa վճարային համակարգի ամենաբարձր դասի քարտը հենց հիմա",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#09090b]", // dark theme with purple glow
+    bgColor: "bg-[#09090b]",
     textColor: "text-white",
     btnBg: "bg-white text-purple-900 hover:bg-gray-100",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17737433784078/126c54e244e880fd563d8af43979486c-577x485.png",
-    link: "#"
+    link: "/visa-infinite"
   },
   {
     id: "mortgage",
     title: "Հիփոթեքային վարկեր Evocabank-ում՝ ամենահարմար պայմաններով",
     description: "Ձեռք բեր քո երազանքի բնակարանը՝ ցածր տոկոսադրույքով:",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#e9d5ff]", // soft lavender
+    bgColor: "bg-[#e9d5ff]",
     textColor: "text-purple-950",
     btnBg: "bg-[#7c3aed] text-white hover:bg-purple-800",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/16178035964191/79381d3e68fdf7ec25c5837a19ce5821-577x486.jpg",
-    link: "#"
+    link: "/mortgage"
   },
   {
     id: "unionpay",
     title: "UnionPay Gold",
     description: "Ամբողջ աշխարհում քո արագ և հարմար վճարումների ուղեկիցը",
     btnText: "Իմանալ ավելին",
-    bgColor: "bg-[#b45309]", // mustard gold
+    bgColor: "bg-[#b6a44f]",
     textColor: "text-white",
     btnBg: "bg-[#7c3aed] text-white hover:bg-purple-800",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/17262130779724/2fee1054871280f57daf5204f901c563-577x486.png",
-    link: "#"
+    link: "/unionpay-gold"
   },
   {
     id: "deposit",
     title: "Օնլայն ավանդ EvocaTOUCH հավելվածով",
     description: "Դի'ր ավանդ Evocabank-ում' բարձր, շա'տ բարձր տոկոսներով:",
     btnText: "Ծանոթանալ պայմաններին",
-    bgColor: "bg-[#fbcfe8]", // pink/lavender tint
+    bgColor: "bg-[#fbcfe8]",
     textColor: "text-gray-900",
     btnBg: "bg-[#7c3aed] text-white hover:bg-purple-800",
     imgUrl: "https://www.evoca.am/images-cache/sliders/1/16178037539626/79381d3e68fdf7ec25c5837a19ce5821-577x486.jpg",
-    link: "#"
+    link: "/deposit"
   }
 ];
 
@@ -143,7 +167,7 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
 
-        {/* Custom Navigation and Pagination Controls */}
+        {/* Custom Controls */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
           <button className="custom-prev text-2xl font-bold hover:scale-125 transition cursor-pointer">
             &larr;

@@ -7,10 +7,10 @@ export default function MoodysNewsPage() {
       
       {/* Floating Social Media Side Icons */}
       <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-gray-100/80 backdrop-blur-sm p-1.5 rounded-r-lg flex flex-col gap-3 text-gray-600 text-xs shadow-sm">
-        <span className="cursor-pointer hover:text-purple-700 font-bold">f</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">t</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">in</span>
-        <span className="cursor-pointer hover:text-purple-700 font-bold">p</span>
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">f</a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">t</a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">in</a>
+        <a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:text-purple-700 font-bold">p</a>
       </div>
 
       {/* Breadcrumb Navigation */}
@@ -95,6 +95,7 @@ export default function MoodysNewsPage() {
         <h2 className="text-2xl font-black text-gray-900 mb-8">Այլ նորություններ</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+<<<<<<< HEAD
 
           {/* News Card 1 - Firebird AI (Link-ով) */}
           <Link to="/news/firebird-ai" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
@@ -105,12 +106,27 @@ export default function MoodysNewsPage() {
             />
             <div className="p-5 space-y-2">
               <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
+=======
+          {/* News Card 1 - Firebird AI */}
+          <Link 
+            to="/news/firebird-ai" 
+            className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block cursor-pointer group"
+          >
+            <img 
+              src="https://www.evoca.am/images-cache/news/1/17864472573391/439x320.png" 
+              alt="Firebird AI" 
+              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="p-5 space-y-2">
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
+>>>>>>> feature/cards-and-services
                 Հայաստանում գործարկվեց Firebird AI-ի «ԱԲ գործարանը»
               </h3>
               <p className="text-xs text-gray-400 pt-2">11.08.2026</p>
             </div>
           </Link>
 
+<<<<<<< HEAD
           {/* News Card 2 - Green Rock (Link-ով) */}
           <Link to="/news/green-rock" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
             <img 
@@ -120,12 +136,27 @@ export default function MoodysNewsPage() {
             />
             <div className="p-5 space-y-2">
               <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
+=======
+          {/* News Card 2 - Green Rock */}
+          <Link 
+            to="/news/green-rock" 
+            className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block cursor-pointer group"
+          >
+            <img 
+              src="https://www.evoca.am/images-cache/news/1/17854167235525/780x585.png" 
+              alt="Green Rock" 
+              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="p-5 space-y-2">
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
+>>>>>>> feature/cards-and-services
                 Evocabank-ը և Green Rock-ը մեկնարկեցին Բանկի նոր գլխամասի նախագիծը
               </h3>
               <p className="text-xs text-gray-400 pt-2">30.07.2026</p>
             </div>
           </Link>
 
+<<<<<<< HEAD
           {/* News Card 3 - MIT Certified (Link-ով) */}
           <Link to="/news/mit-certified" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
             <img 
@@ -135,12 +166,29 @@ export default function MoodysNewsPage() {
             />
             <div className="p-5 space-y-2">
               <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
+=======
+          {/* News Card 3 - MIT Certified */}
+          <Link 
+            to="/news/mit-certified" 
+            className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block cursor-pointer group"
+          >
+            <img 
+              src="https://www.evoca.am/images-cache/news/1/17842875742396/428x321.png" 
+              alt="MIT Certified" 
+              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="p-5 space-y-2">
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
+>>>>>>> feature/cards-and-services
                 Evoca-ի ղեկավարները հաջողությամբ ավարտեցին Generative AI դասընթացը
               </h3>
               <p className="text-xs text-gray-400 pt-2">17.07.2026</p>
             </div>
           </Link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/cards-and-services
         </div>
 
         {/* Updated Timestamp */}
@@ -217,8 +265,8 @@ export default function MoodysNewsPage() {
               Բանկի հասցեները և աշխատաժամերը
             </p>
             <p className="text-purple-700 font-bold hover:underline cursor-pointer">Կապ մեզ հետ</p>
-            <p className="font-bold text-gray-900 text-sm">+374 10 605555</p>
-            <p className="text-[#6b21a8] font-black text-base">8444</p>
+            <p className="font-bold text-gray-900 text-sm"><a href="tel:+37410605555">+374 10 605555</a></p>
+            <p className="text-[#6b21a8] font-black text-base"><a href="tel:8444">8444</a></p>
           </div>
 
         </div>
@@ -238,9 +286,9 @@ export default function MoodysNewsPage() {
 
       {/* Floating Call & Online Chat Button */}
       <div className="fixed bottom-4 right-4 z-50 flex items-center gap-3">
-        <button className="w-12 h-12 bg-purple-200 text-[#6b21a8] rounded-full flex items-center justify-center text-lg shadow-lg hover:bg-purple-300 transition">
+        <a href="tel:8444" className="w-12 h-12 bg-purple-200 text-[#6b21a8] rounded-full flex items-center justify-center text-lg shadow-lg hover:bg-purple-300 transition">
           📞
-        </button>
+        </a>
         <button className="bg-[#6b21a8] text-white px-5 py-3 rounded-full font-bold text-xs shadow-xl hover:bg-purple-900 transition flex items-center gap-2">
           Գրեք մեզ, մենք օնլայն ենք !
         </button>

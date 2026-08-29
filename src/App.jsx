@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import HeroSlider from './HeroSlider';
 import TravelCardPage from './TravelCardPage';
-import VisaVisionPage from './VisaVisionPage'; // Ավելացված է Visa Vision էջը
+import VisaVisionPage from './VisaVisionPage';
+import VisaInfinitePage from './VisaInfinitePage';
+import UnionPayGoldPage from './UnionPayGoldPage'; // Ավելացված է UnionPay Gold էջը
 import EvocaOnlineLoginPage from './EvocaOnlineLoginPage';
 import EvocaSalaryPage from './EvocaSalaryPage';
 import NewsArticlePage from './NewsArticlePage';
@@ -15,6 +17,7 @@ import WilcoCardPage from './WilcoCardPage';
 import AdidasNewsPage from './AdidasNewsPage';
 import GlobbingNewsPage from './GlobbingNewsPage';
 import ShortNumberDetails from './ShortNumberDetails';
+import MortgagePage from './MortgagePage';
 
 export default function App() {
   return (
@@ -25,6 +28,15 @@ export default function App() {
           <Route path="/" element={<HeroSlider />} />
           <Route path="/travel-card" element={<TravelCardPage />} />
           <Route path="/visa-vision" element={<VisaVisionPage />} />
+          
+          {/* Visa Infinite-ի երթուղիները */}
+          <Route path="/visa-infinite" element={<VisaInfinitePage />} />
+          <Route path="/cards/visa-infinite" element={<VisaInfinitePage />} />
+
+          {/* UnionPay Gold-ի երթուղիները */}
+          <Route path="/unionpay-gold" element={<UnionPayGoldPage />} />
+          <Route path="/cards/unionpay-gold" element={<UnionPayGoldPage />} />
+
           <Route path="/evoca-online" element={<EvocaOnlineLoginPage />} />
           <Route path="/evoca-salary" element={<EvocaSalaryPage />} />
 
@@ -60,6 +72,7 @@ export default function App() {
           <Route path="/news/globbing" element={<GlobbingNewsPage />} />
           <Route path="/news/products/globbing" element={<GlobbingNewsPage />} />
           
+          <Route path="/mortgage" element={<MortgagePage />} />
           <Route path="/short-number" element={<ShortNumberDetails />} />
         </Routes>
       </div>
