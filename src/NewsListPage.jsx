@@ -233,28 +233,19 @@ export default function NewsListPage() {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* 6. MIDDLE FULL BANNER (ԹԱՐՄԱՑՎԱԾ՝ 1-ԻՆ ՆԿԱՐԻ ՈՃՈՎ) */}
-      <section className="max-w-7xl mx-auto px-1 my-20 relative">
-        {/* WATERMARK: "Կարևոր" */}
-=======
       {/* 6. MIDDLE FULL BANNER */}
       <section className="max-w-7xl mx-auto px-1 my-20 relative">
->>>>>>> feature/cards-and-services
+        {/* WATERMARK: "Կարևոր" */}
         <div className="text-[150px] font-black text-gray-100 select-none pointer-events-none leading-none -mb-1 ml-8">
           Կարևոր
         </div>
 
         <div className="bg-[#faf8ff] rounded-[32px] p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-<<<<<<< HEAD
           {/* Left Image Side */}
           <div className="lg:col-span-6 relative">
             {/* Lime corner accent on top-right */}
-=======
-          <div className="lg:col-span-6 relative">
->>>>>>> feature/cards-and-services
             <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-lime-400 z-10"></div>
-            
+
             <div className="rounded-2xl overflow-hidden">
               <img
                 src={newsData[6].image}
@@ -264,24 +255,21 @@ export default function NewsListPage() {
             </div>
           </div>
 
-<<<<<<< HEAD
           {/* Right Text Side */}
-=======
->>>>>>> feature/cards-and-services
           <div className="lg:col-span-6 flex flex-col justify-center space-y-5 lg:pl-6">
             <div className="flex items-center gap-2">
               <span className="w-3.5 h-3.5 bg-lime-400 inline-block"></span>
               <span className="text-xs font-bold text-gray-900">{newsData[6].category}</span>
             </div>
-            
+
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
               {newsData[6].title}
             </h2>
-            
+
             <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">
               {newsData[6].desc}
             </p>
-            
+
             <p className="text-[11px] text-gray-400 pt-2">{newsData[6].date}</p>
           </div>
         </div>
@@ -314,82 +302,7 @@ export default function NewsListPage() {
         </div>
       </section>
 
-<<<<<<< HEAD
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-12 px-6 text-xs text-gray-600">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          
-          <div className="space-y-3">
-            <h3 className="text-xl font-black text-[#6b21a8]">evocaBANK</h3>
-            <p>ք. Երևան, 0010, Հանրապետության 44/2</p>
-            <p className="text-[11px] text-gray-400 leading-relaxed">
-              Evocabank-ը վերահսկվում է Հայաստանի Հանրապետության Կենտրոնական բանկի կողմից
-            </p>
-            <p className="text-[10px] text-gray-400 pt-2">
-              1990 - 2026, © ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <h4 className="font-bold text-gray-900 mb-3 text-sm">Բանկի մասին</h4>
-            <p className="hover:text-purple-700 cursor-pointer">Մեր մասին</p>
-            <p className="hover:text-purple-700 cursor-pointer">Ղեկավարություն</p>
-            <p className="hover:text-purple-700 cursor-pointer">Բաժնետերեր</p>
-            <p className="hover:text-purple-700 cursor-pointer">Հաշվետվություններ</p>
-            <p className="hover:text-purple-700 cursor-pointer">Իրավական ակտեր</p>
-            <p className="hover:text-purple-700 cursor-pointer">Սակագներ</p>
-            <p className="hover:text-purple-700 cursor-pointer">Օտարվող գույք</p>
-            <p className="hover:text-purple-700 cursor-pointer">Կառուցապատողներ</p>
-            <p className="hover:text-purple-700 cursor-pointer">Գործընկեր ավտոսրահներ</p>
-            <p className="hover:text-purple-700 cursor-pointer">Սակագների արխիվ</p>
-          </div>
-
-          <div className="space-y-2">
-            <h4 className="font-bold text-gray-900 mb-3 text-sm">Օգտակար հղումներ</h4>
-            <p className="hover:text-purple-700 cursor-pointer">Հաճախորդի իրավունքները (Բողոքի ներկայացման կանոններ)</p>
-            <p className="hover:text-purple-700 cursor-pointer">Հաճախորդի ռեզիդենտության չափանիշներ</p>
-            <p className="hover:text-purple-700 cursor-pointer">Կարգավորում</p>
-            <p className="hover:text-purple-700 cursor-pointer">Գաղտնիության քաղաքականություն</p>
-            <p className="hover:text-purple-700 cursor-pointer">Ֆին. հաշտարար</p>
-            <p className="hover:text-purple-700 cursor-pointer">Ֆինանսական հանցագործությունների կանխարգելում</p>
-            <p className="hover:text-purple-700 cursor-pointer">Հղումներ Բանկի քարտապանների համար</p>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="font-bold text-gray-900 mb-3 text-sm">Այլ հղումներ</h4>
-            <div className="flex gap-3 text-lg text-gray-600 mb-2">
-              <span className="cursor-pointer">f</span>
-              <span className="cursor-pointer">i</span>
-              <span className="cursor-pointer">p</span>
-              <span className="cursor-pointer">y</span>
-              <span className="cursor-pointer">in</span>
-            </div>
-            <div className="flex gap-2">
-              <button className="bg-black text-white px-3 py-1 rounded text-[10px]">App Store</button>
-              <button className="bg-black text-white px-3 py-1 rounded text-[10px]">Google Play</button>
-            </div>
-            <p className="text-purple-700 font-bold hover:underline cursor-pointer pt-2">
-              Բանկի հասցեները և աշխատաժամերը
-            </p>
-            <p className="text-purple-700 font-bold hover:underline cursor-pointer">Կապ մեզ հետ</p>
-            <p className="font-bold text-gray-900">+374 10 605555</p>
-            <p className="text-[#6b21a8] font-black text-base">8444</p>
-          </div>
-
-        </div>
-
-        {/* Disclaimer Bottom Bar */}
-        <div className="bg-gray-100 p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] text-gray-500 leading-relaxed max-w-3xl">
-            Հարգելի՛ այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանություն, ինչպես նաև ռուսերեն և անգլերեն լեզուներում ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: "Էվոկաբանկ" ԲԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստուգության և արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:
-          </p>
-          <div className="flex gap-3 opacity-70">
-            <span className="font-bold border px-2 py-1 rounded bg-white text-[10px]">fininfo</span>
-            <span className="font-bold border px-2 py-1 rounded bg-white text-[10px]">abcfinance.am</span>
-            <span className="font-bold border px-2 py-1 rounded bg-white text-[10px]">arca</span>
-          </div>
-=======
-      {/* 8. FOOTER (ՆԿԱՐՈՒՄ ՊԱՏԿԵՐՎԱԾ ՆԵՐՔԵՎԻ ՀԱՏՎԱԾԸ) */}
+      {/* 8. FOOTER */}
       <footer className="w-full bg-[#fcfbfe] border-t border-gray-100 pt-12 pb-8 text-xs text-gray-600">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Info */}
@@ -487,9 +400,8 @@ export default function NewsListPage() {
         {/* Disclaimer Text */}
         <div className="max-w-7xl mx-auto px-6 border-t border-gray-200/60 pt-6 text-[10px] text-gray-400 leading-normal">
           <p>
-            Հարգելի' այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանություն, ինչպես նաև ռուսերեն և անգլերեն լեզուներում ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: "Էվոկաբանկ" ԲԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստուգության և արժանահավատության, այնտեղ տեղադրված գովազդների...
+            Հարգելի' այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանություն, ինչպես նաև ռուսերեն և անգլերեն լեզուներում ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: "Էվոկաբանկ" ԲԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստուգության և արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:
           </p>
->>>>>>> feature/cards-and-services
         </div>
       </footer>
 
@@ -502,10 +414,6 @@ export default function NewsListPage() {
           Գրեք մեզ, մենք օնլայն ենք !
         </button>
       </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> feature/cards-and-services
     </div>
   );
 }

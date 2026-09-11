@@ -10,113 +10,146 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-// Քարտերի տվյալների զանգվածը (cardsData)
 const cardsData = [
   {
-    id: 1,
-    name: "Evoca Travel Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17479817930565/415x261.jpg",
+    id: 'travel',
+    title: 'Evoca Travel Card',
+    imgUrl: 'https://www.evoca.am/images-cache/sliders/1/17480089224912/4012c7541d8db15b5666bb0e4f4bdf7a-576x486.png',
+    link: '/cards/travel-card'
   },
   {
-    id: 2,
-    name: "Evoca Visa Platinum",
-    image: "https://www.evoca.am/images-cache/cards/1/17798007931247/415x261.png",
+    id: 'visa-platinum',
+    title: 'Evoca Visa Platinum',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17798007931247/415x261.png',
+    link: '/cards/visa-platinum'
   },
   {
-    id: 3,
-    name: "Wilco Visa Infinite",
-    image: "https://www.evoca.am/images-cache/cards/1/17815131185095/415x261.png",
+    id: 'wilco-infinite',
+    title: 'Wilco Visa Infinite',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17815131185095/415x261.png',
+    link: '/cards/wilco-visa-infinite'
   },
   {
-    id: 4,
-    name: "Evoca Gift Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17767720288483/415x261.png",
+    id: 'gift-card',
+    title: 'Evoca Gift Card',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17767720288483/415x261.png',
+    link: '/cards/gift-card'
   },
   {
-    id: 5,
-    name: "Digital Gift Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17282986912132/415x261.png",
+    id: 'gift-4u',
+    title: 'Digital Gift Card',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17282986912132/415x261.png',
+    link: '/cards/4u-gift-card'
   },
   {
-    id: 6,
-    name: "Visa Infinite",
-    image: "https://www.evoca.am/images-cache/cards/1/1772717001933/415x261.png",
+    id: 'mc-gold',
+    title: 'Mastercard Gold',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17149865321136/415x261.png',
+    link: '/cards/mastercard-gold'
   },
   {
-    id: 7,
-    name: "Visa Vision",
-    image: "https://www.evoca.am/images-cache/cards/1/1714986482757/415x261.png",
+    id: 'visa-infinite',
+    title: 'Visa Infinite',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/1772717001933/415x261.png',
+    link: '/cards/visa-infinite'
   },
   {
-    id: 8,
-    name: "UnionPay Business Platinum",
-    image: "https://www.evoca.am/images-cache/cards/1/17249401821904/415x261.png",
+    id: 'visa-vision',
+    title: 'Visa Vision',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/1714986482757/415x261.png',
+    link: '/cards/visa-vision'
   },
   {
-    id: 9,
-    name: "Mastercard World Digital",
-    image: "https://www.evoca.am/images-cache/cards/1/17639683196125/415x261.png",
+    id: 'mc-world-digital',
+    title: 'Mastercard World Digital',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17639683196125/415x261.png',
+    link: '/cards/mastercard-world-digital'
   },
   {
-    id: 10,
-    name: "MyLer Gift Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17655348192361/415x261.png",
+    id: 'unionpay-business-platinum',
+    title: 'UnionPay Business Platinum',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17249401821904/415x261.png',
+    link: '/cards/unionpay-business-platinum'
   },
   {
-    id: 11,
-    name: "UnionPay Gold",
-    image: "https://www.evoca.am/images-cache/cards/1/17262129422977/415x261.png",
+    id: 'myler-gift-card',
+    title: 'MyLer Gift Card',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17655348192361/415x261.png',
+    link: '/cards/myler-gift-card'
   },
   {
-    id: 12,
-    name: "4U.am Gift card",
-    image: "https://www.evoca.am/images-cache/cards/1/17485032554482/415x261.png",
+    id: 'unionpay-gold',
+    title: 'UnionPay Gold',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17262129422977/415x261.png',
+    link: '/cards/unionpay-gold'
   },
   {
-    id: 13,
-    name: "Mastercard Gold",
-    image: "https://www.evoca.am/images-cache/cards/1/17149865321136/415x261.png",
+    id: 'arca-classic',
+    title: 'Arca Classic',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17485032554482/415x261.png',
+    link: '/cards/arca-classic'
   },
   {
-    id: 14,
-    name: "Mastercard Standard",
-    image: "https://www.evoca.am/images-cache/cards/1/17149866652788/415x261.png",
+    id: 'arca-unionpay',
+    title: 'Arca Union Pay Co-badge',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17149865321136/415x261.png',
+    link: '/cards/arca-unionpay'
   },
   {
-    id: 15,
-    name: "Visa Digital",
-    image: "https://www.evoca.am/images-cache/cards/1/17485025148319/415x261.png",
+    id: 'mc-standard',
+    title: 'Mastercard Standard',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17149866652788/415x261.png',
+    link: '/cards/mastercard-standard'
   },
   {
-    id: 16,
-    name: "Visa Classic",
-    image: "https://www.evoca.am/images-cache/cards/1/1714986642953/415x261.png",
+    id: 'visa-digital',
+    title: 'Visa Digital',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17485025148319/415x261.png',
+    link: '/cards/visa-digital'
   },
   {
-    id: 17,
-    name: "Arca Classic",
-    image: "https://www.evoca.am/images-cache/cards/1/17404717644263/415x261.png",
+    id: 'visa-classic',
+    title: 'Visa Classic',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/1714986642953/415x261.png',
+    link: '/cards/visa-classic'
   },
   {
-    id: 18,
-    name: "Visa Business",
-    image: "https://www.evoca.am/images-cache/cards/1/17149865475676/415x261.png",
+    id: 'arca-classic-page',
+    title: 'Arca Classic',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17404717644263/415x261.png',
+    link: '/cards/arca-classic-card'
   },
   {
-    id: 19,
-    name: "Dalma Gift Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17404717113297/415x261.png",
+    id: 'arca-unionpay-cobadge',
+    title: 'Arca Union Pay Co-badge',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17881574661708/415x261.png',
+    link: '/cards/arca-union-pay-co-badge'
+  },
+  /* --- Վերջին 4 քարտերը փոխված link-երով --- */
+  {
+    id: 'visa-business-premium',
+    title: 'Visa Business',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17149865475676/415x261.png',
+    link: '/cards/visa-business-card'
   },
   {
-    id: 20,
-    name: "Rio Gift Card",
-    image: "https://www.evoca.am/images-cache/cards/1/17404717289057/415x261.png",
+    id: 'dalma-gift-card-page',
+    title: 'Dalma Gift Card',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17404717113297/415x261.png',
+    link: '/cards/dalma-card'
   },
   {
-    id: 21,
-    name: "Visa Gold",
-    image: "https://www.evoca.am/images-cache/cards/1/17149865646885/415x261.png",
+    id: 'rio-gift-card-page',
+    title: 'Rio Gift Card',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17404717289057/415x261.png',
+    link: '/cards/rio-card'
   },
+  {
+    id: 'visa-gold-premium',
+    title: 'Visa Gold',
+    imgUrl: 'https://www.evoca.am/images-cache/cards/1/17149865646885/415x261.png',
+    link: '/cards/visa-gold-card'
+  }
 ];
 
 export default function UnionPayGoldPage() {
@@ -491,65 +524,57 @@ export default function UnionPayGoldPage() {
          <img src=" https://www.evoca.am/images-cache/cards/1/17250055027908/1920x527.png" alt="" />
    </div>
 
-      {/* 2. Այլ քարտեր (Swiper Slider) */}
-      <section className="max-w-6xl mx-auto px-6 md:px-10 py-14 w-full">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-gray-900">
-          Այլ քարտեր
-        </h2>
+      {/* ================= ԱՅԼ ՔԱՐՏԵՐ SWIPER SECTION ================= */}
+      <section className="max-w-7xl mx-auto px-16 pb-20 relative">
+        <h2 className="text-2xl font-bold text-gray-900 mb-8">Այլ քարտեր</h2>
 
-        <div className="relative">
-          {/* Prev / Next - simple chevrons */}
-          <button
-            className="cards-prev absolute -left-2 md:-left-8 top-[35%] -translate-y-1/2 z-20
-                       text-3xl font-bold text-[#7c3aed] hover:scale-125 transition cursor-pointer
-                       w-8 h-8 flex items-center justify-center"
-            aria-label="Նախորդ"
-          >
-            ‹
-          </button>
-          <button
-            className="cards-next absolute -right-2 md:-right-8 top-[35%] -translate-y-1/2 z-20
-                       text-3xl font-bold text-[#7c3aed] hover:scale-125 transition cursor-pointer
-                       w-8 h-8 flex items-center justify-center"
-            aria-label="Հաջորդ"
-          >
-            ›
-          </button>
+        <button className="other-prev absolute left-6 top-[60%] -translate-y-1/2 z-10 text-purple-700 hover:text-purple-900 transition">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
 
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={16}
-            slidesPerView={1.3}
-            navigation={{
-              nextEl: ".cards-next",
-              prevEl: ".cards-prev",
-            }}
-            breakpoints={{
-              480: { slidesPerView: 1.8 },
-              640: { slidesPerView: 2.3 },
-              1024: { slidesPerView: 3.3 },
-              1280: { slidesPerView: 4 },
-            }}
-            className="w-full px-1"
-          >
-            {cardsData.map((card) => (
-              <SwiperSlide key={card.id}>
-                <div className="flex flex-col items-center text-center cursor-pointer group/card">
-                  <div className="w-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover/card:scale-[1.03]">
-                    <img
-                      src={card.image}
-                      alt={card.name}
-                      className="w-full h-auto object-contain drop-shadow-lg"
-                    />
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-sm md:text-base">
-                    {card.name}
-                  </h3>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        <button className="other-next absolute right-6 top-[60%] -translate-y-1/2 z-10 text-purple-700 hover:text-purple-900 transition">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            prevEl: '.other-prev',
+            nextEl: '.other-next',
+          }}
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          className="w-full"
+        >
+         {cardsData.map((card, index) => (
+  <SwiperSlide key={`${card.id}-${index}`}>
+    <Link 
+      to={card.path || card.link} 
+      className="flex flex-col items-center text-center cursor-pointer group/card block"
+    >
+      <div className="w-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover/card:scale-[1.03]">
+        <img
+          src={card.image || card.imgUrl}
+          alt={card.name || card.title}
+          className="w-full h-auto object-contain drop-shadow-lg"
+        />
+      </div>
+      <h3 className="font-bold text-gray-900 text-sm md:text-base group-hover/card:text-purple-700 transition-colors">
+        {card.name || card.title}
+      </h3>
+    </Link>
+  </SwiperSlide>
+))}
+        </Swiper>
       </section>
 
       {/* 3. Օնլայն և մոբայլ բանկինգ Banner */}

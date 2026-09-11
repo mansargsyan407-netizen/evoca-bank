@@ -95,18 +95,7 @@ export default function MoodysNewsPage() {
         <h2 className="text-2xl font-black text-gray-900 mb-8">Այլ նորություններ</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-<<<<<<< HEAD
 
-          {/* News Card 1 - Firebird AI (Link-ով) */}
-          <Link to="/news/firebird-ai" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
-            <img 
-              src="https://www.evoca.am/images-cache/news/1/17864472573391/439x320.png" 
-              alt="Firebird AI" 
-              className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
-=======
           {/* News Card 1 - Firebird AI */}
           <Link 
             to="/news/firebird-ai" 
@@ -118,25 +107,13 @@ export default function MoodysNewsPage() {
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
->>>>>>> feature/cards-and-services
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition-colors">
                 Հայաստանում գործարկվեց Firebird AI-ի «ԱԲ գործարանը»
               </h3>
               <p className="text-xs text-gray-400 pt-2">11.08.2026</p>
             </div>
           </Link>
 
-<<<<<<< HEAD
-          {/* News Card 2 - Green Rock (Link-ով) */}
-          <Link to="/news/green-rock" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
-            <img 
-              src="https://www.evoca.am/images-cache/news/1/17854167235525/780x585.png" 
-              alt="Green Rock" 
-              className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
-=======
           {/* News Card 2 - Green Rock */}
           <Link 
             to="/news/green-rock" 
@@ -148,25 +125,13 @@ export default function MoodysNewsPage() {
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
->>>>>>> feature/cards-and-services
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition-colors">
                 Evocabank-ը և Green Rock-ը մեկնարկեցին Բանկի նոր գլխամասի նախագիծը
               </h3>
               <p className="text-xs text-gray-400 pt-2">30.07.2026</p>
             </div>
           </Link>
 
-<<<<<<< HEAD
-          {/* News Card 3 - MIT Certified (Link-ով) */}
-          <Link to="/news/mit-certified" className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 block group">
-            <img 
-              src="https://www.evoca.am/images-cache/news/1/17842875742396/428x321.png" 
-              alt="MIT Certified" 
-              className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition">
-=======
           {/* News Card 3 - MIT Certified */}
           <Link 
             to="/news/mit-certified" 
@@ -178,17 +143,13 @@ export default function MoodysNewsPage() {
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="p-5 space-y-2">
-              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition-colors">
->>>>>>> feature/cards-and-services
+              <h3 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-[#6b21a8] transition-colors">
                 Evoca-ի ղեկավարները հաջողությամբ ավարտեցին Generative AI դասընթացը
               </h3>
               <p className="text-xs text-gray-400 pt-2">17.07.2026</p>
             </div>
           </Link>
-<<<<<<< HEAD
 
-=======
->>>>>>> feature/cards-and-services
         </div>
 
         {/* Updated Timestamp */}

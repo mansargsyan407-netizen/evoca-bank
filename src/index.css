@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Կլորացված եռանկյան clip-path և դիրքավորում */
+.evoca-triangle {
+  width: 380px;
+  height: 310px;
+  background-color: #6c00ff;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  border-radius: 28px;
+}
+
+@media (max-width: 640px) {
+  .evoca-triangle {
+    width: 300px;
+    height: 250px;
+  }
+}
