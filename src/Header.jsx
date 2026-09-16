@@ -1,3 +1,4 @@
+// Header.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, MapPin, HelpCircle, Globe, Search, Menu } from 'lucide-react';
@@ -9,9 +10,10 @@ export default function Header() {
       <div className="flex items-center justify-between px-8 py-2 text-sm border-b border-gray-100">
         {/* Left Navigation */}
         <nav className="flex items-center gap-6 font-medium">
-          <a href="#" className="text-purple-700 font-bold border-b-2 border-purple-700 pb-2 -mb-2">
+          {/* ԱՅՍՏԵՂ ՓՈԽՎԵԼ Է Link-Ի */}
+          <Link to="/individual" className="text-purple-700 font-bold border-b-2 border-purple-700 pb-2 -mb-2">
             Անհատ
-          </a>
+          </Link>
           <a href="#" className="hover:text-purple-700 transition">Բիզնես</a>
           <a href="#" className="hover:text-purple-700 transition">Ակնթարթային վճարումներ</a>
           <a href="#" className="hover:text-purple-700 transition">Մեր մասին</a>
@@ -23,7 +25,7 @@ export default function Header() {
         {/* Right Navigation & Icons */}
         <div className="flex items-center gap-6">
           <button className="flex items-center gap-1 text-purple-700 font-semibold hover:opacity-80">
-            Անցանց հայտեր <ChevronDown size={16} />
+            Առցանց հայտեր <ChevronDown size={16} />
           </button>
           <button className="flex items-center gap-1 text-purple-700 font-semibold hover:opacity-80">
             Հետադարձ կապ <ChevronDown size={16} />
@@ -42,13 +44,13 @@ export default function Header() {
       {/* Main Bar */}
       <div className="flex items-center justify-between px-8 py-4">
         {/* Logo */}
-        <div className="text-3xl font-extrabold tracking-tight text-gray-500">
+        <div className="text-3xl font-extrabold tracking-tight text-purple-800">
           evoca
         </div>
 
         {/* Main Navigation */}
         <nav className="flex items-center gap-8 font-bold text-gray-900 text-sm">
-          <a href="#" className="hover:text-purple-700 transition">Վարկեր</a>
+          <a href="#" className="hover:text-purple-700 transition text-purple-700">Վարկեր</a>
           <a href="#" className="hover:text-purple-700 transition">Քարտեր</a>
           <a href="#" className="hover:text-purple-700 transition">Ավանդներ</a>
           <a href="#" className="hover:text-purple-700 transition">Հաշիվներ</a>

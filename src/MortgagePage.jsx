@@ -18,6 +18,201 @@ import { Navigation, Autoplay } from 'swiper/modules';
 // Swiper-ի CSS ֆայլերը
 import 'swiper/css';
 import 'swiper/css/navigation';
+// "Այլ վարկեր" կարուսելի տվյալները
+  const otherLoans = [
+ {
+      id: 1,
+      title: 'Անգրավ սպառողական վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142452390605/415x261.jpg',
+      path: '/loans/1',
+    },
+    {
+      id: 2,
+      title: 'Դրամական միջոցների գրավով ապահովված անհատական վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/1782886301331/415x261.jpg',
+      path: '/loans/cash-secured-loan',
+    },
+    {
+      id: 3,
+      title: 'Action',
+      image: 'https://www.evoca.am/images-cache/loans/1/16994456305602/415x261.png',
+      path: '/loans/action',
+    },
+    {
+      id: 4,
+      title: 'Ոսկու գրավով (լոմբարդային) վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142452902587/415x261.jpg',
+      path: '/loans/5',
+    },
+    {
+      id: 5,
+      title: 'Ավտոմեքենայի ձեռքբերման նպատակով վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142451996694/415x261.jpg',
+      path: '/loans/2',
+    },
+    {
+      id: 6,
+      title: 'Գույքի գրավով ապահովված վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142566831396/415x261.jpg',
+      path: '/loans/property-secured-loan',
+    },
+    {
+      id: 7,
+      title: 'Արևային կայանների ձեռք բերման վարկ EvocaPOWER',
+      image: 'https://www.evoca.am/images-cache/loans/1/17552479364123/415x261.png',
+      path: '/loans/4',
+    },
+    {
+      id: 8,
+      title: 'Տեղում Ապառիկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16131174467985/415x261.jpg',
+      path: '/loans/6',
+    },
+    {
+      id: 9,
+      title: 'Evoca աշխատավարձային փաթեթի շրջականակում տրամադրվող վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142653302177/415x261.jpg',
+      path: '/loans/payroll-loan',
+    },
+    {
+      id: 10,
+      title: 'Բնակարանային հիփոթեքային վարկեր Բանկի ռեսուրսով',
+      image: 'https://www.evoca.am/images-cache/loans/1/1614244906092/415x261.jpg',
+      path:  '/loans/8',
+    },
+    {
+      id: 11,
+      title: 'Հիփոթեքային վարկ ԼՂ-ից բռնի տեղահանված ընտանիքներին',
+      image: 'https://www.evoca.am/images-cache/loans/1/17364209867562/415x261.png',
+      path: '/loans/mortgage-displaced',
+    },
+    {
+      id: 12,
+      title: 'Հողամասի ձեռքբերման վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/17421922764367/415x261.jpg',
+      path: '/loans/land-purchase-loan',
+    },
+    {
+      id: 13,
+      title: 'Միկրովերանորոգման վարկ Բանկի ռեսուրսներով',
+      image: 'https://www.evoca.am/images-cache/loans/1/17461652642369/415x261.png',
+      path: '/loans/micro-renovation-loan',
+    },
+    {
+      id: 14,
+      title: 'Ֆիզիկական անձանց տրանսպորտային միջոցների լիզինգ',
+      image: 'https://www.evoca.am/images-cache/loans/1/17764888992084/415x261.png',
+      path: '/loans/auto-leasing',
+    },
+    {
+      id: 15,
+      title: 'Վճարային քարտով օվերդրաֆտ (վարկային քարտ)',
+      image: 'https://www.evoca.am/images-cache/loans/1/16947885698869/415x261.png',
+      path: '/loans/overdraft-credit-card',
+    },
+    {
+      id: 16,
+      title: 'Անհատական վարկ «Ներդրումային»',
+      image: 'https://www.evoca.am/images-cache/loans/1/17364087555297/415x261.png',
+      path: '/loans/investment-loan',
+    },
+    {
+      id: 17,
+      title: 'Ավտոկայանատեղիի ձեռքբերման վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/17419413852954/415x261.jpg',
+      path: '/loans/parking-space-loan',
+    },
+    {
+      id: 18,
+      title: 'Հեծանիվի ձեռքբերման վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/17701927362001/415x261.png',
+      path: '/loans/bicycle-loan',
+    },
+    {
+      id: 19,
+      title: 'Ոչ ռեզիդենտ ֆիզ․ անձանց համար բնակարանային հիփոթեքային վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/17262174043684/415x261.png',
+      path: '/loans/non-resident-mortgage',
+    },
+    {
+      id: 20,
+      title: 'Վերանորոգման վարկ EvocaHOME',
+      image: 'https://www.evoca.am/images-cache/loans/1/17198124761415/415x261.png',
+      path: '/loans/evocahome',
+    },
+    {
+      id: 21,
+      title: 'Առևտրային հիփոթեքային վարկեր',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142450609707/415x261.jpg',
+      path: '/loans/commercial-mortgage',
+    },
+    {
+      id: 22,
+      title: 'ԱՀԸ-ի ծրագրով ձեռք բերման վարկեր',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142450957048/415x261.jpg',
+      path: '/loans/nmc-purchase-loan',
+    },
+    {
+      id: 23,
+      title: 'ԱՀԸ-ի ծրագրով կառուցապատման վարկեր',
+      image: 'https://www.evoca.am/images-cache/loans/1/17265524369781/415x261.png',
+      path: '/loans/nmc-construction-loan',
+    },
+    {
+      id: 24,
+      title: 'ԱՀԸ-ի ծրագրով վերանորոգման վարկեր',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142533830767/415x261.jpg',
+      path: '/loans/nmc-renovation-loan',
+    },
+    {
+      id: 25,
+      title: 'Հիփոթեքային վարկ «Երիտասարդ ընտանիքին՝ մատչելի բնակարան»',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142451699164/415x261.jpg',
+      path: '/loans/affordable-housing-young-families',
+    },
+    {
+      id: 26,
+      title: 'Visa Infinite վճարային քարտերով տրամադրվող վարկային սահմանաչափ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142652333164/415x261.jpg',
+      path: '/loans/visa-infinite-credit-line',
+    },
+    {
+      id: 27,
+      title: 'Հիփոթեքային վարկ Արցախի շրջաններից տեղահանված ընտանիքներին',
+      image: 'https://www.evoca.am/images-cache/loans/1/16690386016508/415x261.png',
+      path: '/loans/artsakh-displaced-mortgage',
+    },
+    {
+      id: 28,
+      title: 'Վերանորոգման հիփոթեքային վարկ Արցախից տեղահանված ընտանիքներին',
+      image: 'https://www.evoca.am/images-cache/loans/1/17133596531389/415x261.png',
+      path: '/loans/artsakh-displaced-renovation',
+    },
+    {
+      id: 29,
+      title: '«ՈՒՍԱՆՈՂԱԿԱՆ» սպառողական վարկ',
+      image: 'https://www.evoca.am/images-cache/loans/1/16142452651138/415x261.jpg',
+      path: '/loans/student-loan',
+    },
+    {
+      id: 30,
+      title: 'Հիփոթեքային վարկեր ՀՀ սահմանամերձ և առանձին բնակավայրերում ընտանիքների բնակարանային մատչելիության ապահովման պետական աջակցության ծրագիր',
+      image: 'https://www.evoca.am/images-cache/loans/1/16696265771993/415x261.png',
+      path: '/loans/border-settlements-mortgage',
+    },
+    {
+      id: 31,
+      title: 'Evolution',
+      image: 'https://www.evoca.am/images-cache/loans/1/16644424027338/415x261.png',
+      path: '/loans/evolution',
+    },
+    {
+      id: 32,
+      title: 'Հիփոթեքային վարկեր Զինծառայողներին',
+      image: 'https://www.evoca.am/images-cache/loans/1/17129179540435/415x261.png',
+      path: '/loans/military-mortgage',
+    },
+  ];
 
 export default function MortgagePage() {
   const navigate = useNavigate();
@@ -598,360 +793,60 @@ export default function MortgagePage() {
       </section>
 
        {/* 7. OTHER LOANS CAROUSEL SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-8 w-full">
-        <h3 className="text-2xl font-black text-gray-900 mb-8">Այլ վարկեր</h3>
+      
+        <section className="max-w-7xl mx-auto px-4 py-8 mt-12">
+          <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-6">
+            Այլ վարկեր
+          </h3>
 
-        <div className="relative group/swiper">
-          {/* Custom Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md p-2 rounded-full text-purple-700 hover:bg-purple-50 hidden md:flex items-center justify-center border border-gray-100 transition">
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button className="swiper-button-next-custom absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md p-2 rounded-full text-purple-700 hover:bg-purple-50 hidden md:flex items-center justify-center border border-gray-100 transition">
-            <ChevronRight className="w-5 h-5" />
-          </button>
+          <div className="relative group/swiper">
+            <button className="swiper-button-prev-custom absolute -left-5 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md p-2 rounded-full text-purple-700 hover:bg-purple-50 hidden md:flex items-center justify-center border border-gray-100 transition">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button className="swiper-button-next-custom absolute -right-5 top-1/2 -translate-y-1/2 z-20 bg-white shadow-md p-2 rounded-full text-purple-700 hover:bg-purple-50 hidden md:flex items-center justify-center border border-gray-100 transition">
+              <ChevronRight className="w-5 h-5" />
+            </button>
 
-          {/* Swiper Slider Component */}
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation={{
-              prevEl: '.swiper-button-prev-custom',
-              nextEl: '.swiper-button-next-custom',
-            }}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            className="w-full py-2"
-          >
-            {/* Card 1 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142451996694/415x261.jpg" alt="Ավտոմեքենայի ձեռքբերման նպատակով վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Ավտոմեքենայի ձեռքբերման նպատակով վարկ
-                </p>
-              </div>
-            </SwiperSlide>
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              spaceBetween={20}
+              slidesPerView={1}
+              navigation={{
+                prevEl: '.swiper-button-prev-custom',
+                nextEl: '.swiper-button-next-custom',
+              }}
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                480: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+              }}
+              className="w-full py-2"
+            >
+              {otherLoans.map((loan) => (
+                <SwiperSlide key={loan.id}>
+                  <Link to={loan.path || '#'} className="group cursor-pointer block">
+                    <div className="w-full overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
+                      <img
+                        src={loan.image}
+                        alt={loan.title}
+                        className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <p className="font-bold text-center text-xs md:text-sm text-gray-800 group-hover:text-purple-700 transition mt-3 line-clamp-2 px-1">
+                      {loan.title}
+                    </p>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </section>
+      
 
-            {/* Card 2 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142452390605/415x261.jpg" alt="Անգրավ սպառողական վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Անգրավ սպառողական վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 3 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142566831396/415x261.jpg" alt="Գույքի գրավով ապահովված վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Գույքի գրավով ապահովված վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 4 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17552479364123/415x261.png" alt="Արևային կայանների ձեռք բերման վարկ EvocaPOWER" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Արևային կայանների ձեռք բերման վարկ EvocaPOWER
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 5 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142452902587/415x261.jpg" alt="Ոսկու գրավով (լոմբարդային) վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Ոսկու գրավով (լոմբարդային) վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 6 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16131174467985/415x261.jpg" alt="Տեղում Ապառիկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Տեղում Ապառիկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 7 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142653302177/415x261.jpg" alt="Evoca աշխատավարձային փաթեթ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Evoca աշխատավարձային փաթեթի շրջականակում տրամադրվող վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 8 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/1614244906092/415x261.jpg" alt="Բնակարանային հիփոթեքային վարկեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Բնակարանային հիփոթեքային վարկեր Բանկի ռեսուրսով
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 9 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16994456305602/415x261.png" alt="Action" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Action
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 10 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17364209867562/415x261.png" alt="Հիփոթեքային վարկ ԼՂ-ից" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հիփոթեքային վարկ ԼՂ-ից բռնի տեղահանված ընտանիքներին
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 11 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17421922764367/415x261.jpg" alt="Հողամասի ձեռքբերման վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հողամասի ձեռքբերման վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 12 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17461652642369/415x261.png" alt="Միկրովերանորոգման վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Միկրովերանորոգման վարկ Բանկի ռեսուրսներով
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 13 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17764888992084/415x261.png" alt="Տրանսպորտային միջոցների լիզինգ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Ֆիզիկական անձանց տրանսպորտային միջոցների լիզինգ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 14 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16947885698869/415x261.png" alt="Վճարային քարտով օվերդրաֆտ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Վճարային քարտով օվերդրաֆտ (վարկային քարտ)
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 15 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17364087555297/415x261.png" alt="Անհատական վարկ «Ներդրումային»" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Անհատական վարկ «Ներդրումային»
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 16 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17419413852954/415x261.jpg" alt="Ավտոկայանատեղիի ձեռքբերման վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Ավտոկայանատեղիի ձեռքբերման վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 17 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17701927362001/415x261.png" alt="Հեծանիվի ձեռքբերման վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հեծանիվի ձեռքբերման վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 18 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17262174043684/415x261.png" alt="Ոչ ռեզիդենտ ֆիզ․ անձանց համար" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Ոչ ռեզիդենտ ֆիզ․ անձանց համար բնակարանային հիփոթեքային վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 19 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17198124761415/415x261.png" alt="Վերանորոգման վարկ EvocaHOME" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Վերանորոգման վարկ EvocaHOME
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 20 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/1782886301331/415x261.jpg" alt="Դրամական միջոցների գրավով" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Դրամական միջոցների գրավով ապահովված անհատական վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 21 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142450609707/415x261.jpg" alt="Առևտրային հիփոթեքային վարկեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Առևտրային հիփոթեքային վարկեր
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 22 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142450957048/415x261.jpg" alt="ԱՀԸ-ի ծրագրով ձեռք բերման վարկեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  ԱՀԸ-ի ծրագրով ձեռք բերման վարկեր
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 23 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17265524369781/415x261.png" alt="ԱՀԸ-ի ծրագրով կառուցապատման վարկեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  ԱՀԸ-ի ծրագրով կառուցապատման վարկեր
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 24 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142533830767/415x261.jpg" alt="ԱՀԸ-ի ծրագրով վերանորոգման վարկեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  ԱՀԸ-ի ծրագրով վերանորոգման վարկեր
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 25 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142451699164/415x261.jpg" alt="Երիտասարդ ընտանիքին՝ մատչելի բնակարան" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հիփոթեքային վարկ «Երիտասարդ ընտանիքին՝ մատչելի բնակարան»
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 26 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142652333164/415x261.jpg" alt="Visa Infinite վճարային քարտեր" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Visa Infinite վճարային քարտերով տրամադրվող վարկային սահմանաչափ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 27 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16690386016508/415x261.png" alt="Հիփոթեքային վարկ Արցախի շրջաններից" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հիփոթեքային վարկ Արցախի շրջաններից տեղահանված ընտանիքներին
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 28 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17133596531389/415x261.png" alt="Վերանորոգման հիփոթեքային վարկ Արցախից" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Վերանորոգման հիփոթեքային վարկ Արցախից տեղահանված ընտանիքներին
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 29 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16142452651138/415x261.jpg" alt="«ՈՒՍԱՆՈՂԱԿԱՆ» սպառողական վարկ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  «ՈՒՍԱՆՈՂԱԿԱՆ» սպառողական վարկ
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 30 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16696265771993/415x261.png" alt="Հիփոթեքային վարկեր ՀՀ սահմանամերձ" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հիփոթեքային վարկեր ՀՀ սահմանամերձ և առանձին բնակավայրերում ընտանիքների բնակարանային մատչելիության ապահովման պետական աջակցության ծրագիր
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 31 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/16644424027338/415x261.png" alt="Evolution" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Evolution
-                </p>
-              </div>
-            </SwiperSlide>
-
-            {/* Card 32 */}
-            <SwiperSlide>
-              <div className="group cursor-pointer">
-                <img src="https://www.evoca.am/images-cache/loans/1/17129179540435/415x261.png" alt="Հիփոթեքային վարկեր Զինծառայողներին" className="w-full rounded-xl object-cover" />
-                <p className="font-bold text-center text-sm text-gray-800 group-hover:text-[#6a0dad] transition mt-3">
-                  Հիփոթեքային վարկեր Զինծառայողներին
-                </p>
-              </div>
-            </SwiperSlide>
-
-          </Swiper>
-        </div>
-      </section>
 
      {/* 6. ONLINE & MOBILE BANKING BANNER SECTION */}
       <section className="w-full bg-[#6a0dad] text-white py-12 px-6 relative overflow-hidden">

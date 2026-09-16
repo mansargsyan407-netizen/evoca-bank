@@ -55,6 +55,39 @@ import VisaGoldCard from './VisaGoldCard';
 import PartnersPage from './PartnersPage';
 import NewsListPage from './NewsListPage';
 import BankMapSection from './BankMapSection';
+import IndividualPage from './IndividualPage';
+import LoanDetailPage from './LoanDetailPage';
+import CarLoanPage from './CarLoanPage';
+import PropertySecuredLoanPage from './PropertySecuredLoanPage';
+import EvocaPowerDetails from './EvocaPowerDetails';
+import GoldLoanDetails from './GoldLoanDetails';
+import PosLoanPage from './PosLoanPage';
+import LoanCard from './LoanCard';
+import MortgageLoan from './MortgageLoan';
+import ActionLoan from './ActionLoan';
+import MortgageDisplaced from './MortgageDisplaced';
+import LandPurchaseLoan from './LandPurchaseLoan'; 
+import MicroRenovationLoan from './MicroRenovationLoan';
+import LeasingPage from './LeasingPage';
+import OverdraftLoanPage from './OverdraftLoanPage'; 
+import InvestmentLoanPage from './InvestmentLoanPage';
+import ParkingLoanPage from './ParkingLoanPage';
+import BicycleLoanPage from './BicycleLoanPage'; 
+import NonResidentMortgagePage from './NonResidentMortgagePage';
+import EvocaHome from './EvocaHome'; 
+import SecuredLoan from './SecuredLoan'; // Նոր էջի ներմուծումը
+import TradeLoans from './TradeLoans';
+import NmcLoan from './NmcLoan'; // Նոր էջի import
+import NmcConstructionLoan from './NmcConstructionLoan'; // Նոր էջի import
+import NmcRenovationLoan from './NmcRenovationLoan'; // Նոր էջի import
+import YoungFamilyLoan from './YoungFamilyLoan'; // Նոր էջի import
+import VisaInfiniteLoan from './VisaInfiniteLoan'; // Նոր էջի import
+import ArtsakhDisplacedLoan from './ArtsakhDisplacedLoan'; // Նոր էջի import
+import ArtsakhRenovationLoan from './ArtsakhRenovationLoan'; // Նոր էջի import
+import StudentLoan from './StudentLoan'; // Նոր էջի import
+import BorderSettlementsLoan from './BorderSettlementsLoan'; // Նոր էջի import
+import EvolutionLoan from './EvolutionLoan'; // Նոր էջի import
+import MilitaryMortgageLoan from './MilitaryMortgageLoan'; // Նոր էջի import
 
 const MainLayout = () => (
   <>
@@ -82,6 +115,41 @@ export default function App() {
 
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/addresses" element={<BankMapSection />} />
+
+{/* ԱՆՀԱՏՆԵՐ-ի երթուղիները */}
+          <Route path="/individual" element={<IndividualPage />} />
+          <Route path="/loans/1" element={<LoanDetailPage />} />
+          <Route path="/loans/2" element={<CarLoanPage />} />
+          <Route path="/loans/3" element={<PropertySecuredLoanPage />} />
+          <Route path="/loans/4" element={<EvocaPowerDetails />} />
+          <Route path="/loans/5" element={<GoldLoanDetails />} />
+          <Route path="/loans/6" element={<PosLoanPage />} />
+           <Route path="/loans/7" element={<LoanCard />} />
+           <Route path="/loans/8" element={<MortgageLoan />} />
+           <Route path="/loans/9" element={<ActionLoan />} />
+           <Route  path="/loans/10"  element={<MortgageDisplaced />}  />
+           <Route path="/loans/11" element={<LandPurchaseLoan />} />
+           <Route path="/loans/12" element={<MicroRenovationLoan />} />
+           <Route path="/loans/13" element={<LeasingPage />} />
+           <Route path="/loans/14" element={<OverdraftLoanPage />} />
+           <Route path="/loans/15" element={<InvestmentLoanPage />} />
+           <Route path="/loans/16" element={<ParkingLoanPage />} />
+           <Route path="/loans/17" element={<BicycleLoanPage />} />
+           <Route path="/loans/18" element={<NonResidentMortgagePage />} />
+           <Route path="/loans/19" element={<EvocaHome />} />
+           <Route path="/loans/20" element={<SecuredLoan />} />
+               <Route path="/loans/21" element={<TradeLoans />} />
+               <Route path="/loans/22" element={<NmcLoan />} />
+               <Route path="/loans/23" element={<NmcConstructionLoan />} />
+               <Route path="/loans/24" element={<NmcRenovationLoan />} />
+               <Route path="/loans/25" element={<YoungFamilyLoan />} />
+               <Route path="/loans/26" element={<VisaInfiniteLoan />} />
+               <Route path="/loans/27" element={<ArtsakhDisplacedLoan />} />
+               <Route path="/loans/28" element={<ArtsakhRenovationLoan />} />
+               <Route path="/loans/29" element={<StudentLoan />} />
+               <Route path="/loans/30" element={<BorderSettlementsLoan />} />
+               <Route path="/loans/31"element={<EvolutionLoan />} />
+               <Route path="/loans/32" element={<MilitaryMortgageLoan />} />
           
           {/* Visa Vision-ի երթուղիները */}
           <Route path="/visa-vision" element={<VisaVisionDetails />} />
