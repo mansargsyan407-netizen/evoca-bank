@@ -36,19 +36,79 @@ export default function PartnersPage() {
     <div className="w-full bg-white min-h-screen pb-20 font-sans">
       
       {/* Breadcrumb Navigation Nav */}
-      <div className="max-w-7xl mx-auto px-4 md:px-12 pt-6 text-xs text-gray-500 flex items-center gap-2">
-        <Link to="/" className="hover:text-purple-600">
-          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l1.293 1.293a1 1 0 001.414-1.414l-7-7z" />
-          </svg>
-        </Link>
-        <span>›</span>
-        <span>Մեր մասին</span>
-        <span>›</span>
-        <span>Evoca-ի մասին</span>
-        <span>›</span>
-        <span className="text-purple-600 font-medium">Գործընկերներ</span>
-      </div>
+       <header className="w-full bg-white text-gray-800 border-b border-gray-100">
+                  
+                
+          
+                  {/* 2. Լոգոյի և հիմնական մենյուի շերտը (Main Header Layer) */}
+                  <div className="py-4 px-4 md:px-8">
+                    <div className="max-w-7xl mx-auto flex items-center justify-between">
+                      
+                      {/* Լոգո և ենթաբաժիններ */}
+                      <div className="flex items-center space-x-8 md:space-x-12">
+                        <Link to="/" className="flex items-center gap-1 text-2xl font-black">
+                          <span className="text-purple-700">evo</span>
+                          <span className="text-gray-400">ca</span>
+                        </Link>
+          
+                        <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold">
+                          <span className="text-purple-700 cursor-pointer border-b-2 border-purple-700 pb-1">
+                            Evoca-ի մասին
+                          </span>
+          <Link to="/rates" className="text-gray-800 hover:text-purple-700 cursor-pointer transition">
+            Սակագներ
+          </Link>
+                         <Link
+            to="/reports"
+            className="text-gray-800 hover:text-purple-700 cursor-pointer transition"
+          >
+            Հաշվետվություններ
+          </Link>
+                        <Link
+            to="/announcements"
+            className="text-gray-800 hover:text-purple-700 cursor-pointer transition font-semibold"
+          >
+            Հայտարարություններ
+          </Link>
+                        </nav>
+                      </div>
+          
+                    
+          
+                    </div>
+                  </div>
+          
+                  {/* 3. Մանուշակագույն ենթամենյու (Purple Sub-Menu) */}
+                  <nav className="bg-[#6b21a8] text-white text-xs md:text-sm font-medium py-3 px-4 overflow-x-auto shadow-md">
+                    <div className="max-w-6xl mx-auto flex space-x-6 whitespace-nowrap justify-start md:justify-center">
+                      <Link to="/about" className="bg-purple-900 px-3 py-1 rounded font-bold">
+                        Ընդհանուր
+                      </Link>
+                      <Link to="/structure" className="hover:text-purple-200 transition py-1">
+                        Կառուցվածք
+                      </Link>
+                      <Link to="/shareholders" className="hover:text-purple-200 transition py-1">
+                        Բաժնետերեր
+                      </Link>
+                      <Link to="/management" className="hover:text-purple-200 transition py-1">
+                        Ղեկավարություն
+                      </Link>
+                      <Link to="/partners" className="hover:text-purple-200 transition py-1">
+                        Գործընկերներ
+                      </Link>
+                      <Link to="/awards" className="hover:text-purple-200 transition py-1">
+                        Մրցանակներ
+                      </Link>
+                      <Link to="/csr" className="hover:text-purple-200 transition py-1">
+                        CSR
+                      </Link>
+                      <Link to="/financial-group" className="hover:text-purple-200 transition py-1">
+                        Էվոկա Ֆինանսական խումբ
+                      </Link>
+                    </div>
+                  </nav>
+          
+                </header>
 
       <div className="max-w-7xl mx-auto px-4 md:px-12 pt-8">
         <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-10">

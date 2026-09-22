@@ -11,14 +11,20 @@ export default function Header() {
         {/* Left Navigation */}
         <nav className="flex items-center gap-6 font-medium">
           {/* ԱՅՍՏԵՂ ՓՈԽՎԵԼ Է Link-Ի */}
-          <Link to="/individual" className="text-purple-700 font-bold border-b-2 border-purple-700 pb-2 -mb-2">
+          <Link to="/individual" className="hover:text-purple-700 transition">
             Անհատ
           </Link>
-          <a href="#" className="hover:text-purple-700 transition">Բիզնես</a>
-          <a href="#" className="hover:text-purple-700 transition">Ակնթարթային վճարումներ</a>
-          <a href="#" className="hover:text-purple-700 transition">Մեր մասին</a>
+        
+          <Link to="/business" className="hover:text-purple-700 transition">Բիզնես</Link>
+<a href="/payments-evoca" className="hover:text-purple-700 transition">
+  Ակնթարթային վճարումներ</a>      
+    <Link to="/about" className="hover:text-purple-700 transition">
+  Մեր մասին
+</Link>
           <Link to="/news" className="hover:text-purple-700 transition">Նորություններ</Link>
-          <a href="#" className="hover:text-purple-700 transition">Բլոգ</a>
+   <Link to="/blog" className="hover:text-purple-700 transition">
+          Բլոգ
+        </Link>
           <a href="#" className="hover:text-purple-700 transition">Կարիերա</a>
         </nav>
 
@@ -44,20 +50,42 @@ export default function Header() {
       {/* Main Bar */}
       <div className="flex items-center justify-between px-8 py-4">
         {/* Logo */}
-        <div className="text-3xl font-extrabold tracking-tight text-purple-800">
-          evoca
-        </div>
+       <Link 
+  to="/" 
+  className="text-3xl font-extrabold tracking-tight text-purple-800 cursor-pointer hover:opacity-90 transition"
+>
+  evoca
+</Link>
 
         {/* Main Navigation */}
         <nav className="flex items-center gap-8 font-bold text-gray-900 text-sm">
-          <a href="#" className="hover:text-purple-700 transition text-purple-700">Վարկեր</a>
-          <a href="#" className="hover:text-purple-700 transition">Քարտեր</a>
-          <a href="#" className="hover:text-purple-700 transition">Ավանդներ</a>
-          <a href="#" className="hover:text-purple-700 transition">Հաշիվներ</a>
-          <a href="#" className="hover:text-purple-700 transition">Փոխանցումներ</a>
-          <a href="#" className="hover:text-purple-700 transition">Արժեթղթեր</a>
+          <a href="/individual" className="hover:text-purple-700 transition ">Վարկեր</a>
+<Link to="/cards" className="hover:text-purple-700 transition">Քարտեր</Link>
+<Link to="/deposits/1" className="hover:text-purple-700 transition font-semibold">
+  Ավանդներ
+</Link>
+<Link to="/accounts" className="hover:text-purple-700 transition">
+  Հաշիվներ
+</Link>
+<Link 
+  to="/transfers/money" 
+  className="hover:text-purple-700 transition font-medium"
+>
+  Փոխանցումներ
+</Link>
+<Link 
+  to="/securities/investment-services" 
+  className="hover:text-purple-700 transition"
+>
+  Արժեթղթեր
+</Link>
           <Link to="/evoca-salary" className="hover:text-purple-700 transition">EvocaSALARY</Link>
-          <a href="#" className="hover:text-purple-700 transition">EvocaTOUCH</a>
+          <Link 
+  to="/evocatouch" 
+  className="hover:text-purple-700 transition font-bold"
+>
+  EvocaTOUCH
+</Link>
         </nav>
 
         {/* Online Button */}

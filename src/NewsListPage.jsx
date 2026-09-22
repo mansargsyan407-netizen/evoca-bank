@@ -72,7 +72,7 @@ export default function NewsListPage() {
       image: 'https://www.evoca.am/images-cache/news/1/17683825017248/450x295.jpg',
       category: 'Բանկային',
       categoryColor: 'bg-[#7c3aed]',
-      title: 'Evocabank-ի «Աջափնյակ» մասնաճյուղն արդեն բաց է',
+      title: "Evocabank-ի «Աջափնյակ» մասնաճյուղն արդեն բաց է",
       date: '12.01.2026',
     },
     {
@@ -131,50 +131,64 @@ export default function NewsListPage() {
       {/* 3. FILTER BUTTONS */}
       <div className="max-w-7xl mx-auto px-6 pb-12 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={`px-5 py-2 rounded-full text-xs font-semibold transition ${
-                activeFilter === f
-                  ? 'bg-purple-100 text-[#6b21a8]'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
+          {filters.map((f) => {
+            const classes = `px-5 py-2 rounded-full text-xs font-semibold transition ${
+              activeFilter === f
+                ? 'bg-purple-100 text-[#6b21a8]'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`;
+
+            // «Գլխավոր»-ը տանում է նոր էջ
+            if (f === 'Գլխավոր') {
+              return (
+                <Link key={f} to="/news/main" className={classes}>
+                  {f}
+                </Link>
+              );
+            }
+
+            return (
+              <button key={f} onClick={() => setActiveFilter(f)} className={classes}>
+                {f}
+              </button>
+            );
+          })}
         </div>
-        <button className="bg-purple-100 text-[#6b21a8] text-xs font-bold px-5 py-2 rounded-full flex items-center gap-1 hover:bg-purple-200 transition">
+        <Link
+          to="/news/all"
+          className="bg-purple-100 text-[#6b21a8] text-xs font-bold px-5 py-2 rounded-full flex items-center gap-1 hover:bg-purple-200 transition"
+        >
           Բոլորը <ChevronRight className="w-3.5 h-3.5" />
-        </button>
+        </Link>
       </div>
 
       {/* 4. HERO SECTION */}
       <section className="max-w-7xl mx-auto px-6 mb-16">
-        <div className="bg-[#f5f3ff] rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[380px]">
-          <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-3.5 h-3.5 bg-[#FF00FF] inline-block"></span>
-              <span className="text-xs font-bold text-gray-900">Պրոդուկտներ</span>
+        <Link to={newsData[0].to} className="block group">
+          <div className="bg-[#f5f3ff] rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[380px] transition group-hover:shadow-lg">
+            <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="w-3.5 h-3.5 bg-[#FF00FF] inline-block"></span>
+                <span className="text-xs font-bold text-gray-900">Պրոդուկտներ</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight group-hover:text-purple-700 transition">
+                Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով
+              </h2>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Մինչև սեպտեմբերի 15-ը վճարիր Evoca Mastercard-ով ակցիայի մասնակից խանութներում և գրախանութներում ու ստացիր մինչև 23% cashback։
+              </p>
+              <p className="text-[11px] text-gray-400 pt-1">21.08.2026</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
-              Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով
-            </h2>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Մինչև սեպտեմբերի 15-ը վճարիր Evoca Mastercard-ով ակցիայի մասնակից խանութներում և գրախանութներում ու ստացիր մինչև 23% cashback։
-            </p>
-            <p className="text-[11px] text-gray-400 pt-1">21.08.2026</p>
+            <div className="lg:col-span-7 relative bg-purple-400 overflow-hidden flex items-end justify-center">
+              <div className="absolute top-4 left-4 w-6 h-6 border-t-4 border-l-4 border-pink-500"></div>
+              <img
+                src={newsData[0].image}
+                alt="Back to school"
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+              />
+            </div>
           </div>
-          <div className="lg:col-span-7 relative bg-purple-400 overflow-hidden flex items-end justify-center">
-            <div className="absolute top-4 left-4 w-6 h-6 border-t-4 border-l-4 border-pink-500"></div>
-            <img
-              src={newsData[0].image}
-              alt="Back to school"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        </Link>
       </section>
 
       {/* WATERMARK: "Բաց մի թող" */}
@@ -187,29 +201,31 @@ export default function NewsListPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10 pt-6">
           {/* Left Large News Card */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="relative mb-9">
-              <div className="absolute -left-5 -top-3 w-20 h-20 bg-yellow-400 -z-10"></div>
-              <img src={newsData[1].image} alt={newsData[1].title} className="w-full h-auto object-cover rounded-xl" />
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="w-1 h-3.5 bg-yellow-400 inline-block"></span>
-                <span className="text-xs font-bold text-gray-900">{newsData[1].category}</span>
+            <Link to={newsData[1].to} className="group block">
+              <div className="relative mb-9 overflow-hidden rounded-xl">
+                <div className="absolute -left-5 -top-3 w-20 h-20 bg-yellow-400 -z-10"></div>
+                <img src={newsData[1].image} alt={newsData[1].title} className="w-full h-auto object-cover rounded-xl group-hover:scale-105 transition duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 leading-snug">
-                {newsData[1].title}
-              </h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                {newsData[1].desc}
-              </p>
-              <p className="text-[11px] text-gray-400 pt-1">{newsData[1].date}</p>
-            </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-1 h-3.5 bg-yellow-400 inline-block"></span>
+                  <span className="text-xs font-bold text-gray-900">{newsData[1].category}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-purple-700 transition">
+                  {newsData[1].title}
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {newsData[1].desc}
+                </p>
+                <p className="text-[11px] text-gray-400 pt-1">{newsData[1].date}</p>
+              </div>
+            </Link>
           </div>
 
           {/* Right 2x2 Small Grid */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {newsData.slice(2, 6).map((item) => (
-              <div key={item.id} className="flex flex-col justify-between group cursor-pointer">
+              <Link key={item.id} to={item.to} className="flex flex-col justify-between group cursor-pointer">
                 <div>
                   <div className="overflow-hidden rounded-xl mb-3">
                     <img
@@ -227,7 +243,7 @@ export default function NewsListPage() {
                   </h4>
                 </div>
                 <p className="text-[11px] text-gray-400 mt-2">{item.date}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -240,46 +256,46 @@ export default function NewsListPage() {
           Կարևոր
         </div>
 
-        <div className="bg-[#faf8ff] rounded-[32px] p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-          {/* Left Image Side */}
-          <div className="lg:col-span-6 relative">
-            {/* Lime corner accent on top-right */}
-            <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-lime-400 z-10"></div>
-
-            <div className="rounded-2xl overflow-hidden">
-              <img
-                src={newsData[6].image}
-                alt={newsData[6].title}
-                className="w-full h-auto object-cover rounded-2xl"
-              />
-            </div>
-          </div>
-
-          {/* Right Text Side */}
-          <div className="lg:col-span-6 flex flex-col justify-center space-y-5 lg:pl-6">
-            <div className="flex items-center gap-2">
-              <span className="w-3.5 h-3.5 bg-lime-400 inline-block"></span>
-              <span className="text-xs font-bold text-gray-900">{newsData[6].category}</span>
+        <Link to={newsData[6].to} className="block group">
+          <div className="bg-[#faf8ff] rounded-[32px] p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 transition group-hover:shadow-md">
+            {/* Left Image Side */}
+            <div className="lg:col-span-6 relative">
+              <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-lime-400 z-10"></div>
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src={newsData[6].image}
+                  alt={newsData[6].title}
+                  className="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition duration-300"
+                />
+              </div>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
-              {newsData[6].title}
-            </h2>
+            {/* Right Text Side */}
+            <div className="lg:col-span-6 flex flex-col justify-center space-y-5 lg:pl-6">
+              <div className="flex items-center gap-2">
+                <span className="w-3.5 h-3.5 bg-lime-400 inline-block"></span>
+                <span className="text-xs font-bold text-gray-900">{newsData[6].category}</span>
+              </div>
 
-            <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">
-              {newsData[6].desc}
-            </p>
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight group-hover:text-purple-700 transition">
+                {newsData[6].title}
+              </h2>
 
-            <p className="text-[11px] text-gray-400 pt-2">{newsData[6].date}</p>
+              <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">
+                {newsData[6].desc}
+              </p>
+
+              <p className="text-[11px] text-gray-400 pt-2">{newsData[6].date}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       </section>
 
       {/* 7. BOTTOM CARDS */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsData.slice(7, 10).map((item) => (
-            <div key={item.id} className="group cursor-pointer flex flex-col justify-between">
+            <Link key={item.id} to={item.to} className="group cursor-pointer flex flex-col justify-between">
               <div>
                 <div className="overflow-hidden rounded-xl mb-3">
                   <img
@@ -297,7 +313,7 @@ export default function NewsListPage() {
                 </h4>
               </div>
               <p className="text-[11px] text-gray-400 mt-2">{item.date}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
