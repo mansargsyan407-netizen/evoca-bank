@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
+import { Tr } from './i18n'; // լեզուների աջակցություն
 
 // Swiper styles
 import 'swiper/css';
@@ -206,10 +207,11 @@ const EvocaPowerDetails = () => {
     image: 'https://www.evoca.am/images-cache/loans/1/17129179540435/415x261.png',
     path: '/loans/32',
   },
- 
+
   ];
 
   return (
+    <Tr>
     <div className="min-h-screen bg-white text-gray-800 font-sans flex flex-col">
       {/* HEADER & HERO SECTION */}
       <section className="bg-[#f9f5ff] relative overflow-hidden">
@@ -224,9 +226,9 @@ const EvocaPowerDetails = () => {
           </div>
 
           <div className="md:w-2/5 bg-[#14001a] flex items-center justify-center p-6 rounded-l-3xl">
-            <img 
-              src="https://www.evoca.am/images-cache/loans/1/17552479364114/560x400.png" 
-              alt="EvocaPOWER Solar Panel" 
+            <img
+              src="https://www.evoca.am/images-cache/loans/1/17552479364114/560x400.png"
+              alt="EvocaPOWER Solar Panel"
               className="max-h-64 object-contain"
             />
           </div>
@@ -235,8 +237,8 @@ const EvocaPowerDetails = () => {
 
       {/* BREADCRUMBS & GO BACK */}
       <div className="max-w-[1400px] mx-auto px-6 py-4 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-gray-500 gap-4">
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           className="flex items-center space-x-2 bg-white border border-gray-200 shadow-sm px-5 py-2 rounded-full text-gray-800 font-bold hover:bg-gray-50 transition"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -258,13 +260,13 @@ const EvocaPowerDetails = () => {
       <main className="max-w-[1400px] mx-auto px-6 py-6 w-full flex-grow">
         {/* 1. TABS & DETAILS GRID */}
         <div className="border-b mb-8 flex space-x-8 text-sm font-semibold">
-          <button 
+          <button
             onClick={() => setActiveTab('about')}
             className={`pb-3 transition ${activeTab === 'about' ? 'border-b-2 border-purple-700 text-purple-700' : 'text-gray-500 hover:text-gray-700'}`}
           >
             Վարկի մասին
           </button>
-          <button 
+          <button
             onClick={() => setActiveTab('conditions')}
             className={`pb-3 transition ${activeTab === 'conditions' ? 'border-b-2 border-purple-700 text-purple-700' : 'text-gray-500 hover:text-gray-700'}`}
           >
@@ -296,7 +298,7 @@ const EvocaPowerDetails = () => {
             <div className="flex justify-start">
               <span className="w-9 h-9 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-lg">֏</span>
             </div>
-            
+
             <div className="border-b pb-4 flex justify-between items-baseline">
               <div>
                 <span className="text-xs text-gray-400 block">Մինչև</span>
@@ -458,14 +460,14 @@ const EvocaPowerDetails = () => {
       {/* 4. FOOTER SECTION */}
      <footer className="mt-20 border-t border-gray-200 bg-white pt-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-8">
-              
+
               {/* Վերևի աջ անկյունում՝ Թարմացման ամսաթիվը */}
               <div className="text-right text-xs text-gray-400 font-medium mb-6">
                 Թարմացվել է՝ 28/08/2026 17:20
               </div>
-    
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12">
-                
+
                 {/* Սյունակ 1: Լոգո և հասցե */}
                 <div className="lg:col-span-1 space-y-4">
                   <div className="flex items-center gap-1 text-2xl font-black text-gray-900">
@@ -482,7 +484,7 @@ const EvocaPowerDetails = () => {
                     1990 - 2026, © ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ
                   </div>
                 </div>
-    
+
                 {/* Սյունակ 2: Բանկի մասին */}
                 <div>
                   <h4 className="text-sm font-bold text-gray-900 mb-4">Բանկի մասին</h4>
@@ -499,7 +501,7 @@ const EvocaPowerDetails = () => {
                     <li><Link to="/tariffs-archive" className="hover:text-[#6c00ff]">Սակագների արխիվ</Link></li>
                   </ul>
                 </div>
-    
+
                 {/* Սյունակ 3: Օգտակար հղումներ */}
                 <div>
                   <h4 className="text-sm font-bold text-gray-900 mb-4">Օգտակար հղումներ</h4>
@@ -513,7 +515,7 @@ const EvocaPowerDetails = () => {
                     <li><Link to="/cardholders" className="hover:text-[#6c00ff]">Հղումներ Բանկի քարտապանների համար</Link></li>
                   </ul>
                 </div>
-    
+
                 {/* Սյունակ 4: Այլ հղումներ */}
                 <div>
                   <h4 className="text-sm font-bold text-gray-900 mb-4">Այլ հղումներ</h4>
@@ -528,10 +530,10 @@ const EvocaPowerDetails = () => {
                     <li><Link to="/sitemap" className="hover:text-[#6c00ff]">Կայքի քարտեզ</Link></li>
                   </ul>
                 </div>
-    
+
                 {/* Սյունակ 5: Սոց․ ցանցեր, հավելվածներ և Կոնտակտներ */}
                 <div className="space-y-6">
-                  
+
                   {/* Սոց ցանցերի իկոնաներ */}
                   <div className="flex items-center gap-3 text-gray-400">
                     <a href="#facebook" className="hover:text-[#6c00ff]"><i className="fab fa-facebook-f text-base"></i></a>
@@ -540,7 +542,7 @@ const EvocaPowerDetails = () => {
                     <a href="#youtube" className="hover:text-[#6c00ff]"><i className="fab fa-youtube text-base"></i></a>
                     <a href="#linkedin" className="hover:text-[#6c00ff]"><i className="fab fa-linkedin-in text-base"></i></a>
                   </div>
-    
+
                   {/* App Store / Google Play կոճակներ */}
                   <div className="flex flex-col gap-2">
                     <a href="#appstore" className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-2 w-max hover:opacity-80">
@@ -550,7 +552,7 @@ const EvocaPowerDetails = () => {
                       <span className="text-xs font-semibold">Google Play</span>
                     </a>
                   </div>
-    
+
                   {/* Կոնտակտային տվյալներ */}
                   <div className="space-y-2 text-xs">
                     <div>
@@ -570,19 +572,19 @@ const EvocaPowerDetails = () => {
                       8444
                     </div>
                   </div>
-    
+
                 </div>
-    
+
               </div>
             </div>
-    
+
             {/* Ներքևի մոխրագույն զոլով տեքստ և լոգոներ */}
             <div className="bg-gray-100 py-6 border-t border-gray-200">
               <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-6">
                 <p className="text-[10px] text-gray-500 leading-normal max-w-4xl">
                   Հարգելի' այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանության, ինչպես նաև ռուսերեն և անգլերեն լեզուներում ոչ ամբողջական կայք տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: "Էվոկաբանկ" ՓԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստուգության և արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:
                 </p>
-                
+
                 {/* Գործընկերների/Համակարգերի լոգոներ */}
                 <div className="flex flex-wrap items-center gap-4 opacity-70 grayscale hover:grayscale-0 transition-all">
                   <span className="text-xs font-bold text-gray-600">fininfo</span>
@@ -593,6 +595,7 @@ const EvocaPowerDetails = () => {
             </div>
           </footer>
     </div>
+    </Tr>
   );
 };
 
