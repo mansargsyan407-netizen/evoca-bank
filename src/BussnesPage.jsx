@@ -24,6 +24,7 @@ import {
   Menu,
   ChevronDown,
 } from "lucide-react";
+import { Tr } from "./i18n"; // լեզուների աջակցություն
 
 const loans = [
   {
@@ -66,7 +67,7 @@ const loans = [
     ],
     link: "/business/loans/business-refinancing",
   },
-  { 
+  {
     icon: FileText,
     img: "https://www.evoca.am/images-cache/loans/1/17848707149538/415x261.png",
     title: "Պարտատոմսերով ապահովված վարկ",
@@ -212,14 +213,15 @@ const loans = [
 
 export default function BussnesPage() {
   return (
+    <Tr>
     <div className="min-h-screen bg-white text-slate-800">
       {/* HEADER SECTION (Matching 1st Image) */}
       <header className="border-b border-gray-100 bg-white">
-     
+
 
         {/* Main navigation */}
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-          
+
 
           <nav className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-800">
 <Link to="/business/leasing" className="hover:text-purple-700 font-extrabold">
@@ -236,11 +238,11 @@ export default function BussnesPage() {
 </Link>
           </nav>
 
-       
+
         </div>
       </header>
 
-    
+
 
       {/* Breadcrumb */}
       <div className="mx-auto flex max-w-6xl items-center gap-2 px-6 pt-5 text-sm text-slate-400">
@@ -418,5 +420,6 @@ export default function BussnesPage() {
         </button>
       </div>
     </div>
+    </Tr>
   );
 }
