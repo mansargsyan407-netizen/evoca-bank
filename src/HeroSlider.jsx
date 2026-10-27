@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useLang } from './i18n';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -49,7 +50,7 @@ const slidesData = [
     bgColor: "bg-[#27272a]",
     textColor: "text-white",
     btnBg: "bg-white text-purple-900 hover:bg-gray-100",
-    imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x485.jpg",
+    imgUrl: "https://www.evoca.am/images-cache/sliders/1/16856146843579/345dd727d7ee28e2cd6ec180e5d65740-577x486.jpg",
     link: "/visa-vision"
   },
   {
@@ -381,6 +382,7 @@ function RangeField({ label, value, min, max, step = 1, suffix = '', onChange })
 }
 
 function CalculatorSection() {
+  const { t } = useLang();
   const [activeTab, setActiveTab] = useState('loan'); // 'loan' | 'deposit'
 
   // Վարկ
@@ -415,7 +417,7 @@ function CalculatorSection() {
   return (
     <section className="w-full bg-[#f8fafd] py-16 px-4 md:px-12">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">Հաշվիչներ</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">{t('Հաշվիչներ')}</h2>
 
         <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 md:p-10">
           {/* Tabs */}
@@ -426,7 +428,7 @@ function CalculatorSection() {
                 activeTab === 'loan' ? 'text-[#6c00ff]' : 'text-gray-400 hover:text-gray-600'
               }`}
             >
-              Վարկ
+              {t('Վարկ')}
               {activeTab === 'loan' && (
                 <span className="absolute left-0 right-0 -bottom-[1px] h-0.5 bg-[#6c00ff] rounded-full" />
               )}
@@ -437,7 +439,7 @@ function CalculatorSection() {
                 activeTab === 'deposit' ? 'text-[#6c00ff]' : 'text-gray-400 hover:text-gray-600'
               }`}
             >
-              Ավանդ
+              {t('Ավանդ')}
               {activeTab === 'deposit' && (
                 <span className="absolute left-0 right-0 -bottom-[1px] h-0.5 bg-[#6c00ff] rounded-full" />
               )}
@@ -449,7 +451,7 @@ function CalculatorSection() {
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <RangeField
-                  label="Վարկի գումար"
+                  label={t('Վարկի գումար')}
                   value={loanAmount}
                   min={0}
                   max={50000000}
@@ -457,16 +459,16 @@ function CalculatorSection() {
                   onChange={setLoanAmount}
                 />
                 <RangeField
-                  label="Ժամկետ"
+                  label={t('Ժամկետ')}
                   value={loanMonths}
                   min={1}
                   max={1200}
                   step={1}
-                  suffix=" ամիս"
+                  suffix={` ${t('ամիս')}`}
                   onChange={setLoanMonths}
                 />
                 <RangeField
-                  label="Տարեկան տոկոսադրույք"
+                  label={t('Տարեկան տոկոսադրույք')}
                   value={loanRate}
                   min={1}
                   max={36}
@@ -476,7 +478,7 @@ function CalculatorSection() {
                 />
 
                 <div className="bg-white rounded-2xl border border-gray-200 p-5">
-                  <span className="text-sm text-gray-500 block mb-3">Մարման ձև</span>
+                  <span className="text-sm text-gray-500 block mb-3">{t('Մարման ձև')}</span>
                   <div className="flex items-center gap-6">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input
@@ -486,7 +488,7 @@ function CalculatorSection() {
                         onChange={() => setRepaymentType('annuity')}
                         className="accent-[#6c00ff] w-4 h-4"
                       />
-                      <span className="text-sm text-gray-800">Անուիտետ</span>
+                      <span className="text-sm text-gray-800">{t('Անուիտետ')}</span>
                     </label>
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input
@@ -496,7 +498,7 @@ function CalculatorSection() {
                         onChange={() => setRepaymentType('differentiated')}
                         className="accent-[#6c00ff] w-4 h-4"
                       />
-                      <span className="text-sm text-gray-800">Դիֆերենցված</span>
+                      <span className="text-sm text-gray-800">{t('Դիֆերենցված')}</span>
                     </label>
                   </div>
                 </div>
@@ -504,13 +506,13 @@ function CalculatorSection() {
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
                 <p className="text-xs text-gray-400 max-w-md">
-                  Բոլոր հաշվարկները կրում են ուղղորդիչ բնույթ և չեն հանդիսանում հրապարակային առաջարկ:
+                  {t('Բոլոր հաշվարկները կրում են ուղղորդիչ բնույթ և չեն հանդիսանում հրապարակային առաջարկ:')}
                 </p>
                 <button
                   onClick={handleCalculateLoan}
                   className="bg-[#6c00ff] hover:bg-[#5700d1] text-white font-semibold text-sm px-9 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl active:scale-95 whitespace-nowrap"
                 >
-                  Հաշվել
+                  {t('Հաշվել')}
                 </button>
               </div>
             </div>
@@ -522,7 +524,7 @@ function CalculatorSection() {
               {/* Ձախ կողմ՝ inputs */}
               <div className="flex flex-col gap-5">
                 <RangeField
-                  label="Ներդրվող գումար"
+                  label={t('Ներդրվող գումար')}
                   value={depositAmount}
                   min={0}
                   max={50000000}
@@ -530,7 +532,7 @@ function CalculatorSection() {
                   onChange={setDepositAmount}
                 />
                 <RangeField
-                  label="Տարեկան տոկոսադրույք"
+                  label={t('Տարեկան տոկոսադրույք')}
                   value={depositRate}
                   min={1}
                   max={36}
@@ -539,12 +541,12 @@ function CalculatorSection() {
                   onChange={setDepositRate}
                 />
                 <RangeField
-                  label="Ավանդի ժամկետ"
+                  label={t('Ավանդի ժամկետ')}
                   value={depositDays}
                   min={91}
                   max={1095}
                   step={1}
-                  suffix=" օր"
+                  suffix={` ${t('օր')}`}
                   onChange={setDepositDays}
                 />
               </div>
@@ -553,7 +555,7 @@ function CalculatorSection() {
               <div className="flex flex-col justify-center divide-y divide-gray-100">
                 <div className="flex items-start justify-between gap-4 py-4 first:pt-0">
                   <span className="text-sm text-gray-700 max-w-[70%] leading-relaxed">
-                    Օրական կտրվածքով հաշվարկվող տոկոսագումար
+                    {t('Օրական կտրվածքով հաշվարկվող տոկոսագումար')}
                   </span>
                   <span className="text-lg font-bold text-gray-900 whitespace-nowrap">
                     {formatNum(depositResult.dailyInterest)}
@@ -561,7 +563,7 @@ function CalculatorSection() {
                 </div>
                 <div className="flex items-start justify-between gap-4 py-4">
                   <span className="text-sm text-gray-700 max-w-[70%] leading-relaxed">
-                    Ավանդային պայմանագրի գործողության ընթացքում հաշվարկվող ընդհանուր տոկոսային եկամուտ
+                    {t('Ավանդային պայմանագրի գործողության ընթացքում հաշվարկվող ընդհանուր տոկոսային եկամուտ')}
                   </span>
                   <span className="text-lg font-bold text-gray-900 whitespace-nowrap">
                     {formatNum(depositResult.totalInterest)}
@@ -569,7 +571,7 @@ function CalculatorSection() {
                 </div>
                 <div className="flex items-start justify-between gap-4 py-4">
                   <span className="text-sm text-gray-700 max-w-[70%] leading-relaxed">
-                    Ավանդային պայմանագրի գործողության ընթացքում ավանդատուին փաստացի վճարվող գումարի տոկոսային եկամուտ
+                    {t('Ավանդային պայմանագրի գործողության ընթացքում ավանդատուին փաստացի վճարվող գումարի տոկոսային եկամուտ')}
                   </span>
                   <span className="text-lg font-bold text-gray-900 whitespace-nowrap">
                     {formatNum(depositResult.netInterest)}
@@ -581,13 +583,13 @@ function CalculatorSection() {
                     <path strokeLinecap="round" d="M12 16v-4M12 8h.01" />
                   </svg>
                   <span>
-                    Ներդրված ավանդի դիմաց ստացվող տոկոսագումարներից հարկվում են՝ 10% եկամտային հարկի չափով:
+                    {t('Ներդրված ավանդի դիմաց ստացվող տոկոսագումարներից հարկվում են՝ 10% եկամտային հարկի չափով:')}
                   </span>
                 </div>
               </div>
 
               <p className="lg:col-span-2 text-xs text-gray-400 pt-2 border-t border-gray-100">
-                Բոլոր հաշվարկները կրում են մոտավոր բնույթ և չեն հանդիսանում իրապարկային առաջարկ:
+                {t('Բոլոր հաշվարկները կրում են մոտավոր բնույթ և չեն հանդիսանում իրապարկային առաջարկ:')}
               </p>
             </div>
           )}
@@ -607,30 +609,30 @@ function CalculatorSection() {
             <button
               onClick={() => setIsLoanModalOpen(false)}
               className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors"
-              aria-label="Փակել"
+              aria-label={t('Փակել')}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Վարկային հաշվիչի արդյունքներ</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">{t('Վարկային հաշվիչի արդյունքներ')}</h3>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-[#f8fafd] rounded-xl p-4">
-                <span className="text-xs text-gray-500 block mb-1">Գումար</span>
+                <span className="text-xs text-gray-500 block mb-1">{t('Գումար')}</span>
                 <span className="font-bold text-gray-900">{formatNum(loanAmount)}</span>
               </div>
               <div className="bg-[#f8fafd] rounded-xl p-4">
-                <span className="text-xs text-gray-500 block mb-1">Տարեկան տոկոսադրույք</span>
+                <span className="text-xs text-gray-500 block mb-1">{t('Տարեկան տոկոսադրույք')}</span>
                 <span className="font-bold text-gray-900">{loanRate}%</span>
               </div>
               <div className="bg-[#f8fafd] rounded-xl p-4">
-                <span className="text-xs text-gray-500 block mb-1">Վարկի ժամկետը</span>
+                <span className="text-xs text-gray-500 block mb-1">{t('Վարկի ժամկետը')}</span>
                 <span className="font-bold text-gray-900">{loanMonths}</span>
               </div>
               <div className="bg-[#f8fafd] rounded-xl p-4">
-                <span className="text-xs text-gray-500 block mb-1">Ողջ վճարումը (Գումար + տոկոսագումարը)</span>
+                <span className="text-xs text-gray-500 block mb-1">{t('Ողջ վճարումը (Գումար + տոկոսագումարը)')}</span>
                 <span className="font-bold text-gray-900">{formatNum(loanResult.totalPayment)}</span>
               </div>
             </div>
@@ -639,10 +641,10 @@ function CalculatorSection() {
               <table className="w-full text-sm">
                 <thead className="sticky top-0 bg-white">
                   <tr className="text-left text-gray-500 border-b border-gray-100">
-                    <th className="py-3 px-4 font-medium">Ամիս</th>
-                    <th className="py-3 px-4 font-medium">Վճարվելիք տոկոսագումար</th>
-                    <th className="py-3 px-4 font-medium">Վարկի մասնակի մարում</th>
-                    <th className="py-3 px-4 font-medium">Վարկի ամսական վճար</th>
+                    <th className="py-3 px-4 font-medium">{t('Ամիս')}</th>
+                    <th className="py-3 px-4 font-medium">{t('Վճարվելիք տոկոսագումար')}</th>
+                    <th className="py-3 px-4 font-medium">{t('Վարկի մասնակի մարում')}</th>
+                    <th className="py-3 px-4 font-medium">{t('Վարկի ամսական վճար')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -655,7 +657,7 @@ function CalculatorSection() {
                     </tr>
                   ))}
                   <tr className="bg-[#f8fafd] font-bold">
-                    <td className="py-3 px-4 text-gray-900">Ընդամենը</td>
+                    <td className="py-3 px-4 text-gray-900">{t('Ընդամենը')}</td>
                     <td className="py-3 px-4 text-gray-900">{formatNum(loanResult.totalInterest)}</td>
                     <td className="py-3 px-4 text-gray-900">{formatNum(loanAmount)}</td>
                     <td className="py-3 px-4 text-gray-900">{formatNum(loanResult.totalPayment)}</td>
@@ -671,6 +673,7 @@ function CalculatorSection() {
 }
 
 function OnlineBankingSection() {
+  const { t } = useLang();
   return (
     <section className="w-full bg-[#6b21a8] text-white py-12 px-6 relative overflow-hidden">
       <div className="absolute -top-20 -left-20 w-64 h-64 bg-white rounded-full opacity-10 pointer-events-none"></div>
@@ -710,10 +713,9 @@ function OnlineBankingSection() {
         </div>
 
         <div className="w-full lg:w-1/2 space-y-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold">Օնլայն և մոբայլ բանկինգ</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold">{t('Օնլայն և մոբայլ բանկինգ')}</h2>
           <p className="text-purple-100 text-sm md:text-base leading-relaxed">
-            Evocabank-ը արագ, պարզ և նորարար ծառայություններ մատուցող բանկ է, որն առանձնանում է
-            տեղեկատվական նորագույն տեխնոլոգիաների ակտիվ կիրառմամբ։
+            {t('Evocabank-ը արագ, պարզ և նորարար ծառայություններ մատուցող բանկ է, որն առանձնանում է տեղեկատվական նորագույն տեխնոլոգիաների ակտիվ կիրառմամբ։')}
           </p>
 
           <div>
@@ -721,7 +723,7 @@ function OnlineBankingSection() {
               to="/evoca-online"
               className="inline-block bg-white text-purple-900 px-8 py-3 rounded-full font-bold hover:bg-purple-50 transition shadow-lg text-center"
             >
-              Դառնալ հաճախորդ
+              {t('Դառնալ հաճախորդ')}
             </Link>
           </div>
 
@@ -739,7 +741,7 @@ function OnlineBankingSection() {
             {/* Text & Store Buttons */}
             <div className="flex flex-col gap-2">
               <span className="text-sm font-semibold text-purple-100">
-                Ներբեռնել հավելվածները`
+                {t('Ներբեռնել հավելվածները`')}
               </span>
               <div className="flex items-center gap-2">
                 <a
@@ -777,54 +779,25 @@ function OnlineBankingSection() {
 
 
 const partnersData = [
-  {
-    logo: "https://www.evoca.am/images-cache/partners/1/17104032198171/348x150_grayscale.png",
-  },
-  {
-    logo: "https://www.evoca.am/images-cache/partners/1/17077436606929/348x150_grayscale.png",
-  },
-  {
-    logo: "	https://www.evoca.am/images-cache/partners/1/17107493820339/348x150_grayscale.png",
-  },
-  {
-   logo: "	https://www.evoca.am/images-cache/partners/1/17072192942611/348x150_grayscale.png",
-  },
-  {
-   logo: "	https://www.evoca.am/images-cache/partners/1/17072192635138/348x150_grayscale.png" ,
-  },
- {
-    logo: "https://www.evoca.am/images-cache/partners/1/17072192435541/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/16104577054001/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/16104583322099/348x150_grayscale.png" ,
-  },
-   {
-    logo: "	https://www.evoca.am/images-cache/partners/1/17689930369925/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/16104594273635/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/1610459808737/348x150_grayscale.png" ,
-  },
-   {
-    logo: "	https://www.evoca.am/images-cache/partners/1/16104599802947/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/16104603665095/348x150_grayscale.png" ,
-  },
-   {
-    logo: "https://www.evoca.am/images-cache/partners/1/16104604109064/348x150_grayscale.png" ,
-  },
-   {
-    logo: "	https://www.evoca.am/images-cache/partners/1/16104604382658/348x150_grayscale.png" ,
-  },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17104032198171/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17077436606929/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17107493820339/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17072192942611/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17072192635138/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17072192435541/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104577054001/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104583322099/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/17689930369925/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104594273635/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/1610459808737/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104599802947/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104603665095/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104604109064/348x150_grayscale.png" },
+  { logo: "https://www.evoca.am/images-cache/partners/1/16104604382658/348x150_grayscale.png" },
 ];
 
 export function PartnersSection() {
+  const { t } = useLang();
   return (
     <section className="w-full bg-white py-16 px-4 md:px-12 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
@@ -832,16 +805,16 @@ export function PartnersSection() {
         {/* Ձախ կողմ՝ Վերնագիր + Նկարագրություն + Կոճակ */}
         <div className="w-full lg:w-1/3 shrink-0 z-10">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-5 tracking-tight">
-            Գործընկերներ
+            {t('Գործընկերներ')}
           </h2>
           <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-sm font-normal">
-            Դարձեք Evocabank-ի Գործընկեր և եկեք միասին գնանք դեպի գունեղ նոր իրականություն: Դառնալով Evoca ընտանիքի անդամ՝ Դուք մուտք կգործեք ժամանակակից և յուրահատուկ աշխարհ: Մենք մշտապես բաց ենք հետաքրքիր առաջարկների ու համագործակցությունների համար:
+            {t('Դարձեք Evocabank-ի Գործընկեր և եկեք միասին գնանք դեպի գունեղ նոր իրականություն: Դառնալով Evoca ընտանիքի անդամ՝ Դուք մուտք կգործեք ժամանակակից և յուրահատուկ աշխարհ: Մենք մշտապես բաց ենք հետաքրքիր առաջարկների ու համագործակցությունների համար:')}
           </p>
           <Link
             to="/partners"
             className="inline-flex items-center gap-2 bg-[#f3ecff] text-[#6c00ff] font-semibold text-xs md:text-sm px-6 py-3 rounded-full hover:bg-[#ece0ff] transition-all duration-300"
           >
-            Բոլոր գործընկերները
+            {t('Բոլոր գործընկերները')}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -929,6 +902,7 @@ export function PartnersSection() {
 }
 
 function CardsInteractiveSection() {
+  const { t } = useLang();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const activeCard = bankCards[selectedIndex];
   const cardRef = useRef(null);
@@ -994,7 +968,7 @@ function CardsInteractiveSection() {
                     loading="eager"
                   />
                   <span className="text-[11px] text-gray-800 text-center line-clamp-1 font-medium">
-                    {card.title}
+                    {t(card.title)}
                   </span>
                 </div>
               </SwiperSlide>
@@ -1026,35 +1000,32 @@ function CardsInteractiveSection() {
           </div>
         </div>
 
-     {/* 3․ Աջ կողմում՝ Անվանում + Նկարագրություն + "Մանրամասն" կոճակ */}
-      <div className="w-full md:w-1/4 flex flex-col items-center md:items-start text-center md:text-left justify-center">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 leading-snug">
-          {activeCard?.title}
-        </h2>
+        {/* 3․ Աջ կողմում՝ Անվանում + Նկարագրություն + "Մանրամասն" կոճակ */}
+        <div className="w-full md:w-1/4 flex flex-col items-center md:items-start text-center md:text-left justify-center">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 leading-snug">
+            {t(activeCard?.title)}
+          </h2>
 
-        {activeCard?.description && (
-          <p className="text-sm text-gray-600 leading-relaxed mb-6 max-w-xs">
-            {activeCard.description}
-          </p>
-        )}
+          {activeCard?.description && (
+            <p className="text-sm text-gray-600 leading-relaxed mb-6 max-w-xs">
+              {t(activeCard.description)}
+            </p>
+          )}
 
-        <Link to={activeCard?.link || '#'}>
-          <button className="bg-[#6c00ff] hover:bg-[#5700d1] text-white font-semibold text-sm px-9 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 active:scale-95">
-            Մանրամասն
-          </button>
-        </Link>
-      </div>
+          <Link to={activeCard?.link || '#'}>
+            <button className="bg-[#6c00ff] hover:bg-[#5700d1] text-white font-semibold text-sm px-9 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 active:scale-95">
+              {t('Մանրամասն')}
+            </button>
+          </Link>
+        </div>
 
       </div>
     </section>
   );
 }
 
-
-
-
-
 function BiometricSection() {
+  const { t } = useLang();
   const [currentFace, setCurrentFace] = useState(0);
 
   useEffect(() => {
@@ -1099,12 +1070,12 @@ function BiometricSection() {
 
         <div className="w-full md:w-1/2 flex flex-col items-start">
           <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-gray-900 leading-[1.3] mb-3">
-            Դարձի՛ր Evocabank-ի հաճախորդ <br />
-            բիոմետրիկ նույնականացմամբ
+            {t('Դարձի՛ր Evocabank-ի հաճախորդ')} <br />
+            {t('բիոմետրիկ նույնականացմամբ')}
           </h2>
 
           <p className="text-gray-600 text-sm sm:text-[15px] leading-relaxed max-w-md mb-8">
-            Սկանավորի՛ր QR կոդը, ներբեռնի՛ր EvocaTOUCH հարմարավետ հավելվածը, ստեղծի՛ր քո հաշիվը և ստացիր քարտ
+            {t('Սկանավորի՛ր QR կոդը, ներբեռնի՛ր EvocaTOUCH հարմարավետ հավելվածը, ստեղծի՛ր քո հաշիվը և ստացիր քարտ')}
           </p>
 
           <div className="flex items-end gap-6">
@@ -1118,7 +1089,7 @@ function BiometricSection() {
 
             <Link to="/biometrics">
               <button className="px-6 py-2.5 bg-[#6c00ff] text-white text-sm font-medium rounded-full hover:bg-purple-800 transition duration-300 shadow-sm">
-                Իմանալ ավելին
+                {t('Իմանալ ավելին')}
               </button>
             </Link>
           </div>
@@ -1130,6 +1101,7 @@ function BiometricSection() {
 }
 
 function BestFromEvocaSection() {
+  const { t } = useLang();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -1180,19 +1152,19 @@ function BestFromEvocaSection() {
           <div className="absolute left-[18%] bottom-[8%] w-4 h-4 bg-yellow-400 rounded-full z-20 shadow-md animate-pulse" />
 
           <div className="absolute bottom-0 left-[-20px] sm:left-[10px] md:left-[30px] w-[280px] sm:w-[380px] md:w-[440px] pointer-events-none z-10 select-none">
-          <img
-  src="https://www.evoca.am/img/statue-1.png"
-  alt="Evoca Statue"
-  className="w-full h-auto object-contain drop-shadow-2xl translate-y-2"
-  onError={(e) => {
-    e.target.style.display = 'none';
-  }}
-/>
+            <img
+              src="https://www.evoca.am/img/statue-1.png"
+              alt="Evoca Statue"
+              className="w-full h-auto object-contain drop-shadow-2xl translate-y-2"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
           </div>
 
           <div className="relative z-20 ml-0 lg:ml-[380px] mb-8 mt-2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Լավագույնը Evocabank-ից
+              {t('Լավագույնը Evocabank-ից')}
             </h2>
           </div>
 
@@ -1209,15 +1181,15 @@ function BestFromEvocaSection() {
                 style={{ transitionDelay: `${index * 120}ms` }}
               >
                 <span className="inline-block bg-[#f3ecff] text-[#6c00ff] text-[11px] font-bold px-3 py-1 rounded-md mb-3">
-                  {item.tag}
+                  {t(item.tag)}
                 </span>
 
                 <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-900">
-                  {item.title}
+                  {t(item.title)}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </Link>
             ))}
@@ -1345,6 +1317,7 @@ const testimonialsData = [
 ];
 
 function TestimonialsSection() {
+  const { t } = useLang();
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -1430,15 +1403,15 @@ function TestimonialsSection() {
                   </div>
 
                   <p className="w-full max-w-[680px] text-[10px] sm:text-[11px] md:text-[12px] leading-[1.55] text-gray-700 font-medium line-clamp-4">
-                    {review.text}
+                    {t(review.text)}
                   </p>
 
                   <h3 className="mt-4 text-[11px] sm:text-[12px] md:text-[13px] font-bold text-gray-900">
-                    {review.name}
+                    {t(review.name)}
                   </h3>
 
                   <span className="mt-1 text-[9px] sm:text-[10px] md:text-[11px] text-gray-400">
-                    {review.role}
+                    {t(review.role)}
                   </span>
                 </div>
               </SwiperSlide>
@@ -1451,7 +1424,7 @@ function TestimonialsSection() {
               <button
                 key={review.id}
                 type="button"
-                aria-label={`Կարծիք ${index + 1}`}
+                aria-label={`${t('Կարծիք')} ${index + 1}`}
                 onClick={() => swiperRef.current?.slideToLoop(index)}
                 className={`w-[7px] h-[7px] rounded-full transition-all duration-300 cursor-pointer ${
                   activeIndex === index
@@ -1469,6 +1442,7 @@ function TestimonialsSection() {
 
 
 function ExchangeRatesSection() {
+  const { t } = useLang();
   const [activeTab, setActiveTab] = useState('cash');
   const [showMore, setShowMore] = useState(false);
   const [isMapOpen, setIsMapOpen] = useState(false);
@@ -1491,9 +1465,7 @@ function ExchangeRatesSection() {
         {/* Ձախ կողմ՝ Փոխարժեքներ */}
         <div className="w-full lg:w-2/3">
           <p className="text-gray-700 text-sm md:text-[15px] leading-relaxed mb-6 max-w-2xl">
-            20,000 ԱՄՆ դոլարից ավել կամ դրան համարժեք այլ արտարժույթի փոխարկման դեպքում գործարքը հաստատվում է Բանկի
-            հայեցողությամբ և Բանկի կողմից որոշված փոխարժեքով: 100,000 դրամ կամ դրան համարժեք արտարժույթի ավելի
-            փոխանակման գործարքների իրականացման համար անհրաժեշտ է ներկայացնել անձը հաստատող փաստաթուղթ:
+            {t('20,000 ԱՄՆ դոլարից ավել կամ դրան համարժեք այլ արտարժույթի փոխարկման դեպքում գործարքը հաստատվում է Բանկի հայեցողությամբ և Բանկի կողմից որոշված փոխարժեքով: 100,000 դրամ կամ դրան համարժեք արտարժույթի ավելի փոխանակման գործարքների իրականացման համար անհրաժեշտ է ներկայացնել անձը հաստատող փաստաթուղթ:')}
           </p>
 
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
@@ -1507,7 +1479,7 @@ function ExchangeRatesSection() {
                     activeTab === tab.key ? 'text-[#6c00ff]' : 'text-gray-400 hover:text-gray-600'
                   }`}
                 >
-                  {tab.label}
+                  {t(tab.label)}
                   {activeTab === tab.key && (
                     <span className="absolute left-0 right-0 -bottom-[1px] h-0.5 bg-[#6c00ff] rounded-full" />
                   )}
@@ -1521,8 +1493,8 @@ function ExchangeRatesSection() {
                   <thead>
                     <tr className="text-left text-gray-400 text-xs">
                       <th className="pb-3 font-medium"></th>
-                      <th className="pb-3 font-medium">Առ</th>
-                      <th className="pb-3 font-medium">Վաճառք</th>
+                      <th className="pb-3 font-medium">{t('Առ')}</th>
+                      <th className="pb-3 font-medium">{t('Վաճառք')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1560,8 +1532,8 @@ function ExchangeRatesSection() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-gray-400 text-xs">
-                      <th className="pb-3 font-medium">Հարգ</th>
-                      <th className="pb-3 font-medium">Նախագնային Արժեքը ՀՀ Դրամով 1 գրամի համար</th>
+                      <th className="pb-3 font-medium">{t('Հարգ')}</th>
+                      <th className="pb-3 font-medium">{t('Նախագնային Արժեքը ՀՀ Դրամով 1 գրամի համար')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1579,8 +1551,8 @@ function ExchangeRatesSection() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-gray-400 text-xs">
-                      <th className="pb-3 font-medium">Արժույթ</th>
-                      <th className="pb-3 font-medium">Նախավճար</th>
+                      <th className="pb-3 font-medium">{t('Արժույթ')}</th>
+                      <th className="pb-3 font-medium">{t('Նախավճար')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1596,14 +1568,14 @@ function ExchangeRatesSection() {
 
               <div className="flex items-center justify-between mt-4">
                 <p className="text-[11px] text-gray-300">
-                  Թարմացվել է՝ {current.date}
+                  {t('Թարմացվել է՝')} {current.date}
                 </p>
                 {(activeTab === 'cash' || activeTab === 'noncash') && (
                   <button
                     onClick={() => setShowMore((v) => !v)}
                     className="text-xs font-semibold text-[#6c00ff] hover:text-[#5700d1] transition-colors"
                   >
-                    {showMore ? 'Փակել' : 'Այլ արժույթներ'}
+                    {showMore ? t('Փակել') : t('Այլ արժույթներ')}
                   </button>
                 )}
               </div>
@@ -1614,9 +1586,9 @@ function ExchangeRatesSection() {
         {/* Աջ կողմ՝ Մեր հասցեները */}
         <div className="w-full lg:w-1/3">
           <div className="bg-[#f8fafd] rounded-2xl border border-gray-100 p-6">
-            <h3 className="text-base font-bold text-gray-900 mb-1">Մեր հասցեները</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-1">{t('Մեր հասցեները')}</h3>
             <p className="text-xs text-gray-500 leading-relaxed mb-5 max-w-[220px]">
-              Բանկի հասցեները, աշխատանքային ժամերը, բանկոմատները
+              {t('Բանկի հասցեները, աշխատանքային ժամերը, բանկոմատները')}
             </p>
 
             <button
@@ -1639,7 +1611,7 @@ function ExchangeRatesSection() {
               onClick={() => setIsMapOpen(true)}
               className="inline-flex items-center justify-center gap-2 bg-[#f3ecff] text-[#6c00ff] font-semibold text-xs sm:text-sm px-6 py-3 rounded-full hover:bg-[#ece0ff] transition-all duration-300"
             >
-              Դիտել քարտեզը
+              {t('Դիտել քարտեզը')}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
@@ -1661,13 +1633,13 @@ function ExchangeRatesSection() {
             <button
               onClick={() => setIsMapOpen(false)}
               className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors z-10"
-              aria-label="Փակել"
+              aria-label={t('Փակել')}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Բանկի մասնաճյուղեր և բանկոմատներ</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">{t('Բանկի մասնաճյուղեր և բանկոմատներ')}</h3>
             <div className="relative rounded-2xl overflow-hidden border border-gray-100">
               <img
                 src="https://www.evoca.am/img/addresses.png"
@@ -1678,7 +1650,7 @@ function ExchangeRatesSection() {
             <div className="mt-6 text-center">
               <Link to="/addresses">
                 <button className="bg-[#6c00ff] hover:bg-[#5700d1] text-white font-semibold text-sm px-9 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl active:scale-95">
-                  Բոլոր հասցեները
+                  {t('Բոլոր հասցեները')}
                 </button>
               </Link>
             </div>
@@ -1694,11 +1666,13 @@ function ExchangeRatesSection() {
 /* ================== Footer ================== */
 
 function Footer() {
+  const { t } = useLang();
+  const linkCls = 'hover:text-purple-700 cursor-pointer';
   return (
     <footer className="w-full bg-[#f8f8fa] text-[#2d2d2d] pt-8 pb-6 px-6 border-t border-gray-100 text-xs relative">
       <div className="max-w-6xl mx-auto flex justify-end pb-4 border-b border-gray-200">
         <div className="text-gray-400 text-[11px]">
-          Թարմացվել է` 07/09/2026 14:49
+          {t('Թարմացվել է՝')} 07/09/2026 14:49
         </div>
       </div>
 
@@ -1709,53 +1683,53 @@ function Footer() {
             <span className="text-xl font-black text-gray-800 tracking-tight">BANK</span>
           </div>
           <p className="text-gray-600 leading-relaxed text-[12px]">
-            ք. Երևան, 0010,<br />
-            Հանրապետության 44/2
+            {t('ք. Երևան, 0010,')}<br />
+            {t('Հանրապետության 44/2')}
           </p>
           <p className="text-gray-500 leading-normal text-[11px]">
-            Evocabank-ը վերահսկվում է Հայաստանի Հանրապետության Կենտրոնական բանկի կողմից
+            {t('Evocabank-ը վերահսկվում է Հայաստանի Հանրապետության Կենտրոնական բանկի կողմից')}
           </p>
           <p className="text-[10px] text-gray-400 pt-1">
-            1990 - 2026, © ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ
+            {t('1990 - 2026, © ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ')}
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-bold text-gray-900 mb-3 text-xs">Բանկի մասին</h4>
-          <p className="hover:text-purple-700 cursor-pointer">Մեր մասին</p>
-          <p className="hover:text-purple-700 cursor-pointer">Ղեկավարություն</p>
-          <p className="hover:text-purple-700 cursor-pointer">Բաժնետերեր</p>
-          <p className="hover:text-purple-700 cursor-pointer">Հաշվետվություններ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Իրավական ակտեր</p>
-          <p className="hover:text-purple-700 cursor-pointer">Սակագներ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Օտարվող գույք</p>
-          <p className="hover:text-purple-700 cursor-pointer">Կառուցապատողներ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Գործընկեր ավտոսրահներ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Սակագների արխիվ</p>
+          <h4 className="font-bold text-gray-900 mb-3 text-xs">{t('Բանկի մասին')}</h4>
+          <p className={linkCls}>{t('Մեր մասին')}</p>
+          <p className={linkCls}>{t('Ղեկավարություն')}</p>
+          <p className={linkCls}>{t('Բաժնետերեր')}</p>
+          <p className={linkCls}>{t('Հաշվետվություններ')}</p>
+          <p className={linkCls}>{t('Իրավական ակտեր')}</p>
+          <p className={linkCls}>{t('Սակագներ')}</p>
+          <p className={linkCls}>{t('Օտարվող գույք')}</p>
+          <p className={linkCls}>{t('Կառուցապատողներ')}</p>
+          <p className={linkCls}>{t('Գործընկեր ավտոսրահներ')}</p>
+          <p className={linkCls}>{t('Սակագների արխիվ')}</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-bold text-gray-900 mb-3 text-xs">Օգտակար հղումներ</h4>
-          <p className="hover:text-purple-700 cursor-pointer leading-tight">
-            Հաճախորդի իրավունքները (Բողոքի ներկայացման կանոններ)
+          <h4 className="font-bold text-gray-900 mb-3 text-xs">{t('Օգտակար հղումներ')}</h4>
+          <p className={`${linkCls} leading-tight`}>
+            {t('Հաճախորդի իրավունքները (Բողոքի ներկայացման կանոններ)')}
           </p>
-          <p className="hover:text-purple-700 cursor-pointer leading-tight">
-            Հաճախորդի ռեզիդենտության չափանիշներ
+          <p className={`${linkCls} leading-tight`}>
+            {t('Հաճախորդի ռեզիդենտության չափանիշներ')}
           </p>
-          <p className="hover:text-purple-700 cursor-pointer">Կարգավորում</p>
-          <p className="hover:text-purple-700 cursor-pointer">Գաղտնիության քաղաքականություն</p>
-          <p className="hover:text-purple-700 cursor-pointer">Ֆին. հաշտարար</p>
-          <p className="hover:text-purple-700 cursor-pointer leading-tight">
-            Ֆինանսական հանցագործությունների կանխարգելում
+          <p className={linkCls}>{t('Կարգավորում')}</p>
+          <p className={linkCls}>{t('Գաղտնիության քաղաքականություն')}</p>
+          <p className={linkCls}>{t('Ֆին. հաշտարար')}</p>
+          <p className={`${linkCls} leading-tight`}>
+            {t('Ֆինանսական հանցագործությունների կանխարգելում')}
           </p>
-          <p className="hover:text-purple-700 cursor-pointer leading-tight">
-            Հղումներ Բանկի քարտապանների համար
+          <p className={`${linkCls} leading-tight`}>
+            {t('Հղումներ Բանկի քարտապանների համար')}
           </p>
         </div>
 
         <div className="space-y-2">
           <div className="flex items-center justify-between mb-2">
-            <h4 className="font-bold text-gray-900 text-xs">Այլ հղումներ</h4>
+            <h4 className="font-bold text-gray-900 text-xs">{t('Այլ հղումներ')}</h4>
             <div className="flex gap-2 text-gray-400 text-xs">
               <span className="hover:text-purple-600 cursor-pointer">f</span>
               <span className="hover:text-purple-600 cursor-pointer">📷</span>
@@ -1765,21 +1739,21 @@ function Footer() {
             </div>
           </div>
 
-          <p className="hover:text-purple-700 cursor-pointer">EvocaONLINE</p>
-          <p className="hover:text-purple-700 cursor-pointer">Պահատուփեր</p>
-          <p className="hover:text-purple-700 cursor-pointer">Հաճախ տրվող հարցեր</p>
-          <p className="hover:text-purple-700 cursor-pointer">Հայտարարություններ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Dlibrary</p>
-          <p className="hover:text-purple-700 cursor-pointer">Բուկլետներ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Հետադարձ կապ</p>
-          <p className="hover:text-purple-700 cursor-pointer">Կայքի քարտեզ</p>
+          <p className={linkCls}>EvocaONLINE</p>
+          <p className={linkCls}>{t('Պահատուփեր')}</p>
+          <p className={linkCls}>{t('Հաճախ տրվող հարցեր')}</p>
+          <p className={linkCls}>{t('Հայտարարություններ')}</p>
+          <p className={linkCls}>Dlibrary</p>
+          <p className={linkCls}>{t('Բուկլետներ')}</p>
+          <p className={linkCls}>{t('Հետադարձ կապ')}</p>
+          <p className={linkCls}>{t('Կայքի քարտեզ')}</p>
 
           <div className="pt-2 space-y-1">
             <p className="text-[#6b21a8] font-bold hover:underline cursor-pointer">
-              Բանկի հասցեները և աշխատաժամերը
+              {t('Բանկի հասցեները և աշխատաժամերը')}
             </p>
             <p className="text-[#6b21a8] font-bold hover:underline cursor-pointer">
-              Կապ մեզ հետ
+              {t('Կապ մեզ հետ')}
             </p>
             <p className="text-[#6b21a8] font-bold text-xs">+374 10 605555</p>
             <p className="text-[#6b21a8] font-extrabold text-sm">8444</p>
@@ -1790,12 +1764,7 @@ function Footer() {
       {/* Footer Bottom Bar */}
       <div className="border-t border-gray-200/60 pt-4 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400">
         <p className="max-w-2xl leading-normal">
-          Հարգելի՛ այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանության,
-          ինչպես նաև ռուսերեն և անգլերեն լեզուներով ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք
-          առաջնորդվել հայերեն տարբերակով: Evocabank ՓԲԸ-ն պատասխանատվություն չի կրում իր
-          ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստույգության և
-          արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ
-          կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:
+          {t('Հարգելի՛ այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանության, ինչպես նաև ռուսերեն և անգլերեն լեզուներով ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: Evocabank ՓԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստույգության և արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:')}
         </p>
         <div className="flex items-center gap-4 opacity-70">
           <span className="font-bold text-gray-500">fininfo</span>
@@ -1815,6 +1784,7 @@ function Footer() {
 }
 
 export default function HeroPage() {
+  const { t } = useLang();
   return (
     <div className="w-full">
       {/* Գլխավոր Սլայդեր */}
@@ -1835,14 +1805,14 @@ export default function HeroPage() {
 
                 <div className="max-w-xl z-10 py-12">
                   <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
-                    {slide.title}
+                    {t(slide.title)}
                   </h1>
                   <p className="text-base md:text-lg mb-8 opacity-90">
-                    {slide.description}
+                    {t(slide.description)}
                   </p>
                   <Link to={slide.link}>
                     <button className={`px-7 py-3 rounded-full font-bold text-sm transition-all shadow-md ${slide.btnBg}`}>
-                      {slide.btnText}
+                      {t(slide.btnText)}
                     </button>
                   </Link>
                 </div>
@@ -1893,12 +1863,12 @@ export default function HeroPage() {
       <section className="bg-purple-50/50 py-16 px-6 mb-16">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-black text-gray-900">Վերջին նորությունները</h2>
+            <h2 className="text-2xl font-black text-gray-900">{t('Վերջին նորությունները')}</h2>
             <Link
               to="/news"
               className="bg-purple-100 text-[#6b21a8] px-4 py-2 rounded-full text-xs font-bold hover:bg-purple-200 transition flex items-center gap-1"
             >
-              Բոլոր նորությունները <span>›</span>
+              {t('Բոլոր նորությունները')} <span>›</span>
             </Link>
           </div>
 
@@ -1912,10 +1882,10 @@ export default function HeroPage() {
               <div className="p-5 space-y-3">
                 <div className="flex items-center gap-2">
                   <span className="w-1 h-4 bg-[#6b21a8]"></span>
-                  <span className="text-xs font-bold text-gray-800">Պրոդուկտներ</span>
+                  <span className="text-xs font-bold text-gray-800">{t('Պրոդուկտներ')}</span>
                 </div>
                 <h3 className="font-bold text-sm text-gray-900 line-clamp-2">
-                  Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով
+                  {t('Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով')}
                 </h3>
                 <p className="text-xs text-gray-400">21.08.2026</p>
               </div>
@@ -1930,10 +1900,10 @@ export default function HeroPage() {
               <div className="p-5 space-y-3">
                 <div className="flex items-center gap-2">
                   <span className="w-1 h-4 bg-[#6b21a8]"></span>
-                  <span className="text-xs font-bold text-gray-800">Բանկային</span>
+                  <span className="text-xs font-bold text-gray-800">{t('Բանկային')}</span>
                 </div>
                 <h3 className="font-bold text-sm text-gray-900 line-clamp-2">
-                  Ba3 վարկանիշ Moody's-ից Evocabank-ին
+                  {t("Ba3 վարկանիշ Moody's-ից Evocabank-ին")}
                 </h3>
                 <p className="text-xs text-gray-400">18.08.2026</p>
               </div>
@@ -1948,10 +1918,10 @@ export default function HeroPage() {
               <div className="p-5 space-y-3">
                 <div className="flex items-center gap-2">
                   <span className="w-1 h-4 bg-[#6b21a8]"></span>
-                  <span className="text-xs font-bold text-gray-800">Բանկային</span>
+                  <span className="text-xs font-bold text-gray-800">{t('Բանկային')}</span>
                 </div>
                 <h3 className="font-bold text-sm text-gray-900 line-clamp-2">
-                  Հայաստանում գործարկվեց Firebird AI-ի «ԱԲ գործարանը»
+                  {t('Հայաստանում գործարկվեց Firebird AI-ի «ԱԲ գործարանը»')}
                 </h3>
                 <p className="text-xs text-gray-400">11.08.2026</p>
               </div>
@@ -1959,7 +1929,7 @@ export default function HeroPage() {
           </div>
         </div>
       </section>
-      
+
 
       {/* Փոխարժեքներ */}
       <ExchangeRatesSection />
@@ -1971,7 +1941,5 @@ export default function HeroPage() {
       <Footer />
 
     </div>
-
   );
-  
 }
