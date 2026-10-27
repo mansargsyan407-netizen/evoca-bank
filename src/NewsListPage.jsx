@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Phone } from 'lucide-react';
+import { Tr, useLang } from './i18n';
 
 export default function NewsListPage() {
+  const { t } = useLang();
   const [activeFilter, setActiveFilter] = useState('Գլխավոր');
 
   const filters = [
@@ -25,6 +27,7 @@ export default function NewsListPage() {
       category: 'Պրոդուկտներ',
       categoryColor: 'bg-emerald-500',
       title: 'Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով',
+      desc: 'Մինչև սեպտեմբերի 15-ը վճարիր Evoca Mastercard-ով ակցիայի մասնակից խանութներում և գրախանութներում ու ստացիր մինչև 23% cashback։',
       date: '21.08.2026',
       isHero: true,
     },
@@ -115,321 +118,313 @@ export default function NewsListPage() {
   ];
 
   return (
-    <div className="w-full bg-white text-gray-800 font-sans selection:bg-purple-500 selection:text-white">
-      {/* 2. BREADCRUMB & TITLE */}
-      <div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
-        <div className="text-[11px] text-gray-400 flex items-center gap-1.5 mb-6">
-          <Link to="/" className="hover:underline">🏠</Link>
-          <span>›</span>
-          <span className="text-gray-500 font-medium">Նորություններ</span>
+    <Tr>
+      <div className="w-full bg-white text-gray-800 font-sans selection:bg-purple-500 selection:text-white">
+        {/* 2. BREADCRUMB & TITLE */}
+        <div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
+          <div className="text-[11px] text-gray-400 flex items-center gap-1.5 mb-6">
+            <Link to="/" className="hover:underline">🏠</Link>
+            <span>›</span>
+            <span className="text-gray-500 font-medium">{t('Նորություններ')}</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
+            {t('Նորություններ')}
+          </h1>
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
-          Նորություններ
-        </h1>
-      </div>
 
-      {/* 3. FILTER BUTTONS */}
-      <div className="max-w-7xl mx-auto px-6 pb-12 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2">
-          {filters.map((f) => {
-            const classes = `px-5 py-2 rounded-full text-xs font-semibold transition ${
-              activeFilter === f
-                ? 'bg-purple-100 text-[#6b21a8]'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`;
+        {/* 3. FILTER BUTTONS */}
+        <div className="max-w-7xl mx-auto px-6 pb-12 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            {filters.map((f) => {
+              const classes = `px-5 py-2 rounded-full text-xs font-semibold transition ${
+                activeFilter === f
+                  ? 'bg-purple-100 text-[#6b21a8]'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`;
 
-            // «Գլխավոր»-ը տանում է նոր էջ
-            if (f === 'Գլխավոր') {
+              if (f === 'Գլխավոր') {
+                return (
+                  <Link key={f} to="/news/main" className={classes}>
+                    {t(f)}
+                  </Link>
+                );
+              }
+
               return (
-                <Link key={f} to="/news/main" className={classes}>
-                  {f}
-                </Link>
+                <button key={f} onClick={() => setActiveFilter(f)} className={classes}>
+                  {t(f)}
+                </button>
               );
-            }
-
-            return (
-              <button key={f} onClick={() => setActiveFilter(f)} className={classes}>
-                {f}
-              </button>
-            );
-          })}
-        </div>
-        <Link
-          to="/news/all"
-          className="bg-purple-100 text-[#6b21a8] text-xs font-bold px-5 py-2 rounded-full flex items-center gap-1 hover:bg-purple-200 transition"
-        >
-          Բոլորը <ChevronRight className="w-3.5 h-3.5" />
-        </Link>
-      </div>
-
-      {/* 4. HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 mb-16">
-        <Link to={newsData[0].to} className="block group">
-          <div className="bg-[#f5f3ff] rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[380px] transition group-hover:shadow-lg">
-            <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="w-3.5 h-3.5 bg-[#FF00FF] inline-block"></span>
-                <span className="text-xs font-bold text-gray-900">Պրոդուկտներ</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight group-hover:text-purple-700 transition">
-                Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով
-              </h2>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Մինչև սեպտեմբերի 15-ը վճարիր Evoca Mastercard-ով ակցիայի մասնակից խանութներում և գրախանութներում ու ստացիր մինչև 23% cashback։
-              </p>
-              <p className="text-[11px] text-gray-400 pt-1">21.08.2026</p>
-            </div>
-            <div className="lg:col-span-7 relative bg-purple-400 overflow-hidden flex items-end justify-center">
-              <div className="absolute top-4 left-4 w-6 h-6 border-t-4 border-l-4 border-pink-500"></div>
-              <img
-                src={newsData[0].image}
-                alt="Back to school"
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-              />
-            </div>
+            })}
           </div>
-        </Link>
-      </section>
-
-      {/* WATERMARK: "Բաց մի թող" */}
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="text-[150px] font-black text-gray-100 select-none pointer-events-none leading-none -mb-2">
-          Բաց մի թող
+          <Link
+            to="/news/all"
+            className="bg-purple-100 text-[#6b21a8] text-xs font-bold px-5 py-2 rounded-full flex items-center gap-1 hover:bg-purple-200 transition"
+          >
+            {t('Բոլորը')} <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
-        {/* 5. MAIN GRID SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10 pt-6">
-          {/* Left Large News Card */}
-          <div className="lg:col-span-5 flex flex-col">
-            <Link to={newsData[1].to} className="group block">
-              <div className="relative mb-9 overflow-hidden rounded-xl">
-                <div className="absolute -left-5 -top-3 w-20 h-20 bg-yellow-400 -z-10"></div>
-                <img src={newsData[1].image} alt={newsData[1].title} className="w-full h-auto object-cover rounded-xl group-hover:scale-105 transition duration-300" />
-              </div>
-              <div className="space-y-2">
+        {/* 4. HERO SECTION */}
+        <section className="max-w-7xl mx-auto px-6 mb-16">
+          <Link to={newsData[0].to} className="block group">
+            <div className="bg-[#f5f3ff] rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[380px] transition group-hover:shadow-lg">
+              <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center space-y-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-1 h-3.5 bg-yellow-400 inline-block"></span>
-                  <span className="text-xs font-bold text-gray-900">{newsData[1].category}</span>
+                  <span className="w-3.5 h-3.5 bg-[#FF00FF] inline-block"></span>
+                  <span className="text-xs font-bold text-gray-900">{t(newsData[0].category)}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-purple-700 transition">
-                  {newsData[1].title}
-                </h3>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  {newsData[1].desc}
+                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight group-hover:text-purple-700 transition">
+                  {t(newsData[0].title)}
+                </h2>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  {t(newsData[0].desc)}
                 </p>
-                <p className="text-[11px] text-gray-400 pt-1">{newsData[1].date}</p>
+                <p className="text-[11px] text-gray-400 pt-1">{newsData[0].date}</p>
               </div>
-            </Link>
+              <div className="lg:col-span-7 relative bg-purple-400 overflow-hidden flex items-end justify-center">
+                <div className="absolute top-4 left-4 w-6 h-6 border-t-4 border-l-4 border-pink-500"></div>
+                <img
+                  src={newsData[0].image}
+                  alt="Back to school"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                />
+              </div>
+            </div>
+          </Link>
+        </section>
+
+        {/* WATERMARK: "Բաց մի թող" */}
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-[150px] font-black text-gray-100 select-none pointer-events-none leading-none -mb-2">
+            {t('Բաց մի թող')}
           </div>
 
-          {/* Right 2x2 Small Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {newsData.slice(2, 6).map((item) => (
-              <Link key={item.id} to={item.to} className="flex flex-col justify-between group cursor-pointer">
+          {/* 5. MAIN GRID SECTION */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10 pt-6">
+            {/* Left Large News Card */}
+            <div className="lg:col-span-5 flex flex-col">
+              <Link to={newsData[1].to} className="group block">
+                <div className="relative mb-9 overflow-hidden rounded-xl">
+                  <div className="absolute -left-5 -top-3 w-20 h-20 bg-yellow-400 -z-10"></div>
+                  <img src={newsData[1].image} alt={newsData[1].title} className="w-full h-auto object-cover rounded-xl group-hover:scale-105 transition duration-300" />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1 h-3.5 bg-yellow-400 inline-block"></span>
+                    <span className="text-xs font-bold text-gray-900">{t(newsData[1].category)}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-purple-700 transition">
+                    {t(newsData[1].title)}
+                  </h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    {t(newsData[1].desc)}
+                  </p>
+                  <p className="text-[11px] text-gray-400 pt-1">{newsData[1].date}</p>
+                </div>
+              </Link>
+            </div>
+
+            {/* Right 2x2 Small Grid */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {newsData.slice(2, 6).map((item) => (
+                <Link key={item.id} to={item.to} className="flex flex-col justify-between group cursor-pointer">
+                  <div>
+                    <div className="overflow-hidden rounded-xl mb-3">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-40 object-cover group-hover:scale-105 transition duration-300 rounded-xl"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`w-1 h-3.5 ${item.categoryColor}`}></span>
+                      <span className="text-xs font-bold text-gray-800">{t(item.category)}</span>
+                    </div>
+                    <h4 className="font-bold text-sm text-gray-900 line-clamp-2 leading-snug group-hover:text-purple-700 transition">
+                      {t(item.title)}
+                    </h4>
+                  </div>
+                  <p className="text-[11px] text-gray-400 mt-2">{item.date}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 6. MIDDLE FULL BANNER */}
+        <section className="max-w-7xl mx-auto px-1 my-20 relative">
+          <div className="text-[150px] font-black text-gray-100 select-none pointer-events-none leading-none -mb-1 ml-8">
+            {t('Կարևոր')}
+          </div>
+
+          <Link to={newsData[6].to} className="block group">
+            <div className="bg-[#faf8ff] rounded-[32px] p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 transition group-hover:shadow-md">
+              <div className="lg:col-span-6 relative">
+                <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-lime-400 z-10"></div>
+                <div className="rounded-2xl overflow-hidden">
+                  <img
+                    src={newsData[6].image}
+                    alt={newsData[6].title}
+                    className="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition duration-300"
+                  />
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 flex flex-col justify-center space-y-5 lg:pl-6">
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 bg-lime-400 inline-block"></span>
+                  <span className="text-xs font-bold text-gray-900">{t(newsData[6].category)}</span>
+                </div>
+
+                <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight group-hover:text-purple-700 transition">
+                  {t(newsData[6].title)}
+                </h2>
+
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">
+                  {t(newsData[6].desc)}
+                </p>
+
+                <p className="text-[11px] text-gray-400 pt-2">{newsData[6].date}</p>
+              </div>
+            </div>
+          </Link>
+        </section>
+
+        {/* 7. BOTTOM CARDS */}
+        <section className="max-w-7xl mx-auto px-6 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {newsData.slice(7, 10).map((item) => (
+              <Link key={item.id} to={item.to} className="group cursor-pointer flex flex-col justify-between">
                 <div>
                   <div className="overflow-hidden rounded-xl mb-3">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-40 object-cover group-hover:scale-105 transition duration-300 rounded-xl"
+                      className="w-full h-48 object-cover group-hover:scale-105 transition duration-300 rounded-xl"
                     />
                   </div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className={`w-1 h-3.5 ${item.categoryColor}`}></span>
-                    <span className="text-xs font-bold text-gray-800">{item.category}</span>
+                    <span className="w-1 h-3.5 bg-[#6b21a8] inline-block"></span>
+                    <span className="text-xs font-bold text-gray-900">{t(item.category)}</span>
                   </div>
-                  <h4 className="font-bold text-sm text-gray-900 line-clamp-2 leading-snug group-hover:text-purple-700 transition">
-                    {item.title}
+                  <h4 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition">
+                    {t(item.title)}
                   </h4>
                 </div>
                 <p className="text-[11px] text-gray-400 mt-2">{item.date}</p>
               </Link>
             ))}
           </div>
-        </div>
-      </div>
+        </section>
 
-      {/* 6. MIDDLE FULL BANNER */}
-      <section className="max-w-7xl mx-auto px-1 my-20 relative">
-        {/* WATERMARK: "Կարևոր" */}
-        <div className="text-[150px] font-black text-gray-100 select-none pointer-events-none leading-none -mb-1 ml-8">
-          Կարևոր
-        </div>
-
-        <Link to={newsData[6].to} className="block group">
-          <div className="bg-[#faf8ff] rounded-[32px] p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 transition group-hover:shadow-md">
-            {/* Left Image Side */}
-            <div className="lg:col-span-6 relative">
-              <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-lime-400 z-10"></div>
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src={newsData[6].image}
-                  alt={newsData[6].title}
-                  className="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition duration-300"
-                />
+        {/* 8. FOOTER */}
+        <footer className="w-full bg-[#fcfbfe] border-t border-gray-100 pt-12 pb-8 text-xs text-gray-600">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-1 font-black text-xl tracking-tight text-gray-800">
+                <span className="text-gray-900">evoca</span>
+                <span className="text-[#6b21a8]">BANK</span>
               </div>
-            </div>
-
-            {/* Right Text Side */}
-            <div className="lg:col-span-6 flex flex-col justify-center space-y-5 lg:pl-6">
-              <div className="flex items-center gap-2">
-                <span className="w-3.5 h-3.5 bg-lime-400 inline-block"></span>
-                <span className="text-xs font-bold text-gray-900">{newsData[6].category}</span>
-              </div>
-
-              <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight group-hover:text-purple-700 transition">
-                {newsData[6].title}
-              </h2>
-
-              <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">
-                {newsData[6].desc}
+              <p className="text-gray-500 font-medium leading-relaxed">
+                {t('ք. Երևան, 0010,')} <br />
+                {t('Հանրապետության 44/2')}
               </p>
-
-              <p className="text-[11px] text-gray-400 pt-2">{newsData[6].date}</p>
-            </div>
-          </div>
-        </Link>
-      </section>
-
-      {/* 7. BOTTOM CARDS */}
-      <section className="max-w-7xl mx-auto px-6 mb-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {newsData.slice(7, 10).map((item) => (
-            <Link key={item.id} to={item.to} className="group cursor-pointer flex flex-col justify-between">
-              <div>
-                <div className="overflow-hidden rounded-xl mb-3">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition duration-300 rounded-xl"
-                  />
-                </div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="w-1 h-3.5 bg-[#6b21a8] inline-block"></span>
-                  <span className="text-xs font-bold text-gray-900">{item.category}</span>
-                </div>
-                <h4 className="font-bold text-sm text-gray-900 leading-snug group-hover:text-purple-700 transition">
-                  {item.title}
-                </h4>
+              <div className="pt-2 text-[11px] text-gray-400 space-y-1">
+                <p className="font-semibold text-gray-500">{t('Evocabank-ը վերահսկվում է Հայաստանի Հանրապետության Կենտրոնական բանկի կողմից')}</p>
+                <p>1990 - 2026, © {t('ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ')}</p>
               </div>
-              <p className="text-[11px] text-gray-400 mt-2">{item.date}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* 8. FOOTER */}
-      <footer className="w-full bg-[#fcfbfe] border-t border-gray-100 pt-12 pb-8 text-xs text-gray-600">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Brand Info */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-1 font-black text-xl tracking-tight text-gray-800">
-              <span className="text-gray-900">evoca</span>
-              <span className="text-[#6b21a8]">BANK</span>
             </div>
-            <p className="text-gray-500 font-medium leading-relaxed">
-              ք. Երևան, 0010, <br />
-              Հանրապետության 44/2
+
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4 text-sm">{t('Բանկի մասին')}</h3>
+              <ul className="space-y-2.5 font-medium text-gray-600">
+                <li><Link to="/about" className="hover:text-purple-700 transition">{t('Մեր մասին')}</Link></li>
+                <li><Link to="/management" className="hover:text-purple-700 transition">{t('Ղեկավարություն')}</Link></li>
+                <li><Link to="/shareholders" className="hover:text-purple-700 transition">{t('Բաժնետերեր')}</Link></li>
+                <li><Link to="/reports" className="hover:text-purple-700 transition">{t('Հաշվետվություններ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Իրավական ակտեր')}</Link></li>
+                <li><Link to="/rates" className="hover:text-purple-700 transition">{t('Սակագներ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Օտարվող գույք')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Կառուցապատողներ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Գործընկեր ավտոսրահներ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Սակագների արխիվ')}</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4 text-sm">{t('Օգտակար հղումներ')}</h3>
+              <ul className="space-y-2.5 font-medium text-gray-600">
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Հաճախորդի իրավունքները (Բողոքի ներկայացման կանոններ)')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Հաճախորդի ռեզիդենտության չափանիշներ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Կարգավորում')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Գաղտնիության քաղաքականություն')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Ֆին. հաշտարար')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Ֆինանսական հանցագործությունների կանխարգելում')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Հղումներ Բանկի քարտապանների համար')}</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4 text-sm">{t('Այլ հղումներ')}</h3>
+              <ul className="space-y-2.5 font-medium text-gray-600">
+                <li><Link to="#" className="hover:text-purple-700 transition">EvocaONLINE</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Պահատուփեր')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Հաճախ տրվող հարցեր')}</Link></li>
+                <li><Link to="/announcements" className="hover:text-purple-700 transition">{t('Հայտարարություններ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">Dibrary</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Բուկլետներ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Հետադարձ կապ')}</Link></li>
+                <li><Link to="#" className="hover:text-purple-700 transition">{t('Կայքի քարտեզ')}</Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 text-purple-800 font-bold">
+                <a href="#" className="hover:underline">f</a>
+                <a href="#" className="hover:underline">in</a>
+                <a href="#" className="hover:underline">yt</a>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <a href="#" className="inline-block">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" className="h-8" />
+                </a>
+                <a href="#" className="inline-block">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-8" />
+                </a>
+              </div>
+
+              <div className="space-y-2 text-xs">
+                <a href="#" className="text-[#6b21a8] font-bold block hover:underline">
+                  {t('Բանկի հասցեները և աշխատաժամերը')}
+                </a>
+                <a href="#" className="text-[#6b21a8] font-bold block hover:underline">
+                  {t('Կապ մեզ հետ')}
+                </a>
+                <p className="text-[#6b21a8] font-black text-sm pt-1">+374 10 605555</p>
+                <p className="text-[#6b21a8] font-black text-sm">8444</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 border-t border-gray-200/60 pt-6 text-[10px] text-gray-400 leading-normal">
+            <p>
+              {t('Հարգելի\' այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանություն...')}
             </p>
-            <div className="pt-2 text-[11px] text-gray-400 space-y-1">
-              <p className="font-semibold text-gray-500">Evocabank-ը վերահսկվում է Հայաստանի Հանրապետության Կենտրոնական բանկի կողմից</p>
-              <p>1990 - 2026, © ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ</p>
-            </div>
           </div>
+        </footer>
 
-          {/* Բանկի մասին */}
-          <div>
-            <h3 className="font-bold text-gray-900 mb-4 text-sm">Բանկի մասին</h3>
-            <ul className="space-y-2.5 font-medium text-gray-600">
-              <li><a href="#" className="hover:text-purple-700 transition">Մեր մասին</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Ղեկավարություն</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Բաժնետերեր</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հաշվետվություններ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Իրավական ակտեր</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Սակագներ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Օտարվող գույք</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Կառուցապատողներ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Գործընկեր ավտոսրահներ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Սակագների արխիվ</a></li>
-            </ul>
-          </div>
-
-          {/* Օգտակար հղումներ */}
-          <div>
-            <h3 className="font-bold text-gray-900 mb-4 text-sm">Օգտակար հղումներ</h3>
-            <ul className="space-y-2.5 font-medium text-gray-600">
-              <li><a href="#" className="hover:text-purple-700 transition">Հաճախորդի իրավունքները (Բողոքի ներկայացման կանոններ)</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հաճախորդի ռեզիդենտության չափանիշներ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Կարգավորում</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Գաղտնիության քաղաքականություն</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Ֆին. հաշտարար</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Ֆինանսական հանցագործությունների կանխարգելում</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հղումներ Բանկի քարտապանների համար</a></li>
-            </ul>
-          </div>
-
-          {/* Այլ հղումներ */}
-          <div>
-            <h3 className="font-bold text-gray-900 mb-4 text-sm">Այլ հղումներ</h3>
-            <ul className="space-y-2.5 font-medium text-gray-600">
-              <li><a href="#" className="hover:text-purple-700 transition">EvocaONLINE</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Պահատուփեր</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հաճախ տրվող հարցեր</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հայտարարություններ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Dibrary</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Բուկլետներ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Հետադարձ կապ</a></li>
-              <li><a href="#" className="hover:text-purple-700 transition">Կայքի քարտեզ</a></li>
-            </ul>
-          </div>
-
-          {/* Apps & Contacts */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3 text-purple-800 font-bold">
-              <a href="#" className="hover:underline">f</a>
-              <a href="#" className="hover:underline">in</a>
-              <a href="#" className="hover:underline">yt</a>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <a href="#" className="inline-block">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" className="h-8" />
-              </a>
-              <a href="#" className="inline-block">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-8" />
-              </a>
-            </div>
-
-            <div className="space-y-2 text-xs">
-              <a href="#" className="text-[#6b21a8] font-bold block hover:underline">
-                Բանկի հասցեները և աշխատաժամերը
-              </a>
-              <a href="#" className="text-[#6b21a8] font-bold block hover:underline">
-                Կապ մեզ հետ
-              </a>
-              <p className="text-[#6b21a8] font-black text-sm pt-1">+374 10 605555</p>
-              <p className="text-[#6b21a8] font-black text-sm">8444</p>
-            </div>
-          </div>
+        {/* FLOATING BUTTONS */}
+        <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+          <button className="w-10 h-10 rounded-full bg-purple-200 text-[#6b21a8] flex items-center justify-center shadow-lg hover:scale-110 transition">
+            <Phone className="w-5 h-5" />
+          </button>
+          <button className="bg-[#6b21a8] text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-xl hover:bg-purple-900 transition flex items-center gap-2">
+            {t('Գրեք մեզ, մենք օնլայն ենք !')}
+          </button>
         </div>
-
-        {/* Disclaimer Text */}
-        <div className="max-w-7xl mx-auto px-6 border-t border-gray-200/60 pt-6 text-[10px] text-gray-400 leading-normal">
-          <p>
-            Հարգելի' այցելու, Կայքի որևէ տեղեկատվության վերաբերյալ տարբեր լեզուներում անհամապատասխանություն, ինչպես նաև ռուսերեն և անգլերեն լեզուներում ոչ ամբողջական նյութ տեսնելու դեպքում խնդրում ենք առաջնորդվել հայերեն տարբերակով: "Էվոկաբանկ" ԲԲԸ-ն պատասխանատվություն չի կրում իր ինտերնետային կայքում հղված այլ անձանց ինտերնետային կայքերի բովանդակության ստուգության և արժանահավատության, այնտեղ տեղադրված գովազդների, ինչպես նաև երրորդ անձանց կողմից այդ կայքերում տեղադրված տեղեկատվության օգտագործման հնարավոր հետևանքների համար:
-          </p>
-        </div>
-      </footer>
-
-      {/* FLOATING BUTTONS */}
-      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
-        <button className="w-10 h-10 rounded-full bg-purple-200 text-[#6b21a8] flex items-center justify-center shadow-lg hover:scale-110 transition">
-          <Phone className="w-5 h-5" />
-        </button>
-        <button className="bg-[#6b21a8] text-white px-5 py-2.5 rounded-full font-bold text-xs shadow-xl hover:bg-purple-900 transition flex items-center gap-2">
-          Գրեք մեզ, մենք օնլայն ենք !
-        </button>
       </div>
-    </div>
+    </Tr>
   );
 }
