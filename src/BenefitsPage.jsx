@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import SubNav from "./SubNav";
 
 /* Եթե ունես hero-ի նկարի URL, դիր այստեղ (օր.՝ evoca.am-ի /images-cache/... հղումը) */
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_BenefitsPage_BENEFITS } from './sitePageData';
 const HERO_IMAGE = "https://www.evoca.am/images-cache/menu/1/16194612394395/1920x634.jpg";
 
 /* ---------- Icons (inline SVG, մանուշակագույն 3D ոճին մոտ) ---------- */
@@ -98,26 +100,7 @@ const icons = {
   ),
 };
 
-const BENEFITS = [
-  { icon: "health", text: "Առողջության ապահովագրություն" },
-  { icon: "travel", text: "Ճամփորդական ապահովագրություն" },
-  {
-    icon: "bank",
-    text: "Evocabank-ի ծառայությունների արտոնյալ պայմաններ, ապահովագրական ծառայությունների զեղչեր",
-  },
-  { icon: "discount", text: "Կորպորատիվ զեղչեր" },
-  { icon: "bonus", text: "Տոնական և տարեվերջյան բոնուսներ" },
-  {
-    icon: "gift",
-    text: "Պարգևատրումներ ծննդյան օրերին, ամուսնանալիս և երեխա ունենալիս",
-  },
-  { icon: "dayoff", text: "Days-off" },
-  { icon: "sport", text: "Սպորտային փաթեթ" },
-  {
-    icon: "education",
-    text: "Շարունակական կրթության և մասնագիտական զարգացման լայն հնարավորություն",
-  },
-];
+
 
 /* ---------- Form ---------- */
 const inputCls =
@@ -223,6 +206,8 @@ function ApplyForm() {
 
 /* ---------- Page ---------- */
 export default function BenefitsPage() {
+  const BENEFITS = useFirebasePublicData('siteContent/pageData/BenefitsPage/BENEFITS', pageData_BenefitsPage_BENEFITS);
+
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <header className="bg-white">

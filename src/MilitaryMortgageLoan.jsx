@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // «Այլ վարկեր» ցանկը
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_MilitaryMortgageLoan_termsList } from './sitePageData';
 const otherLoans = [
    {
     id: 1,
@@ -206,18 +208,7 @@ const MilitaryMortgageLoan = () => {
   const [activeTab, setActiveTab] = useState('about');
 
   // Պայմանների տվյալներ
-  const termsList = [
-    { id: 1, title: 'Ովքեր կարող են դիմել', content: '18 – 65 տարեկան Ծրագրի շահառու՝ ՀՀ ՊՆ համակարգի սպայական և ավագ ենթասպայական կազմերի պայմանագրային զինծառայողներ, ՀՀ Ազգային անվտանգության մարմինների և ՀՀ Պետական պահպանության մարմնի ծառայողներ, ում 65 տարեկանը չի բոլորի վարկի սպասարկման ողջ ընթացքում կամ առկա է վերոնշյալ պահանջներին բավարարող շահառուի ընտանիքի անդամ համավարկառու' },
-    { id: 2, title: 'Վարկավորման գումար', content: '2,000,000- 25,650,000 ՀՀ դրամ' },
-    { id: 3, title: 'Տարեկան անվանական տոկոսադրույքներ', content: '11%' },
-    { id: 4, title: 'Պետության կողմից սուբսիդավորվող տոկոսադրույք', content: '5%' },
-    { id: 5, title: 'Տարեկան փաստացի տոկոսադրույք', content: '11.9%' },
-    { id: 6, title: 'Վարկի մարման ժամկետը', content: '120 - 180 ամիս' },
-      { id: 7, title: 'Կանխավճարի և/կամ կառուցապատման գծով աջակցության չափ', content: '2,500,000 ՀՀ դրամ` միանվագՎարկի մարման ձևը' },
-        { id: 8, title: 'Վարկի մարման ձևը', content: 'Ամսական անուիտետային' },
-           { id: 9, title: 'Վարկի վերադարձելիության ապահովման միջոց', content: 'Ձեռք բերվող անշարժ գույքը/գնման իրավունքը: Կառուցապատման դեպքում հողամասը/կիսակառույցը որտեղ իրականացվում է անշարժ գույքի  կառուցումը, անհրաժեշտության դեպքում` լրացուցիչ բնակելի անշարժ գույք:' },
-      { id: 10, title: 'Անշարժ գույքի ձեռքբերման և գնահատված շուկայական առավելագույն արժեքը', content: '55,000,000 ՀՀ դրամ /միայն անշարժ գույքի ձեռքբերման դեպքում/' },
-        ];
+  const termsList = useFirebasePublicData('siteContent/pageData/MilitaryMortgageLoan/termsList', pageData_MilitaryMortgageLoan_termsList);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">

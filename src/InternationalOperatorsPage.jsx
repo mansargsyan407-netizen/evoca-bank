@@ -1,33 +1,10 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_InternationalOperatorsPage_operators } from './sitePageData';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function InternationalOperatorsPage() {
-  const operators = [
-    {
-      id: 'goodline',
-      title: 'Goodline',
-      icon: 'https://resource.evoca.am/images/WebPayment/goodline.png',
-      link: '#',
-    },
-    {
-      id: 'yota',
-      title: 'Yota',
-      icon: 'https://resource.evoca.am/images/WebPayment/yota.png',
-      link: '#',
-    },
-    {
-      id: 'georgian',
-      title: 'Վրացական',
-      icon: 'https://resource.evoca.am/images/WebPayment/georgian.png',
-      link: '#',
-    },
-    {
-      id: 'russian',
-      title: 'Ռուսական',
-      icon: 'https://resource.evoca.am/images/WebPayment/russian.png',
-      link: '#',
-    },
-  ];
+  const operators = useFirebasePublicData('siteContent/pageData/InternationalOperatorsPage/operators', pageData_InternationalOperatorsPage_operators);;
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">

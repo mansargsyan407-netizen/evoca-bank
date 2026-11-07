@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // «Այլ վարկեր» ցանկը
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_VisaInfiniteLoan_termsList } from './sitePageData';
 const otherLoans = [
   {
     id: 1,
@@ -206,18 +208,7 @@ const VisaInfiniteLoan = () => {
   const [activeTab, setActiveTab] = useState('about');
 
   // Պայմանների տվյալներ
-  const termsList = [
-    { id: 1, title: 'Ովքեր կարող են դիմել', content: '21 - 65 տարեկան ՀՀ ռեզիդենտ ֆիզիկական անձինք, ովքեր հանդիսանում են բանկի Visa Infinite քարտապան:' },
-    { id: 2, title: 'Արժույթը', content: 'ՀՀ դրամ' },
-    { id: 3, title: 'Սահմանաչափ', content: '1,000,000 - 10,000,000' },
-    { id: 4, title: 'Սահմանաչափի տեսակ', content: 'Վճարման արտոնյալ ժամանակահատվածով վերականգնվող վարկային սահմանաչափ' },
-    { id: 5, title: 'Սահմանաչափի տրամադրման եղանակ', content: 'Վարկային սահմանաչափը տրամադրվում է Բանկի Visa Infinite վճարային քարտերի միջոցով' },
-    { id: 6, title: 'Անվանական տոկոսադրույք', content: '15%' },
-    { id: 7, title: 'Տարեկան փաստացի տոկոսադրույք', content: '16.1%' },
-    { id: 8, title: 'Արտոնյալ ժամանակահատված', content: ' Մինչև 45  օր' },
-    { id: 9, title: 'Մարման ժամկետ', content: '12-36 ամիս' },
-    { id: 10, title: 'Քաղվածքի օր', content: 'Մինչև յուրաքանչյուր ամսվա 10-ը' },
-  ];
+  const termsList = useFirebasePublicData('siteContent/pageData/VisaInfiniteLoan/termsList', pageData_VisaInfiniteLoan_termsList);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">

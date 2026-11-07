@@ -24,6 +24,8 @@ import {
 import { Link } from 'react-router-dom';
 
 // Small inline social icons (lucide-react no longer ships brand/logo icons)
+import { useFirebasePublicData } from './useFirebasePublicData';
+
 const FacebookIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} {...props}>
     <path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-.95.27-1.6 1.63-1.6h1.74V3.5c-.3-.04-1.33-.13-2.53-.13-2.5 0-4.22 1.53-4.22 4.34v2.42H7.3v3.3h2.85V22h3.35Z" />
@@ -44,13 +46,13 @@ const InstagramIcon = (props) => (
   </svg>
 );
 
-const stats = [
+const statsFirebaseFallback = [
   { value: "60 ամիս", label: "Ժամկետ" },
   { value: "30 մլն Դ", label: "Սահմանաչափը կամ համարժեք արտարժույթ" },
   { value: "9.22%-17.89%", label: "Տարեկան տոկոսադրույք" },
 ];
 
-const purposes = [
+const purposesFirebaseFallback = [
   "Շրջանառու միջոցների համալրման,",
   "Հիմնական միջոցների ձեռքբերման,",
   "Ընթացիկ ծախսերի ֆինանսավորման,",
@@ -58,7 +60,7 @@ const purposes = [
   "և այլ բիզնես նպատակների համար:",
 ];
 
-const terms = [
+const termsFirebaseFallback = [
   { label: "ԱՌԱՆՑ", rest: "ֆինանսական վերլուծության," },
   { label: "ԱՌԱՆՑ", rest: "գրավի," },
   { label: "ԱՌԱՆՑ", rest: "հայտի ուսումնասիրության վճարի," },
@@ -66,7 +68,7 @@ const terms = [
 ];
 
 // Other loans shown in the "Այլ վարկեր" carousel (kept in sync with BussnesPage.jsx)
-const otherLoans = [
+const otherLoansFirebaseFallback = [
   {
     icon: Zap,
     img: "https://www.evoca.am/images-cache/loans/1/16148706367372/415x261.jpg",
@@ -148,6 +150,11 @@ const otherLoans = [
 ];
 
 export default function BussnesLosn1() {
+  const stats = useFirebasePublicData('siteContent/pageData/BussnesLosn1/stats', statsFirebaseFallback);
+  const purposes = useFirebasePublicData('siteContent/pageData/BussnesLosn1/purposes', purposesFirebaseFallback);
+  const terms = useFirebasePublicData('siteContent/pageData/BussnesLosn1/terms', termsFirebaseFallback);
+  const otherLoans = useFirebasePublicData('siteContent/pageData/BussnesLosn1/otherLoans', otherLoansFirebaseFallback);
+
   const [activeTab, setActiveTab] = useState("about");
   const scrollerRef = useRef(null);
 

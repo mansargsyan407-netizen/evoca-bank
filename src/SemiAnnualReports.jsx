@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_SemiAnnualReports_subTabs, pageData_SemiAnnualReports_reports } from './sitePageData';
 const SemiAnnualReports = () => {
   const [activeSubTab, setActiveSubTab] = useState('semi-annual');
 
-  const subTabs = [
-    { id: 'audit', label: 'Աուդիտորական եզրակացություն', link: '/reports' },
-    { id: 'financial', label: 'Ֆինանսական հաշվետվություններ', link: '/financial-reports' },
-    { id: 'investors', label: 'Ներդրողների համար', link: '/investors' },
-    { id: 'semi-annual', label: 'Կիսամյակային հաշվետվություն', link: '/semi-annual-reports' },
-    { id: 'annual', label: 'Տարեկան հաշվետվություն', link: '/annual-reports' },
-  ];
+  const subTabs = useFirebasePublicData('siteContent/pageData/SemiAnnualReports/subTabs', pageData_SemiAnnualReports_subTabs);
 
   // Նկարում պատկերված տարիների ցուցակը
-  const reports = [
-    { id: 1, year: 2025, title: 'Կիսամյակային հաշվետվություն (2025 առաջին կիսամյակ)' },
-    { id: 2, year: 2024, title: 'Կիսամյակային հաշվետվություն (2024 առաջին կիսամյակ)' },
-    { id: 3, year: 2023, title: 'Կիսամյակային հաշվետվություն (2023 առաջին կիսամյակ)' },
-    { id: 4, year: 2022, title: 'Կիսամյակային հաշվետվություն (2022 առաջին կիսամյակ)' },
-    { id: 5, year: 2021, title: 'Կիսամյակային հաշվետվություն (2021 առաջին կիսամյակ)' },
-  ];
+  const reports = useFirebasePublicData('siteContent/pageData/SemiAnnualReports/reports', pageData_SemiAnnualReports_reports);
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

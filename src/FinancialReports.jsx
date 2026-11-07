@@ -1,37 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_FinancialReports_financialData, pageData_FinancialReports_subTabs } from './sitePageData';
 const FinancialReports = () => {
   const [activeSubTab, setActiveSubTab] = useState('financial');
 
   // Տարիների տվյալների ցուցակ 2026-ից մինչև 2010
-  const financialData = [
-    { year: 2026, quarters: ['1-2026', '2-2026'], hasAnnual: false },
-    { year: 2025, quarters: ['1-2025', '2-2025', '3-2025', '4-2025'], hasAnnual: false },
-    { year: 2024, quarters: ['1-2024', '2-2024', '3-2024', '4-2024'], hasAnnual: false },
-    { year: 2023, quarters: ['1-2023', '2-2023', '3-2023', '4-2023'], hasAnnual: false },
-    { year: 2022, quarters: ['1-2022', '2-2022', '3-2022', '4-2022'], hasAnnual: false },
-    { year: 2021, quarters: ['1-2021', '2-2021', '3-2021', '4-2021'], hasAnnual: false },
-    { year: 2020, quarters: ['1-2020', '2-2020', '3-2020', '4-2020'], hasAnnual: false },
-    { year: 2019, quarters: ['1-2019', '2-2019', '3-2019', '4-2019'], hasAnnual: false },
-    { year: 2018, quarters: ['1-2018', '2-2018', '3-2018', '4-2018'], hasAnnual: false },
-    { year: 2017, quarters: ['1-2017', '2-2017', '3-2017', '4-2017'], hasAnnual: false },
-    { year: 2016, quarters: ['1-2016', '2-2016', '3-2016', '4-2016'], hasAnnual: true },
-    { year: 2015, quarters: ['1-2015', '2-2015', '3-2015', '4-2015'], hasAnnual: true },
-    { year: 2014, quarters: ['1-2014', '2-2014', '3-2014', '4-2014'], hasAnnual: false },
-    { year: 2013, quarters: ['1-2013', '2-2013', '3-2013', '4-2013'], hasAnnual: false },
-    { year: 2012, quarters: ['1-2012', '2-2012', '3-2012', '4-2012'], hasAnnual: true },
-    { year: 2011, quarters: ['1-2011', '2-2011', '3-2011', '4-2011'], hasAnnual: true },
-    { year: 2010, quarters: ['1-2010', '2-2010', '3-2010', '4-2010'], hasAnnual: true },
-  ];
+  const financialData = useFirebasePublicData('siteContent/pageData/FinancialReports/financialData', pageData_FinancialReports_financialData);
 
-  const subTabs = [
-    { id: 'audit', label: 'Աուդիտորական եզրակացություն', link: '/reports' },
-    { id: 'financial', label: 'Ֆինանսական հաշվետվություններ', link: '/financial-reports' },
-    { id: 'investors', label: 'Ներդրողների համար', link: '/investors' },
-    { id: 'semi-annual', label: 'Կիսամյակային հաշվետվություն', link: '/semi-annual-reports' },
-    { id: 'annual', label: 'Տարեկան հաշվետվություն', link: '/annual-reports' },
-  ];
+  const subTabs = useFirebasePublicData('siteContent/pageData/FinancialReports/subTabs', pageData_FinancialReports_subTabs);
 
   return (
     <div className="bg-gray-50 min-h-screen text-gray-800 font-sans pb-16">

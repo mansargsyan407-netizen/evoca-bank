@@ -2,7 +2,10 @@ import { Link, useParams } from "react-router-dom";
 
 /* ------------------------------ DATA ------------------------------ */
 
-const post = {
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
+const postFirebaseFallback = {
   category: "Կենսակերպ",
   title: "Monthly Recap",
   description:
@@ -11,11 +14,11 @@ const post = {
   image: "https://www.evoca.am/images-cache/blogs/1/17683779856926/780x585.png",
 };
 
-const intro = [
+const introFirebaseFallback = [
   "Մենք հաճախ շտապում ենք առաջ նոր նպատակներ, նոր պլաններ, նոր ամիսներ: Բայց արդյո՞ք կանգ ենք առնում և հարցնում ինքներս մեզ, «Ի՞նչ տվեց ինձ այս ամիսը»:",
 ];
 
-const sections = [
+const sectionsFirebaseFallback = [
   {
     heading: "Ի՞նչ է Monthly Recap-ը",
     paragraphs: [
@@ -42,7 +45,7 @@ const sections = [
   },
 ];
 
-const questions = [
+const questionsFirebaseFallback = [
   {
     number: "1",
     title: "Ի՞նչ էր ինձ մոտիվացնում այս ամիս",
@@ -93,12 +96,12 @@ const questions = [
   },
 ];
 
-const closingParagraphs = [
+const closingParagraphsFirebaseFallback = [
   "Monthly Recap-ը ոչ հաշվետվություն է, ոչ պարտադրություն և ոչ էլ քննություն:",
   "Ամսվա վերջում մի քանի րոպե հատկացնելով այս հարցերին դու ոչ միայն ամփոփում ես նախորդ ամիսը, այլ նաև ձևավորում ես հաջորդ ամսվա որակը:",
 ];
 
-const relatedPosts = [
+const relatedPostsFirebaseFallback = [
   {
     title: "Habit Tracker",
     date: "05.01.2026",
@@ -164,6 +167,14 @@ function QuestionBlock({ q }) {
 /* ------------------------------ PAGE ------------------------------ */
 
 export default function BlogPost() {
+  const post = useFirebasePublicData('siteContent/pageData/BlogPost/post', postFirebaseFallback);
+  const intro = useFirebasePublicData('siteContent/pageData/BlogPost/intro', introFirebaseFallback);
+
+  const sections = useFirebasePublicData('siteContent/pageData/BlogPost/sections', sectionsFirebaseFallback);
+  const questions = useFirebasePublicData('siteContent/pageData/BlogPost/questions', questionsFirebaseFallback);
+  const closingParagraphs = useFirebasePublicData('siteContent/pageData/BlogPost/closingParagraphs', closingParagraphsFirebaseFallback);
+  const relatedPosts = useFirebasePublicData('siteContent/pageData/BlogPost/relatedPosts', relatedPostsFirebaseFallback);
+
   const { slug } = useParams();
 
   return (

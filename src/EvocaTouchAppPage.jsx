@@ -1,32 +1,12 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_EvocaTouchAppPage_otherNews } from './sitePageData';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function EvocaTouchAppPage() {
   const navigate = useNavigate();
 
-  const otherNews = [
-    {
-      id: 1,
-      title: "Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով",
-      date: "21.08.2026",
-      image: "https://www.evoca.am/images-cache/news/1/17873217684586/428x321.png",
-      link: "/news/back-to-school"
-    },
-    {
-      id: 2,
-      title: "Evocabank-ն ու Wilco-ն ներկայացնում են բացառիկ համատեղ քարտ",
-      date: "15.06.2026",
-      image: "https://www.evoca.am/images-cache/news/1/17815163976713/428x321.png",
-      link: "/news/evocabank-wilco"
-    },
-    {
-      id: 3,
-      title: "Վճարիր Evoca Mastercard-ով Adidas Armenia-ում և ստացիր 10% զեղչ",
-      date: "03.06.2026",
-      image: "https://www.evoca.am/images-cache/news/1/17804748057663/428x321.png",
-      link: "/news/adidas-armenia"
-    }
-  ];
+  const otherNews = useFirebasePublicData('siteContent/pageData/EvocaTouchAppPage/otherNews', pageData_EvocaTouchAppPage_otherNews);;
 
   return (
     <div className="w-full bg-[#fcfaff] min-h-screen py-8 px-4 sm:px-8 md:px-16 flex flex-col justify-between">

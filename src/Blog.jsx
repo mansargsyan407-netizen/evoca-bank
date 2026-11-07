@@ -4,117 +4,11 @@ import { Tr, useLang } from './i18n';
 
 /* ------------------------------ DATA ------------------------------ */
 
-const categories = ["Բիզնես", "Կենսակերպ", "Ներդրումներ"];
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_Blog_categories, pageData_Blog_allPosts } from './sitePageData';
 
-const allPosts = [
-  // Կենսակերպ
-  {
-    id: 1,
-    category: "Կենսակերպ",
-    title: "Monthly Recap",
-    description:
-      "Monthly Recap-ն օգնում է ամփոփել ամիսը, հասկանալ ձեռքբերումները, բաց թողածները և փոքր քայլերով կատարել մեծ ու արդյունավետ փոփոխություններ:",
-    date: "05.01.2026",
-    image: "https://www.evoca.am/images-cache/blogs/1/17683779856926/780x585.png",
-    href: "/blog/monthly-recap",
-    isTop: true,
-  },
-  {
-    id: 2,
-    category: "Կենսակերպ",
-    title: "Ամանորի քո Evocaգույն երազանքը",
-    description:
-      "Ավելի հաճելի է նվեր նվիրե՛լ, թե՛ ստանալ: Ինչպե՛ս երազանք պահել Ամանորի գիշերը: Ո՞րն է ամենաթրենդային նվերի տարբերակը: Բոլոր պատասխանները կգտնես բլոգում:",
-    date: "21.12.2023",
-    image: "https://www.evoca.am/images-cache/blogs/1/1703162335976/780x585.png",
-    href: "/blog/new-year",
-    isBest: true,
-  },
-  {
-    id: 3,
-    category: "Կենսակերպ",
-    title: "2021-ը դարձել է կինո պրեմիերաների մրցավազք",
-    date: "01.02.2021",
-    image: "https://www.evoca.am/images-cache/blogs/1/16329119822114/438x328.jpg",
-    href: "/blog/movies-2021",
-  },
-  {
-    id: 4,
-    category: "Կենսակերպ",
-    title: "2021-ի ամենասպասված 21 սերիալները",
-    date: "18.01.2021",
-    image: "https://www.evoca.am/images-cache/blogs/1/16329974590876/438x328.png",
-    href: "/blog/series-2021",
-  },
-  {
-    id: 5,
-    category: "Կենսակերպ",
-    title: "Ապագայի ամենապահանջված մասնագիտությունները",
-    date: "22.06.2020",
-    image: "https://www.evoca.am/images-cache/blogs/1/16335957379/438x328.png",
-    href: "/blog/future-jobs",
-  },
-  {
-    id: 6,
-    category: "Կենսակերպ",
-    title: "Evoca-գույնի հոգեբանական նկարագիրը",
-    description: "Գույնը մարքեթինգային գործիք է: Այն ազդում է մարդու հոգեբանության վրա:",
-    date: "10.05.2020",
-    image: "https://www.evoca.am/images-cache/blogs/1/16336923273854/1440x650.png",
-    href: "/blog/evoca-color",
-    isMain: true,
-  },
-  {
-    id: 7,
-    category: "Կենսակերպ",
-    title: "Նայիր շուրջդ և տես, թե որքան ավելորդ իրեր կան",
-    date: "09.02.2022",
-    image: "https://www.evoca.am/images-cache/blogs/1/16443271105456/450x295.png",
-    href: "/blog/declutter",
-  },
 
-  // Ներդրումներ
-  {
-    id: 8,
-    category: "Ներդրումներ",
-    title: "Ներդրումների կարելիներն ու չի կարելիները",
-    description:
-      "Ներդրումներ կատարելիս՝ դժվար է կողմնորոշվել՝ որտեղի՞ց սկսել, ինչպե՞ս կայացնել որոշումներ: Այսօր կխոսենք ներդրումների կարելիների և չի կարելիների մասին:",
-    date: "23.04.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17138737784517/450x295.jpg",
-    href: "/blog/invest-dos-donts",
-  },
-  {
-    id: 9,
-    category: "Ներդրումներ",
-    title: "EvocaINVEST. ինչպե՞ս կատարել գործարքներ",
-    description:
-      "Այս բլոգում կներկայացնենք EvocaINVEST-ն, ինչպես նաև գործարքներ կնքելու համար առաջնային անհրաժեշտ գործիքներից օգտվելու քայլերը:",
-    date: "17.06.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17186317173483/616x462.jpg",
-    href: "/blog/evocainvest",
-  },
-  {
-    id: 10,
-    category: "Ներդրումներ",
-    title: "Փոքր քայլերով դեպի մեծ եկամուտներ",
-    date: "11.04.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17128187874533/450x295.jpg",
-    href: "/blog/small-steps",
-  },
 
-  // Բիզնես
-  {
-    id: 11,
-    category: "Բիզնես",
-    title: "Ինչպես սկսել բիզնես: Guide from A to Z",
-    description:
-      "Եթե ուզում եքունենալ այն, ինչը երբեք չեք ունեցել, սկսեք անել այն, ինչը երբեք չեք արել:",
-    date: "05.01.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/16691870758279/450x295.jpg",
-    href: "/blog/business-guide",
-  },
-];
 
 const updatedAt = "05/06/2026 16:43";
 
@@ -193,6 +87,9 @@ function SmallCard({ post }) {
 /* ------------------------------ MAIN PAGE ------------------------------ */
 
 export default function Blog() {
+  const categories = useFirebasePublicData('siteContent/pageData/Blog/categories', pageData_Blog_categories);
+  const allPosts = useFirebasePublicData('siteContent/pageData/Blog/allPosts', pageData_Blog_allPosts);
+
   const { t } = useLang();
   const [activeCategory, setActiveCategory] = useState(null);
   const [isArchive, setIsArchive] = useState(false);

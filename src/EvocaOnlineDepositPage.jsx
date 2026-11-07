@@ -20,6 +20,8 @@ import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_EvocaOnlineDepositPage_slidesData, pageData_EvocaOnlineDepositPage_depositData } from './sitePageData';
 export default function EvocaOnlineDepositPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("about");
@@ -28,30 +30,9 @@ export default function EvocaOnlineDepositPage() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const slidesData = [
-    {
-      id: 1,
-      title: "Ավանդ Evoca Online",
-      img: "https://www.evoca.am/images-cache/deposits/1/16133900122121/415x261.jpg",
-    },
-    {
-      id: 2,
-      title: "Դասական ավանդ",
-      img: "https://www.evoca.am/images-cache/deposits/1/1613390220029/415x261.jpg",
-    },
-    {
-      id: 3,
-      title: "Մանկական ավանդ",
-      img: "https://www.evoca.am/images-cache/deposits/1/16133900414285/415x261.jpg",
-    },
-  ];
+  const slidesData = useFirebasePublicData('siteContent/pageData/EvocaOnlineDepositPage/slidesData', pageData_EvocaOnlineDepositPage_slidesData);
 
-  const depositData = {
-    AMD: { symbol: "֏", amount: "100,000 ֏", rate: "10.75% ֏" },
-    USD: { symbol: "$", amount: "200 $", rate: "4.50% $" },
-    EUR: { symbol: "€", amount: "200 €", rate: "2.75% €" },
-    RUB: { symbol: "₽", amount: "15,000 ₽", rate: "7.00% ₽" },
-  };
+  const depositData = useFirebasePublicData('siteContent/pageData/EvocaOnlineDepositPage/depositData', pageData_EvocaOnlineDepositPage_depositData);
 
   return (
     <div className="w-full bg-white text-gray-800 font-sans min-h-screen flex flex-col relative selection:bg-purple-600 selection:text-white">

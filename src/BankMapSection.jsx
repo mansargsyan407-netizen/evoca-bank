@@ -8,6 +8,12 @@ import {
 } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useFirebasePublicData } from './useFirebasePublicData';
+import {
+  pageData_BankMapSection_atmAddresses,
+  pageData_BankMapSection_branchesData,
+  pageData_BankMapSection_terminalAddresses,
+} from './sitePageData';
 
 // Leaflet marker-ի icon fix
 delete L.Icon.Default.prototype._getIconUrl;
@@ -25,316 +31,29 @@ L.Icon.Default.mergeOptions({
 // ՄԱՍՆԱՃՅՈՒՂԵՐ
 // =========================
 
-const branchesData = [
-  {
-    id: 'branch-hq',
-    name: 'Գլխամասային գրասենյակ',
-    hours: '09:30 - 17:00',
-    address: 'Հանրապետության 44/2',
-    phone: '+374 10 60 55 55, +374 98 20 55 55, +374 99 60 55 55',
-    lat: 40.1772,
-    lng: 44.50349,
-  },
-  {
-    id: 'branch-premium',
-    name: 'Evoca Premium Branch',
-    hours: 'Երկուշաբթիից ուրբաթ՝ 10:00 - 18:00',
-    address: 'ՀՀ, ք. Երևան, Զաքյան 10, 0052',
-    phone: '8444',
-    lat: 40.1779,
-    lng: 44.5082,
-  },
-  {
-    id: 'branch-azatutyun',
-    name: '«Ազատության 12» մասնաճյուղ',
-    hours: '09:30 - 17:00, Շաբաթ՝ 10:00 - 14:00',
-    address: 'Ազատության 12',
-    phone: '+374 10 60 55 55',
-    lat: 40.1904,
-    lng: 44.5231,
-  },
-  {
-    id: 'branch-tumanyan',
-    name: '«Թումանյան» մասնաճյուղ',
-    hours: '09:30 - 21:30, Շաբաթ՝ 10:00 - 17:30',
-    address: 'Թումանյան 15',
-    phone: '+374 10 60 55 55',
-    lat: 40.1842,
-    lng: 44.5131,
-  },
-  {
-    id: 'branch-kasyan',
-    name: '«Կասյան» մասնաճյուղ',
-    hours: '09:30 - 17:00',
-    address: 'Վազգեն Առաջին Վեհափառի 5',
-    phone: '+374 10 60 55 55',
-    lat: 40.201,
-    lng: 44.494,
-  },
-  {
-    id: 'branch-njdeh',
-    name: '«Գարեգին Նժդեհ» մասնաճյուղ',
-    hours: '09:30 - 17:00, Շաբաթ՝ 10:00 - 14:00',
-    address: 'Գարեգին Նժդեհ 9/45',
-    phone: '+374 10 60 55 55',
-    lat: 40.1588,
-    lng: 44.4905,
-  },
-  {
-    id: 'branch-davtashen',
-    name: '«Դավթաշեն» մասնաճյուղ',
-    hours: '09:30 - 17:00, Շաբաթ՝ 10:00 - 14:00',
-    address: 'Տիգրան Պետրոսյան 32/8',
-    phone: '+374 10 60 55 55',
-    lat: 40.221,
-    lng: 44.479,
-  },
-  {
-    id: 'branch-erebuni',
-    name: '«Էրեբունի» մասնաճյուղ',
-    hours: '09:30 - 17:00 (Սահմանափակ գործառնություններ իրականացնող մասնաճյուղ)',
-    address: 'Գաջեգործների 76',
-    phone: '+374 10 60 55 55',
-    lat: 40.143,
-    lng: 44.504,
-  },
-  {
-    id: 'branch-kievyan',
-    name: '«Կիևյան» մասնաճյուղ',
-    hours: '09:30 - 17:00',
-    address: 'Կիևյան 11ա',
-    phone: '+374 10 60 55 55',
-    lat: 40.1948,
-    lng: 44.4891,
-  },
-  {
-    id: 'branch-malatia',
-    name: '«Մալաթիա» մասնաճյուղ',
-    hours: '09:30 - 17:00, Շաբաթ՝ 10:00 - 14:00',
-    address: 'Անդրանիկի 134/8',
-    phone: '+374 10 60 55 55',
-    lat: 40.1706,
-    lng: 44.4532,
-  },
-  {
-    id: 'branch-nor-nork',
-    name: '«Նոր Նորք» մասնաճյուղ',
-    hours: '09:30 - 17:00',
-    address: 'Գայի պողոտա 14/9',
-    phone: '+374 10 60 55 55',
-    lat: 40.1983,
-    lng: 44.5631,
-  },
-  {
-    id: 'branch-yerevan-mall',
-    name: '«Երևան Մոլ» մասնաճյուղ',
-    hours:
-      'Երկուշաբթիից կիրակի՝ 10:30 - 21:30 (Սահմանափակ գործառնություններ իրականացնող մասնաճյուղ)',
-    address: 'Արշակունյաց պող., 34/3',
-    phone: '+374 10 60 55 55',
-    lat: 40.1539,
-    lng: 44.5083,
-  },
-  {
-    id: 'branch-hanrapetutyun',
-    name: '«Հանրապետության» մասնաճյուղ',
-    hours:
-      'Երկուշաբթիից կիրակի՝ 10:30 - 21:30 (Սահմանափակ գործառնություններ իրականացնող մասնաճյուղ)',
-    address: 'Հանրապետության 59',
-    phone: '+374 10 60 55 55',
-    lat: 40.1764,
-    lng: 44.5162,
-  },
-  {
-    id: 'branch-ajapnyak',
-    name: '«Աջափնյակ» մասնաճյուղ',
-    hours: 'Երկուշաբթիից ուրբաթ՝ 09:30 - 17:00',
-    address: 'Աբելյան 2/1',
-    phone: '+374 10 60 55 55',
-    lat: 40.1956,
-    lng: 44.4782,
-  },
-  {
-    id: 'branch-paronyan',
-    name: '«Պարոնյան» մասնաճյուղ',
-    hours: '09:30 - 17:00',
-    address: 'Պարոնյան 15/3',
-    phone: '+374 10 60 55 55',
-    lat: 40.1802,
-    lng: 44.5021,
-  },
-];
+
 
 // =========================
 // ԲԱՆԿՈՄԱՏՆԵՐ
 // =========================
 
-const atmAddresses = [
-  ['Տիտոգրադյան 15/1', false],
-  ['Կիևյան 11ա 64', false],
-  ['Խորենացի 47', false],
-  ['Արշակունյաց 48/5', false],
-  ['Մելքումով 23/4', true],
-  ['Փավստոս Բուզանդի 45', true],
-  ['Մոնթե Մելքոնյան 50/1', false],
-  ['Տիգրան Պետրոսյան 30/30', false],
-  ['Վերին Անտառային 131/34', false],
-  ['Ազատության 6/67', true],
-  ['Մանանդյան 33/3', false],
-  ['Արշակունյաց 34', false],
-  ['Մամիկոնյանց, 40', false],
-  ['Դավթաշեն 4-րդ թաղ. 26/1', false],
-  ['Կոմիտաս 46', false],
-  ['Կոմիտաս 43', false],
-  ['Հյուսիսային պողոտա 1', false],
-  ['Բյուզանդ 97/2', false],
-  ['Տ. Մեծ 47/1', false],
-  ['Արգիշտի 7/3', false],
-  ['Իսաբեկյան 1/2', false],
-  ['Հասրաթյան 4/1', false],
-  ['Աբելյան 2/1-3', false],
-  ['Արտեմ Միկոյան 15', false],
-  ['Արգիշտի 11/3', false],
-  ['Հ. Հակոբյան 7', false],
-  ['Մաշտոց 46/1', false],
-  ['Հանրապետության 44/2', false],
-  ['Գրիբոյեդով 17', false],
-  ['Չարենց 9/51', false],
-  ['Մաշտոց 13', false],
-  ['Անաստաս Միկոյան 2/1', false],
-  ['Տիգրան Մեծ 16', true],
-  ['Պարոնյան 15/3', false],
-  ['Վազգեն Առաջին Վեհափառի 5', false],
-  ['Երվանդ Քոչար 17/1', false],
-  ['Ազատության 12', true],
-  ['Գարեգին Նժդեհ 19', true],
-  ['Տիգրան Պետրոսյան 32/8', true],
-  ['Գաջեգործների 76', false],
-  ['Հերացի 5', false],
-  ['Անդրանիկի 134/8', false],
-  ['Թամանյան 3', false],
-  ['Իսահակյան 28', false],
-  ['Սունդուկյան 9', false],
-  ['Աբովյան 35', false],
-  ['Վ. Փափազյան 21', false],
-  ['Գարեգին Նժդեհ 2/39', false],
-  ['Թումանյան 15', false],
-  ['Գյուրջյան 1/8', false],
-  ['Մեսրոպ Մաշտոց 5/15', false],
-  ['Պուշկինի 35/20', false],
-  ['Մաշտոց 40', false],
-  ['Գարեգին Նժդեհ 9/45', false],
-  ['Ծարավ Աղբյուր 55/6', false],
-  ['Նորաշեն 21/2', false],
-  ['Փիրումյանների 5', false],
-  ['Վիլնուս 37/1', false],
-  ['Մազմանյան 5/13', false],
-  ['Սվաճյան 11', false],
-  ['Էրեբունի 18/8', false],
-  ['Ա. Մանուկյան 7', false],
-  ['Բաղրամյան 2', false],
-  ['Անդրանիկի 50/3', false],
-  ['Պարույր Սևակ 55/2', false],
-  ['Փավստոս Բուզանդի 17/233', false],
-  ['Ֆանարջյան 55', false],
-  ['Փափազյան 14', false],
-  ['Գայի պողոտա 14/9', false],
-  ['Չեխովի 29/6', false],
-  ['Տարոնցի 1/3', false],
-  ['Աբովյան 17', false],
-  ['Խուդյակովի 214/6', false],
-  ['Մամիկոնյանց 2', false],
-  ['Իսակովի 8', false],
-  ['Հյուսիսային պող. 10', false],
-  ['Տիգրան Մեծի 31Ա', false],
-  ['Նորագավիթ 100/1', false],
-  ['Խորենացի 33/7', false],
-  ['Աբովյան - Սայաթ-Նովա Խաչմերուկ', false],
-  ['Աբովյան - Իսահակյան Խաչմերուկ', false],
-  ['Տիգրան Մեծ - Խանջյան Խաչմերուկ', false],
-  ['Հանրապետության Հրապարակ', false],
-  ['Ն. Տիգրանյան 1, նրբ. 9', false],
-  ['Գալշոյան 6', false],
-  ['Իսակովի 27/12', false],
-  ['Արտաշիսյան 86/1', false],
-  ['Արշակունյաց 210/1', false],
-  ['Ուլնեցի 57/2', false],
-  ['Ադոնց 4/3', false],
-  ['Քաջազնունի 6/1', false],
-  ['Շերամ 77', false],
-  ['Պապ թագավորի 15', false],
-  ['Թումանյան 31/4', false],
-  ['Աբովյան 1/3 (ԶՈՎՔ սուպերմարկետ)', true],
-];
 
-const atmsData = atmAddresses.map(([address, cashIn], index) => ({
-  id: `atm-${index + 1}`,
-  address,
-  cashIn,
-  // Քարտեզի վրա իրական կոորդինատ չունեցողները
-  // սկզբնական քարտեզում կցուցադրվեն Երևանի կենտրոնի մոտ։
-  lat: 40.1772 + ((index % 10) - 5) * 0.003,
-  lng: 44.50349 + ((index % 8) - 4) * 0.004,
-}));
+
+
 
 // =========================
 // ԱՐՏԱՐԺՈՒՅԹԻ ՏԵՐՄԻՆԱԼՆԵՐ
 // =========================
 
-const terminalAddresses = [
-  'Հանրապետության 44/2',
-  'Ադմիրալ Իսակով 9/2',
-  'Պռոշյան 2/1',
-  'Սմբատ Զորավարի փ. 11/1',
-  'Հակոբ Հակոբյան 8/2 – 13',
-  'Շերամի 77/53',
-  'Ծարավ Աղբյուր 55/15',
-  'Չեխովի 52/26',
-  'Լվովյան 14/1',
-  'Ադոնցի փողոց 19/8 5-րդ մ/շ 105 տար.',
-  'Վիլնյուս 41',
-  'Արշակունյաց 48/5',
-  'Տիգրան Մեծ 47/1',
-  'Ծարավ Աղբյուր 55/6',
-  'Արգիշտի 7/3',
-  'Հանրապետության 67/1',
-  'Տիչինա 136',
-  'Պուշկին 35',
-  'Աբելյան 2/1-3',
-  'Արամ Խաչատրյան 3',
-];
 
-const terminalsData = terminalAddresses.map((address, index) => ({
-  id: `terminal-${index + 1}`,
-  address,
-  hours: index === 18 ? '09:30 - 17:00' : '',
-  lat: 40.1772 + ((index % 7) - 3) * 0.004,
-  lng: 44.50349 + ((index % 6) - 3) * 0.005,
-}));
+
+
 
 // =========================
 // ԲՈԼՈՐ ՏՎՅԱԼՆԵՐԸ
 // =========================
 
-const allLocations = [
-  ...branchesData.map((item) => ({
-    ...item,
-    type: 'branch',
-    typeLabel: 'Մասնաճյուղ',
-  })),
 
-  ...atmsData.map((item) => ({
-    ...item,
-    type: 'atm',
-    typeLabel: 'Բանկոմատ',
-  })),
-
-  ...terminalsData.map((item) => ({
-    ...item,
-    type: 'terminal',
-    typeLabel: 'Արտարժույթի փոխանակման տերմինալ',
-  })),
-];
 
 // =========================
 // ԳՈՒՅՆԵՐ ըստ TYPE-ի (միայն UI)
@@ -605,6 +324,51 @@ function LocationPopup({ item }) {
 // =========================
 
 export default function BankMapSection() {
+  const branchesData = useFirebasePublicData(
+    'siteContent/pageData/BankMapSection/branchesData',
+    pageData_BankMapSection_branchesData,
+  );
+  const atmAddresses = useFirebasePublicData(
+    'siteContent/pageData/BankMapSection/atmAddresses',
+    pageData_BankMapSection_atmAddresses,
+  );
+  const terminalAddresses = useFirebasePublicData(
+    'siteContent/pageData/BankMapSection/terminalAddresses',
+    pageData_BankMapSection_terminalAddresses,
+  );
+  const atmsData = atmAddresses.map(([address, cashIn], index) => ({
+    id: `atm-${index + 1}`,
+    address,
+    cashIn,
+    // Քարտեզի վրա իրական կոորդինատ չունեցողները
+    // սկզբնական քարտեզում կցուցադրվեն Երևանի կենտրոնի մոտ։
+    lat: 40.1772 + ((index % 10) - 5) * 0.003,
+    lng: 44.50349 + ((index % 8) - 4) * 0.004,
+  }));
+  const terminalsData = terminalAddresses.map((address, index) => ({
+    id: `terminal-${index + 1}`,
+    address,
+    hours: index === 18 ? '09:30 - 17:00' : '',
+    lat: 40.1772 + ((index % 7) - 3) * 0.004,
+    lng: 44.50349 + ((index % 6) - 3) * 0.005,
+  }));
+  const allLocations = [
+    ...branchesData.map((item) => ({
+      ...item,
+      type: 'branch',
+      typeLabel: 'Մասնաճյուղ',
+    })),
+    ...atmsData.map((item) => ({
+      ...item,
+      type: 'atm',
+      typeLabel: 'Բանկոմատ',
+    })),
+    ...terminalsData.map((item) => ({
+      ...item,
+      type: 'terminal',
+      typeLabel: 'Արտարժույթի փոխանակման տերմինալ',
+    })),
+  ];
   const [activeTab, setActiveTab] = useState('branches');
   const [selectedItem, setSelectedItem] = useState(branchesData[0]);
   const [showAllMap, setShowAllMap] = useState(false);

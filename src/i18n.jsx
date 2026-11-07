@@ -8,77 +8,11 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { ru, en } from './translations';
-import { ruHero, enHero } from './translations.hero';
-import { ruIndividual, enIndividual } from './translations.individual';
-import { ruPower, enPower } from './translations.evocapower';
-import { ruGoldLoan, enGoldLoan } from './translations.GoldLoanPage';
-import { ruBusinessLoans, enBusinessLoans } from './translations.businessLoans';
-import { ruFees, enFees } from './translations.fees';
-import { ruLoanDetail, enLoanDetail } from './translations.LoanDetailPage';
-import { ruCarLoan, enCarLoan } from './translations.CarLoanPage';
-import { ruPropertySecuredLoan, enPropertySecuredLoan } from './translations.PropertySecuredLoanPage';
-import { ruPayments, enPayments } from './translations.PaymentsPage';
-import { ruAbout, enAbout } from './translations.about';
-import { ruRate, enRate } from './translations.rate';
-import { ruReport, enReport } from './translations.report';
-import { ruAnnouncements, enAnnouncements } from './translations.announcements';
-import { ruStructure, enStructure } from './translations.structure';
-import { ruShareholders, enShareholders } from './translations.shareholders';
-import { ruManagement, enManagement } from './translations.management';
-import { ruNews, enNews } from './translations.news';
-import { ruBlog, enBlog } from './translations.blog';
-import { ruCareers, enCareers } from './translations.careers'; // Ավելացված է
+import { get, ref } from 'firebase/database';
+import { realtimeDb } from './firebase';
+import { SITE_TRANSLATIONS } from './siteTranslations';
 
-const DICTIONARIES = {
-  hy: {},
-  ru: {
-    ...ru,
-    ...ruHero,
-    ...ruIndividual,
-    ...ruPower,
-    ...ruGoldLoan,
-    ...ruBusinessLoans,
-    ...ruFees,
-    ...ruLoanDetail,
-    ...ruCarLoan,
-    ...ruPropertySecuredLoan,
-    ...ruPayments,
-    ...ruAbout,
-    ...ruRate,
-    ...ruReport,
-    ...ruAnnouncements,
-    ...ruStructure,
-    ...ruShareholders,
-    ...ruManagement,
-    ...ruNews,
-    ...ruBlog,
-    ...ruCareers, // Միացված է
-  },
-  en: {
-    ...en,
-    ...enHero,
-    ...enIndividual,
-    ...enPower,
-    ...enGoldLoan,
-    ...enBusinessLoans,
-    ...enFees,
-    ...enLoanDetail,
-    ...enCarLoan,
-    ...enPropertySecuredLoan,
-    ...enPayments,
-    ...enAbout,
-    ...enRate,
-    ...enReport,
-    ...enAnnouncements,
-    ...enStructure,
-    ...enShareholders,
-    ...enManagement,
-    ...enNews,
-    ...enBlog,
-    ...enCareers, // Միացված է
-  },
-};
+const DICTIONARIES = { hy: {}, ...SITE_TRANSLATIONS };
 
 const SUPPORTED = ['hy', 'ru', 'en'];
 const STORAGE_KEY = 'lang';
@@ -101,6 +35,55 @@ function getInitialLang() {
 
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(getInitialLang);
+  const [remoteDictionaries, setRemoteDictionaries] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+
+    get(ref(realtimeDb, 'siteContent/translations'))
+      .then((snapshot) => {
+        if (!active) return;
+
+        if (!snapshot.exists()) {
+          console.warn('Firebase-ում կայքի թարգմանությունները չկան․ օգտագործվում են պահուստային տվյալները։');
+          return;
+        }
+
+        const remote = snapshot.val();
+        const valid = ['ru', 'en'].every(
+          (code) =>
+            remote[code] &&
+            (Array.isArray(remote[code]) || typeof remote[code] === 'object') &&
+            Object.values(remote[code]).every(
+              (entry) =>
+                Array.isArray(entry) &&
+                entry.length === 2 &&
+                typeof entry[0] === 'string' &&
+                typeof entry[1] === 'string',
+            ),
+        );
+
+        if (!valid) {
+          throw new Error('Firebase-ում կայքի թարգմանությունների ձևաչափը սխալ է։');
+        }
+
+        setRemoteDictionaries(
+          Object.fromEntries(
+            ['ru', 'en'].map((code) => [
+              code,
+              Object.fromEntries(Object.values(remote[code])),
+            ]),
+          ),
+        );
+      })
+      .catch((error) => {
+        console.error('Չհաջողվեց բեռնել կայքի թարգմանությունները Firebase-ից։', error);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const setLang = (code) => {
     if (!SUPPORTED.includes(code)) return;
@@ -117,14 +100,17 @@ export function LanguageProvider({ children }) {
   }, [lang]);
 
   const value = useMemo(() => {
-    const dict = DICTIONARIES[lang] || {};
+    const dict = {
+      ...DICTIONARIES[lang],
+      ...remoteDictionaries?.[lang],
+    };
     const t = (text) => {
       if (!text || typeof text !== 'string') return text;
       const cleanText = text.trim();
       return dict[cleanText] ?? dict[text] ?? text;
     };
     return { lang, setLang, t };
-  }, [lang]);
+  }, [lang, remoteDictionaries]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

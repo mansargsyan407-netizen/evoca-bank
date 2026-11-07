@@ -17,6 +17,9 @@ import {
   Factory,
 } from 'lucide-react';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
 export default function BondSecuredLoanPage() {
   const scrollerRef = useRef(null);
 
@@ -29,7 +32,7 @@ export default function BondSecuredLoanPage() {
     }
   };
 
-  const otherLoans = [
+  const otherLoansFirebaseFallbackFirebaseFallback = [
      {
       icon: Zap,
       img: 'https://www.evoca.am/images-cache/loans/1/16148706367372/415x261.jpg',
@@ -96,6 +99,8 @@ export default function BondSecuredLoanPage() {
       title: 'Արտադրողականության խթանման ծրագրի ներքո վարկ (գործում է մինչև 31.12.2026թ.)',
     },
   ];
+  
+  const otherLoans = useFirebasePublicData('siteContent/pageData/BondSecuredLoanPage/otherLoans', otherLoansFirebaseFallbackFirebaseFallback);
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans relative">

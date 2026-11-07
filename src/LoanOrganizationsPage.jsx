@@ -1,33 +1,10 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_LoanOrganizationsPage_loanOrganizations } from './sitePageData';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function LoanOrganizationsPage() {
-  const loanOrganizations = [
-    {
-      id: 'bless',
-      title: 'ԲԼԵՍՍ ՈՒՎԿ',
-      icon: 'https://resource.evoca.am/images/WebPayment/bless.png',
-      link: '#',
-    },
-    {
-      id: 'premium_credit',
-      title: 'Պրեմիում Կրեդիտ ՈՒՎԿ',
-      icon: 'https://resource.evoca.am/images/WebPayment/premiumcredit.png',
-      link: '#',
-    },
-    {
-      id: 'finca',
-      title: 'ՖԻՆՔԱ ՈՒՎԿ',
-      icon: 'https://resource.evoca.am/images/Payment/finca-logo.png',
-      link: '#',
-    },
-    {
-      id: 'mikro_kapital',
-      title: 'Միկրո Կապիտալ ՈՒՎԿ',
-      icon: 'https://resource.evoca.am/images/Payment/MikroKapital-Logo.png',
-      link: '#',
-    },
-  ];
+  const loanOrganizations = useFirebasePublicData('siteContent/pageData/LoanOrganizationsPage/loanOrganizations', pageData_LoanOrganizationsPage_loanOrganizations);;
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">

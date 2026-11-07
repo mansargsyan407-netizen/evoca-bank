@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
+import EvocaChatWidget from './EvocaChatWidget';
+import EvocaOn from './EvocaOn';
+import { Tr } from './i18n';
+
 import Header from './Header';
 import HeroSlider from './HeroSlider';
 import TravelCardPage from './TravelCardPage';
@@ -190,243 +195,250 @@ const MainLayout = () => {
   return (
     <>
       <Header onOrderCall={() => setCallOpen(true)} />
-      <Outlet />
+      <Tr>
+        <Outlet />
+      </Tr>
       <OrderCallModal open={callOpen} onClose={() => setCallOpen(false)} />
+      <EvocaChatWidget />
     </>
   );
 };
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Էջեր, որոնք ՈՒՆԵՆ հիմնական Header-ը */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<HeroSlider />} />
-          <Route path="/cards/travel-card" element={<TravelCardPage />} />
-          <Route path="/cards/arca-classic" element={<CardDetails4U />} />
-          <Route path="/cards/mastercard-standard" element={<MastercardGold />} />
-          <Route path="/cards/visa-digital" element={<BlueCard />} />
-          <Route path="/cards/visa-classic" element={<ClassicCard />} />
-          <Route path="/cards/arca-classic-card" element={<DarkBlueCard />} />
-          <Route path="/cards/arca-union-pay-co-badge" element={<SilverCard />} />
-          <Route path="/cards/rio-card" element={<RioGiftCard />} />
-          <Route path="/cards/visa-gold-card" element={<VisaGoldCard />} />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Էջեր, որոնք ՈՒՆԵՆ հիմնական Header-ը */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HeroSlider />} />
+            <Route path="/evoca-on" element={<EvocaOn />} />
 
-          <Route path="/partners" element={<PartnersPage />} />
-          <Route path="/addresses" element={<BankMapSection />} />
+            <Route path="/cards/travel-card" element={<TravelCardPage />} />
+            <Route path="/cards/arca-classic" element={<CardDetails4U />} />
+            <Route path="/cards/mastercard-standard" element={<MastercardGold />} />
+            <Route path="/cards/visa-digital" element={<BlueCard />} />
+            <Route path="/cards/visa-classic" element={<ClassicCard />} />
+            <Route path="/cards/arca-classic-card" element={<DarkBlueCard />} />
+            <Route path="/cards/arca-union-pay-co-badge" element={<SilverCard />} />
+            <Route path="/cards/rio-card" element={<RioGiftCard />} />
+            <Route path="/cards/visa-gold-card" element={<VisaGoldCard />} />
 
-          {/* ԱՆՀԱՏՆԵՐ-ի երթուղիները */}
-          <Route path="/individual" element={<IndividualPage />} />
-          <Route path="/loans/1" element={<LoanDetailPage />} />
-          <Route path="/loans/2" element={<CarLoanPage />} />
-          <Route path="/loans/3" element={<PropertySecuredLoanPage />} />
-          <Route path="/loans/4" element={<EvocaPowerDetails />} />
-          <Route path="/loans/5" element={<GoldLoanDetails />} />
-          <Route path="/loans/6" element={<PosLoanPage />} />
-          <Route path="/loans/7" element={<LoanCard />} />
-          <Route path="/loans/8" element={<MortgageLoan />} />
-          <Route path="/loans/9" element={<ActionLoan />} />
-          <Route path="/loans/10" element={<MortgageDisplaced />} />
-          <Route path="/loans/11" element={<LandPurchaseLoan />} />
-          <Route path="/loans/12" element={<MicroRenovationLoan />} />
-          <Route path="/loans/13" element={<LeasingPage />} />
-          <Route path="/loans/14" element={<OverdraftLoanPage />} />
-          <Route path="/loans/15" element={<InvestmentLoanPage />} />
-          <Route path="/loans/16" element={<ParkingLoanPage />} />
-          <Route path="/loans/17" element={<BicycleLoanPage />} />
-          <Route path="/loans/18" element={<NonResidentMortgagePage />} />
-          <Route path="/loans/19" element={<EvocaHome />} />
-          <Route path="/loans/20" element={<SecuredLoan />} />
-          <Route path="/loans/21" element={<TradeLoans />} />
-          <Route path="/loans/22" element={<NmcLoan />} />
-          <Route path="/loans/23" element={<NmcConstructionLoan />} />
-          <Route path="/loans/24" element={<NmcRenovationLoan />} />
-          <Route path="/loans/25" element={<YoungFamilyLoan />} />
-          <Route path="/loans/26" element={<VisaInfiniteLoan />} />
-          <Route path="/loans/27" element={<ArtsakhDisplacedLoan />} />
-          <Route path="/loans/28" element={<ArtsakhRenovationLoan />} />
-          <Route path="/loans/29" element={<StudentLoan />} />
-          <Route path="/loans/30" element={<BorderSettlementsLoan />} />
-          <Route path="/loans/31" element={<EvolutionLoan />} />
-          <Route path="/loans/32" element={<MilitaryMortgageLoan />} />
-          <Route path="/cards" element={<AllCardsPage />} />
+            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/addresses" element={<BankMapSection />} />
 
-          {/* բիզնես-ի երթուղիները */}
-          <Route path="/business" element={<BussnesPage />} />
-          <Route path="/business/loans/quick-business-loan" element={<BussnesLosn1 />} />
-          <Route path="/business/loans/textile" element={<TextileLoanPage />} />
-          <Route path="/business/loans/business-refinancing" element={<BusinessRefinancingPage />} />
-          <Route path="/business/loans/bond-secured" element={<BondSecuredLoanPage />} />
-          <Route path="/business/loans/sme" element={<SmeBusinessLoanPage />} />
-          <Route path="/business/loans/evoca-go" element={<EvocaGoPage />} />
-          <Route path="/business/loans/gff-energy" element={<GffEnergyLoanPage />} />
-          <Route path="/business/loans/deposit-secured" element={<DepositSecuredLoanPage />} />
-          <Route path="/business/loans/kfw-green-finance" element={<KfwGreenFinancePage />} />
-          <Route path="/business/loans/simple-business" element={<SimpleBusinessLoanPage />} />
-          <Route path="/business/loans/account-credit" element={<AccountCreditPage />} />
-          <Route path="/business/loans/credit-line" element={<CreditLinePage />} />
-          <Route path="/business/loans/productivity-program" element={<ProductivityLoanPage />} />
-          <Route path="/business/loans/kfw-sme-finance" element={<KfwSmePage />} />
-          <Route path="/business-loans" element={<BusinessLoans />} />
-          <Route path="/archive" element={<Archive />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/financial-reports" element={<FinancialReports />} />
-          <Route path="/investors" element={<Investors />} />
-          <Route path="/semi-annual-reports" element={<SemiAnnualReports />} />
-          <Route path="/annual-reports" element={<AnnualReports />} />
-          <Route path="/announcements" element={<Announcements />} />
+            {/* ԱՆՀԱՏՆԵՐ-ի երթուղիները */}
+            <Route path="/individual" element={<IndividualPage />} />
+            <Route path="/loans/1" element={<LoanDetailPage />} />
+            <Route path="/loans/2" element={<CarLoanPage />} />
+            <Route path="/loans/3" element={<PropertySecuredLoanPage />} />
+            <Route path="/loans/4" element={<EvocaPowerDetails />} />
+            <Route path="/loans/5" element={<GoldLoanDetails />} />
+            <Route path="/loans/6" element={<PosLoanPage />} />
+            <Route path="/loans/7" element={<LoanCard />} />
+            <Route path="/loans/8" element={<MortgageLoan />} />
+            <Route path="/loans/9" element={<ActionLoan />} />
+            <Route path="/loans/10" element={<MortgageDisplaced />} />
+            <Route path="/loans/11" element={<LandPurchaseLoan />} />
+            <Route path="/loans/12" element={<MicroRenovationLoan />} />
+            <Route path="/loans/13" element={<LeasingPage />} />
+            <Route path="/loans/14" element={<OverdraftLoanPage />} />
+            <Route path="/loans/15" element={<InvestmentLoanPage />} />
+            <Route path="/loans/16" element={<ParkingLoanPage />} />
+            <Route path="/loans/17" element={<BicycleLoanPage />} />
+            <Route path="/loans/18" element={<NonResidentMortgagePage />} />
+            <Route path="/loans/19" element={<EvocaHome />} />
+            <Route path="/loans/20" element={<SecuredLoan />} />
+            <Route path="/loans/21" element={<TradeLoans />} />
+            <Route path="/loans/22" element={<NmcLoan />} />
+            <Route path="/loans/23" element={<NmcConstructionLoan />} />
+            <Route path="/loans/24" element={<NmcRenovationLoan />} />
+            <Route path="/loans/25" element={<YoungFamilyLoan />} />
+            <Route path="/loans/26" element={<VisaInfiniteLoan />} />
+            <Route path="/loans/27" element={<ArtsakhDisplacedLoan />} />
+            <Route path="/loans/28" element={<ArtsakhRenovationLoan />} />
+            <Route path="/loans/29" element={<StudentLoan />} />
+            <Route path="/loans/30" element={<BorderSettlementsLoan />} />
+            <Route path="/loans/31" element={<EvolutionLoan />} />
+            <Route path="/loans/32" element={<MilitaryMortgageLoan />} />
+            <Route path="/cards" element={<AllCardsPage />} />
 
-          <Route path="/about" element={<About />} />
-          <Route path="/structure" element={<Structure />} />
-          <Route path="/shareholders" element={<Shareholders />} />
-          <Route path="/management" element={<Management />} />
-          <Route path="/awards" element={<Awards />} />
-          <Route path="/csr" element={<Csr />} />
-          <Route path="/financial-group" element={<FinancialGroup />} />
-          <Route path="/rates" element={<Rates />} />
-          <Route path="/fees" element={<Fees />} />
-          <Route path="/deposits" element={<Deposits />} />
-          <Route path="/securities/evocainvest" element={<EvocaInvest />} />
+            {/* բիզնես-ի երթուղիները */}
+            <Route path="/business" element={<BussnesPage />} />
+            <Route path="/business/loans/quick-business-loan" element={<BussnesLosn1 />} />
+            <Route path="/business/loans/textile" element={<TextileLoanPage />} />
+            <Route path="/business/loans/business-refinancing" element={<BusinessRefinancingPage />} />
+            <Route path="/business/loans/bond-secured" element={<BondSecuredLoanPage />} />
+            <Route path="/business/loans/sme" element={<SmeBusinessLoanPage />} />
+            <Route path="/business/loans/evoca-go" element={<EvocaGoPage />} />
+            <Route path="/business/loans/gff-energy" element={<GffEnergyLoanPage />} />
+            <Route path="/business/loans/deposit-secured" element={<DepositSecuredLoanPage />} />
+            <Route path="/business/loans/kfw-green-finance" element={<KfwGreenFinancePage />} />
+            <Route path="/business/loans/simple-business" element={<SimpleBusinessLoanPage />} />
+            <Route path="/business/loans/account-credit" element={<AccountCreditPage />} />
+            <Route path="/business/loans/credit-line" element={<CreditLinePage />} />
+            <Route path="/business/loans/productivity-program" element={<ProductivityLoanPage />} />
+            <Route path="/business/loans/kfw-sme-finance" element={<KfwSmePage />} />
+            <Route path="/business-loans" element={<BusinessLoans />} />
+            <Route path="/archive" element={<Archive />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/financial-reports" element={<FinancialReports />} />
+            <Route path="/investors" element={<Investors />} />
+            <Route path="/semi-annual-reports" element={<SemiAnnualReports />} />
+            <Route path="/annual-reports" element={<AnnualReports />} />
+            <Route path="/announcements" element={<Announcements />} />
 
-          <Route path="/accounts" element={<Accounts />} />
-          <Route path="/accounts/metal" element={<MetalAccounts />} />
-          <Route path="/accounts/non-residents" element={<NonResidentAccounts />} />
-          <Route path="/accounts/safe-deposit-boxes" element={<SafeDepositBoxes />} />
-          <Route path="/transfers/money" element={<MoneyTransfers />} />
-          <Route path="/transfers/payment-systems" element={<PaymentSystems />} />
-          <Route path="/securities/investment-services" element={<InvestmentServices />} />
-          <Route path="/securities/bonds" element={<Bonds />} />
-          <Route path="/securities/custody" element={<CustodyServices />} />
-          <Route path="/securities/repo" element={<RepoTransactions />} />
-          <Route path="/evocatouch" element={<EvocaTouch />} />
-          <Route path="/business/leasing" element={<BusnLeasing />} />
-          <Route path="/business/leasing/special-offer" element={<BusSpecialeasing />} />
-          <Route path="/business/trade-finance" element={<TradeFinance />} />
-          <Route path="/business/factoring" element={<FactoringFinance />} />
-          <Route path="/business/letter-of-credit" element={<LetterOfCredit />} />
-          <Route path="/business/incasso" element={<Incasso />} />
-          <Route path="/business/digital" element={<DigitalVPOS />} />
-          <Route path="/business/pos-terminal" element={<PosTerminal />} />
-          <Route path="/business/terminals-tariffs" element={<TerminalsTariffs />} />
-          <Route path="/business/terminal-application" element={<TerminalApplication />} />
-          <Route path="/business/mpos" element={<EvocaMpos />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/structure" element={<Structure />} />
+            <Route path="/shareholders" element={<Shareholders />} />
+            <Route path="/management" element={<Management />} />
+            <Route path="/awards" element={<Awards />} />
+            <Route path="/csr" element={<Csr />} />
+            <Route path="/financial-group" element={<FinancialGroup />} />
+            <Route path="/rates" element={<Rates />} />
+            <Route path="/fees" element={<Fees />} />
+            <Route path="/deposits" element={<Deposits />} />
+            <Route path="/securities/evocainvest" element={<EvocaInvest />} />
 
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/benefits" element={<BenefitsPage />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route path="/how-to-apply" element={<HowToApplyPage />} />
-          <Route path="/work" element={<WorkPage />} />
-          <Route path="/internship" element={<InternshipPage />} />
-          <Route path="/evocabridge" element={<EvocaBridge />} />
+            <Route path="/accounts" element={<Accounts />} />
+            <Route path="/accounts/metal" element={<MetalAccounts />} />
+            <Route path="/accounts/non-residents" element={<NonResidentAccounts />} />
+            <Route path="/accounts/safe-deposit-boxes" element={<SafeDepositBoxes />} />
+            <Route path="/transfers/money" element={<MoneyTransfers />} />
+            <Route path="/transfers/payment-systems" element={<PaymentSystems />} />
+            <Route path="/securities/investment-services" element={<InvestmentServices />} />
+            <Route path="/securities/bonds" element={<Bonds />} />
+            <Route path="/securities/custody" element={<CustodyServices />} />
+            <Route path="/securities/repo" element={<RepoTransactions />} />
+            <Route path="/evocatouch" element={<EvocaTouch />} />
+            <Route path="/business/leasing" element={<BusnLeasing />} />
+            <Route path="/business/leasing/special-offer" element={<BusSpecialeasing />} />
+            <Route path="/business/trade-finance" element={<TradeFinance />} />
+            <Route path="/business/factoring" element={<FactoringFinance />} />
+            <Route path="/business/letter-of-credit" element={<LetterOfCredit />} />
+            <Route path="/business/incasso" element={<Incasso />} />
+            <Route path="/business/digital" element={<DigitalVPOS />} />
+            <Route path="/business/pos-terminal" element={<PosTerminal />} />
+            <Route path="/business/terminals-tariffs" element={<TerminalsTariffs />} />
+            <Route path="/business/terminal-application" element={<TerminalApplication />} />
+            <Route path="/business/mpos" element={<EvocaMpos />} />
 
-          {/* news-ի երթուղիները */}
-          <Route path="/news/transactions-blocked" element={<TransactionsBlocked />} />
-          <Route path="/news/esg-framework" element={<EsgFrameworkPage />} />
-          <Route path="/news/amcham-armenia" element={<AmchamArmeniaPage />} />
-          <Route path="/news/new-colors" element={<NewColorsPage />} />
-          <Route path="/news/amx-awards-2026" element={<AmxAwardsPage />} />
-          <Route path="/news/los-angeles-times" element={<LosAngelesTimesPage />} />
-          <Route path="/news/ajapnyak-branch" element={<AjapnyakBranchPage />} />
-          <Route path="/news/main" element={<NewsMainPage />} />
-          <Route path="/news/all" element={<NewsAllPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/blog/evocainvest" element={<EvocaInvestPost />} />
-          <Route path="/blog/invest-dos-donts" element={<InvestDosDontsPost />} />
-          <Route path="/blog/small-steps" element={<Small />} />
-          <Route path="/blog/business-guide" element={<BusinessGuide />} />
-          <Route path="/blog/declutter" element={<DeclutterBlog />} />
-          <Route path="/blog/new-year" element={<NewYearBlog />} />
-          <Route path="/blog/movies-2021" element={<MovieBlogPage />} />
-          <Route path="/blog/series-2021" element={<Series2021Page />} />
-          <Route path="/blog/future-jobs" element={<FutureJobsPage />} />
-          <Route path="/blog/evoca-color" element={<EvocaColorPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/benefits" element={<BenefitsPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/how-to-apply" element={<HowToApplyPage />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/internship" element={<InternshipPage />} />
+            <Route path="/evocabridge" element={<EvocaBridge />} />
 
-          {/* avand-ի երթուղիները */}
-          <Route path="/deposits/1" element={<Avand />} />
-          <Route path="/deposits/1/classic" element={<ClassicDeposit />} />
-          <Route path="/deposits/1/mankakan" element={<MankakanDeposit />} />
-          <Route path="/deposits/1/evoca-online" element={<EvocaOnlineDeposit />} />
-          <Route path="/deposits/1/important-info" element={<ImportantInfo />} />
-          <Route path="/news/best-sme-bank" element={<BestSmeBankPage />} />
-          <Route path="/news/crypto-account" element={<CryptoAccountPage />} />
+            {/* news-ի երթուղիները */}
+            <Route path="/news/transactions-blocked" element={<TransactionsBlocked />} />
+            <Route path="/news/esg-framework" element={<EsgFrameworkPage />} />
+            <Route path="/news/amcham-armenia" element={<AmchamArmeniaPage />} />
+            <Route path="/news/new-colors" element={<NewColorsPage />} />
+            <Route path="/news/amx-awards-2026" element={<AmxAwardsPage />} />
+            <Route path="/news/los-angeles-times" element={<LosAngelesTimesPage />} />
+            <Route path="/news/ajapnyak-branch" element={<AjapnyakBranchPage />} />
+            <Route path="/news/main" element={<NewsMainPage />} />
+            <Route path="/news/all" element={<NewsAllPage />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/blog/evocainvest" element={<EvocaInvestPost />} />
+            <Route path="/blog/invest-dos-donts" element={<InvestDosDontsPost />} />
+            <Route path="/blog/small-steps" element={<Small />} />
+            <Route path="/blog/business-guide" element={<BusinessGuide />} />
+            <Route path="/blog/declutter" element={<DeclutterBlog />} />
+            <Route path="/blog/new-year" element={<NewYearBlog />} />
+            <Route path="/blog/movies-2021" element={<MovieBlogPage />} />
+            <Route path="/blog/series-2021" element={<Series2021Page />} />
+            <Route path="/blog/future-jobs" element={<FutureJobsPage />} />
+            <Route path="/blog/evoca-color" element={<EvocaColorPage />} />
 
-          {/* Visa Vision-ի երթուղիները */}
-          <Route path="/visa-vision" element={<VisaVisionDetails />} />
-          <Route path="/cards/visa-vision" element={<VisaVisionDetails />} />
+            {/* avand-ի երթուղիները */}
+            <Route path="/deposits/1" element={<Avand />} />
+            <Route path="/deposits/1/classic" element={<ClassicDeposit />} />
+            <Route path="/deposits/1/mankakan" element={<MankakanDeposit />} />
+            <Route path="/deposits/1/evoca-online" element={<EvocaOnlineDeposit />} />
+            <Route path="/deposits/1/important-info" element={<ImportantInfo />} />
+            <Route path="/news/best-sme-bank" element={<BestSmeBankPage />} />
+            <Route path="/news/crypto-account" element={<CryptoAccountPage />} />
 
-          <Route path="/cards/visa-business-card" element={<VisaBusiness />} />
-          <Route path="/cards/dalma-card" element={<DalmaGiftCard />} />
+            {/* Visa Vision-ի երթուղիները */}
+            <Route path="/visa-vision" element={<VisaVisionDetails />} />
+            <Route path="/cards/visa-vision" element={<VisaVisionDetails />} />
 
-          {/* Mastercard World Digital-ի երթուղիները */}
-          <Route path="/cards/mastercard-world-digital" element={<CardDetail />} />
-          <Route path="/cards/mc-world-digital" element={<CardDetail />} />
+            <Route path="/cards/visa-business-card" element={<VisaBusiness />} />
+            <Route path="/cards/dalma-card" element={<DalmaGiftCard />} />
 
-          <Route path="/cards/visa-business" element={<PurpleCard />} />
+            {/* Mastercard World Digital-ի երթուղիները */}
+            <Route path="/cards/mastercard-world-digital" element={<CardDetail />} />
+            <Route path="/cards/mc-world-digital" element={<CardDetail />} />
 
-          {/* UnionPay Business Platinum-ի երթուղիները */}
-          <Route path="/cards/unionpay-business-platinum" element={<UnionPayBusinessPlatinum />} />
-          <Route path="/cards/8" element={<UnionPayBusinessPlatinum />} />
-          <Route path="/cards/myler-gift-card" element={<MylerGiftCardDetails />} />
-          <Route path="/evoca-digital-cards" element={<EvocaDigitalCardsPage />} />
-          <Route path="/cards/evoca-digital" element={<EvocaDigitalCardsPage />} />
-          <Route path="/biometrics" element={<EvocaTouchPage />} />
-          <Route path="/visa-infinite" element={<VisaInfinitePage />} />
-          <Route path="/cards/visa-infinite" element={<VisaInfinitePage />} />
-          <Route path="/unionpay-gold" element={<UnionPayGoldPage />} />
-          <Route path="/cards/unionpay-gold" element={<UnionPayGoldPage />} />
-          <Route path="/evoca-online" element={<EvocaOnlineLoginPage />} />
-          <Route path="/evoca-salary" element={<EvocaSalaryPage />} />
-          <Route path="/cards/gift-card" element={<EvocaGiftCardPage />} />
-          <Route path="/deposits/evoca-online" element={<EvocaOnlineDepositPage />} />
-          <Route path="/evoca-online-deposit" element={<EvocaOnlineDepositPage />} />
-          <Route path="/news/back-to-school" element={<NewsArticlePage />} />
-          <Route path="/news/products/back-to-school" element={<NewsArticlePage />} />
-          <Route path="/news/moodys-rating" element={<MoodysNewsPage />} />
-          <Route path="/news/banking/ba3-rating-from-moodys-to-evocabank" element={<MoodysNewsPage />} />
-          <Route path="/news/firebird-ai" element={<FirebirdAiFactoryPage />} />
-          <Route path="/news/banking/ai-[#]factory-of-firebird-has-launched-in-armenia" element={<FirebirdAiFactoryPage />} />
-          <Route path="/news/green-rock" element={<GreenRockNewsPage />} />
-          <Route path="/news/banking/evocabank-and-green-rock-launched-the-banks-new-headquarters-project" element={<GreenRockNewsPage />} />
-          <Route path="/news/mit-certified" element={<MitCertifiedPage />} />
-          <Route path="/news/banking/evoca-executives-completed-generative-ai-course" element={<MitCertifiedPage />} />
-          <Route path="/news/evocabank-wilco" element={<WilcoCardPage />} />
-          <Route path="/news/adidas-armenia" element={<AdidasNewsPage />} />
-          <Route path="/news/products/adidas-armenia" element={<AdidasNewsPage />} />
-          <Route path="/news/globbing" element={<GlobbingNewsPage />} />
-          <Route path="/news/products/globbing" element={<GlobbingNewsPage />} />
-          <Route path="/news" element={<NewsListPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/mortgage" element={<MortgagePage />} />
-          <Route path="/short-number" element={<ShortNumberDetails />} />
-          <Route path="/evocatouch-app" element={<EvocaTouchAppPage />} />
-          <Route path="/online-payments" element={<OnlinePaymentsPage />} />
-          <Route path="/online-payments/evocabank" element={<EvocabankServicesPage />} />
-          <Route path="/online-payments/international" element={<InternationalOperatorsPage />} />
-          <Route path="/online-payments/utility" element={<UtilityPaymentsPage />} />
-          <Route path="/online-payments/internet-tv" element={<InternetTvPaymentsPage />} />
-          <Route path="/online-payments/police" element={<RoadPolicePaymentsPage />} />
-          <Route path="/online-payments/loans" element={<LoanOrganizationsPage />} />
-          <Route path="/online-payments/events" element={<EventsPaymentsPage />} />
-          <Route path="/payments-evoca" element={<PaymentsEvoca />} />
-          <Route path="/cards/visa-platinum" element={<VisaPlatinumDetails />} />
-          <Route path="/cards/4u-gift-card" element={<DigitalGiftCardDetails />} />
-          <Route path="/cards/mastercard-gold" element={<MastercardGoldDetails />} />
+            <Route path="/cards/visa-business" element={<PurpleCard />} />
 
-          {/* Wilco Visa Infinite-ի մանրամասն էջի երթուղիները */}
-          <Route path="/cards/wilco-visa-infinite" element={<WilcoVisaInfiniteDetails />} />
-          <Route path="/cards/3" element={<WilcoVisaInfiniteDetails />} />
-          <Route path="/news/products/evocabank-wilco" element={<WilcoVisaInfiniteDetails />} />
+            {/* UnionPay Business Platinum-ի երթուղիները */}
+            <Route path="/cards/unionpay-business-platinum" element={<UnionPayBusinessPlatinum />} />
+            <Route path="/cards/8" element={<UnionPayBusinessPlatinum />} />
+            <Route path="/cards/myler-gift-card" element={<MylerGiftCardDetails />} />
+            <Route path="/evoca-digital-cards" element={<EvocaDigitalCardsPage />} />
+            <Route path="/cards/evoca-digital" element={<EvocaDigitalCardsPage />} />
+            <Route path="/biometrics" element={<EvocaTouchPage />} />
+            <Route path="/visa-infinite" element={<VisaInfinitePage />} />
+            <Route path="/cards/visa-infinite" element={<VisaInfinitePage />} />
+            <Route path="/unionpay-gold" element={<UnionPayGoldPage />} />
+            <Route path="/cards/unionpay-gold" element={<UnionPayGoldPage />} />
+            <Route path="/evoca-online" element={<EvocaOnlineLoginPage />} />
+            <Route path="/evoca-salary" element={<EvocaSalaryPage />} />
+            <Route path="/cards/gift-card" element={<EvocaGiftCardPage />} />
+            <Route path="/deposits/evoca-online" element={<EvocaOnlineDepositPage />} />
+            <Route path="/evoca-online-deposit" element={<EvocaOnlineDepositPage />} />
+            <Route path="/news/back-to-school" element={<NewsArticlePage />} />
+            <Route path="/news/products/back-to-school" element={<NewsArticlePage />} />
+            <Route path="/news/moodys-rating" element={<MoodysNewsPage />} />
+            <Route path="/news/banking/ba3-rating-from-moodys-to-evocabank" element={<MoodysNewsPage />} />
+            <Route path="/news/firebird-ai" element={<FirebirdAiFactoryPage />} />
+            <Route path="/news/banking/ai-[#]factory-of-firebird-has-launched-in-armenia" element={<FirebirdAiFactoryPage />} />
+            <Route path="/news/green-rock" element={<GreenRockNewsPage />} />
+            <Route path="/news/banking/evocabank-and-green-rock-launched-the-banks-new-headquarters-project" element={<GreenRockNewsPage />} />
+            <Route path="/news/mit-certified" element={<MitCertifiedPage />} />
+            <Route path="/news/banking/evoca-executives-completed-generative-ai-course" element={<MitCertifiedPage />} />
+            <Route path="/news/evocabank-wilco" element={<WilcoCardPage />} />
+            <Route path="/news/adidas-armenia" element={<AdidasNewsPage />} />
+            <Route path="/news/products/adidas-armenia" element={<AdidasNewsPage />} />
+            <Route path="/news/globbing" element={<GlobbingNewsPage />} />
+            <Route path="/news/products/globbing" element={<GlobbingNewsPage />} />
+            <Route path="/news" element={<NewsListPage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/mortgage" element={<MortgagePage />} />
+            <Route path="/short-number" element={<ShortNumberDetails />} />
+            <Route path="/evocatouch-app" element={<EvocaTouchAppPage />} />
+            <Route path="/online-payments" element={<OnlinePaymentsPage />} />
+            <Route path="/online-payments/evocabank" element={<EvocabankServicesPage />} />
+            <Route path="/online-payments/international" element={<InternationalOperatorsPage />} />
+            <Route path="/online-payments/utility" element={<UtilityPaymentsPage />} />
+            <Route path="/online-payments/internet-tv" element={<InternetTvPaymentsPage />} />
+            <Route path="/online-payments/police" element={<RoadPolicePaymentsPage />} />
+            <Route path="/online-payments/loans" element={<LoanOrganizationsPage />} />
+            <Route path="/online-payments/events" element={<EventsPaymentsPage />} />
+            <Route path="/payments-evoca" element={<PaymentsEvoca />} />
+            <Route path="/cards/visa-platinum" element={<VisaPlatinumDetails />} />
+            <Route path="/cards/4u-gift-card" element={<DigitalGiftCardDetails />} />
+            <Route path="/cards/mastercard-gold" element={<MastercardGoldDetails />} />
 
-          {/* 404՝ ցանկացած գոյություն չունեցող հասցե (/pmz-loan-ն էլ կընկնի այստեղ) */}
-          <Route path="*" element={<NotFound />} />
-        </Route>
+            {/* Wilco Visa Infinite-ի մանրամասն էջի երթուղիները */}
+            <Route path="/cards/wilco-visa-infinite" element={<WilcoVisaInfiniteDetails />} />
+            <Route path="/cards/3" element={<WilcoVisaInfiniteDetails />} />
+            <Route path="/news/products/evocabank-wilco" element={<WilcoVisaInfiniteDetails />} />
 
-        {/* Պատվերի էջերը առանց հիմնական Header-ի */}
-        <Route path="/cards/gift/order-violet" element={<GiftCardOrderPage />} />
-        <Route path="/cards/gift/order-black" element={<GiftCardOrderBlackPage />} />
-      </Routes>
-    </Router>
+            {/* 404՝ ցանկացած գոյություն չունեցող հասցե (/pmz-loan-ն էլ կընկնի այստեղ) */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+          {/* Պատվերի էջերը առանց հիմնական Header-ի */}
+          <Route path="/cards/gift/order-violet" element={<Tr><GiftCardOrderPage /></Tr>} />
+          <Route path="/cards/gift/order-black" element={<Tr><GiftCardOrderBlackPage /></Tr>} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }

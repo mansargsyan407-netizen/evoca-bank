@@ -17,6 +17,9 @@ import {
   Factory,
 } from 'lucide-react';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
 export default function SimpleBusinessLoanPage() {
   const [activeTab, setActiveTab] = useState('about');
   const [currency, setCurrency] = useState('AMD'); // AMD, USD, EUR
@@ -31,7 +34,7 @@ export default function SimpleBusinessLoanPage() {
     }
   };
 
- const otherLoans = [
+ const otherLoansFirebaseFallbackFirebaseFallback = [
         {
          icon: Zap,
          img: 'https://www.evoca.am/images-cache/loans/1/16148706367372/415x261.jpg',
@@ -98,6 +101,8 @@ export default function SimpleBusinessLoanPage() {
          title: 'Արտադրողականության խթանման ծրագրի ներքո վարկ (գործում է մինչև 31.12.2026թ.)',
        },
      ];
+  
+  const otherLoans = useFirebasePublicData('siteContent/pageData/SimpleBusinessLoanPage/otherLoans', otherLoansFirebaseFallbackFirebaseFallback);
 
 
   return (

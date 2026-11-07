@@ -1,27 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_AnnualReports_subTabs, pageData_AnnualReports_reports } from './sitePageData';
 const AnnualReports = () => {
   const [activeSubTab, setActiveSubTab] = useState('annual');
 
-  const subTabs = [
-    { id: 'audit', label: 'Աուդիտորական եզրակացություն', link: '/reports' },
-    { id: 'financial', label: 'Ֆինանսական հաշվետվություններ', link: '/financial-reports' },
-    { id: 'investors', label: 'Ներդրողների համար', link: '/investors' },
-    { id: 'semi-annual', label: 'Կիսամյակային հաշվետվություն', link: '/semi-annual-reports' },
-    { id: 'annual', label: 'Տարեկան հաշվետվություն', link: '/annual-reports' },
-  ];
+  const subTabs = useFirebasePublicData('siteContent/pageData/AnnualReports/subTabs', pageData_AnnualReports_subTabs);
 
   // Նկարում պատկերված տարեկան հաշվետվությունների ցուցակը
-  const reports = [
-    { id: 1, title: '2021 Տարեկան հաշվետվություն' },
-    { id: 2, title: '2020 Տարեկան հաշվետվություն' },
-    { id: 3, title: '2022 Տարեկան հաշվետվություն' },
-    { id: 4, title: '2023 Տարեկան հաշվետվություն' },
-    { id: 5, title: '2024 Տարեկան հաշվետվություն' },
-    { id: 6, title: '2024 Տարեկան հաշվետվություն' },
-    { id: 7, title: '2025 տարեկան հաշվետվություն' },
-  ];
+  const reports = useFirebasePublicData('siteContent/pageData/AnnualReports/reports', pageData_AnnualReports_reports);
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

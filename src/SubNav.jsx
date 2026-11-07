@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
-const ITEMS = [
-  { key: "culture", label: "Մշակույթ", to: "/careers" },
-  { key: "benefits", label: "Առավելություններ", to: "/benefits" },
-  { key: "faq", label: "Հաճախ տրվող հարցեր", to: "/faq" },
-  { key: "apply", label: "Ինչպես ընդունվել աշխատանքի Evocabank-ում", to: "/how-to-apply" },
-];
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_SubNav_ITEMS } from './sitePageData';
+
 
 export default function SubNav({ active }) {
+  const ITEMS = useFirebasePublicData('siteContent/pageData/SubNav/ITEMS', pageData_SubNav_ITEMS);
+
   return (
     <nav className="bg-[#6200e0] sticky top-0 z-30">
       <div className="max-w-6xl mx-auto px-4 flex overflow-x-auto text-white text-xs font-semibold">

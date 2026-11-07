@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tr, useLang } from "./i18n";
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
 const BASE = "https://www.evoca.am";
 
 const IMAGES = {
@@ -9,7 +11,7 @@ const IMAGES = {
   girl: `${BASE}/file_manager/Career/evoca-girl.jpg`,
 };
 
-const CULTURE_SLIDES = [
+const CULTURE_SLIDESFirebaseFallback = [
   {
     title: "Evocabank neon art corporate party",
     img: `${BASE}/images-cache/culture_sliders/1/16760069357338/744x419.jpg`,
@@ -24,7 +26,7 @@ const CULTURE_SLIDES = [
   },
 ];
 
-const TEAM_WORDS = [
+const TEAM_WORDSFirebaseFallback = [
   {
     words: ["Թրենդային", "Պահանջված", "Ուրախ"],
     name: "Հարություն Սահակյան",
@@ -42,7 +44,7 @@ const TEAM_WORDS = [
   },
 ];
 
-const SUB_NAV = [
+const SUB_NAVFirebaseFallback = [
   { label: "Մշակույթ", href: "#culture" },
   { label: "Առավելություններ", href: "/benefits" },
   { label: "Հաճախ տրվող հարցեր", href: "/faq" },
@@ -87,6 +89,10 @@ const inputCls =
   "w-full h-10 px-3 rounded border border-gray-200 bg-gray-50 text-sm outline-none focus:border-[#6200e0] focus:bg-white transition";
 
 export default function CareersPage() {
+  const CULTURE_SLIDES = useFirebasePublicData('siteContent/pageData/CareersPage/CULTURE_SLIDES', CULTURE_SLIDESFirebaseFallback);
+  const TEAM_WORDS = useFirebasePublicData('siteContent/pageData/CareersPage/TEAM_WORDS', TEAM_WORDSFirebaseFallback);
+  const SUB_NAV = useFirebasePublicData('siteContent/pageData/CareersPage/SUB_NAV', SUB_NAVFirebaseFallback);
+
   const { t } = useLang();
   const [slide, setSlide] = useState(1);
   const [teamPage, setTeamPage] = useState(0);

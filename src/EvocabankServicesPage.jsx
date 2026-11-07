@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
 export default function EvocabankServicesPage() {
-  const services = [
+  const servicesFirebaseFallbackFirebaseFallback = [
     {
       id: 'loan_repayment',
       title: 'Վարկի մարում',
@@ -25,6 +28,8 @@ export default function EvocabankServicesPage() {
       ),
     },
   ];
+  
+  const services = useFirebasePublicData('siteContent/pageData/EvocabankServicesPage/services', servicesFirebaseFallbackFirebaseFallback);
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">

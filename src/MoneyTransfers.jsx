@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_MoneyTransfers_accordionItems } from './sitePageData';
 const MoneyTransfers = () => {
   // Accordion (Անհրաժեշտ տեղեկատվություն) բացել/փակելու state
   const [openAccordion, setOpenAccordion] = useState(0);
@@ -9,33 +11,7 @@ const MoneyTransfers = () => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
-  const accordionItems = [
-    {
-      title: 'Փոխանցումներ դրամով',
-      content: [
-        'Մեզ մոտ գործող վճարահաշվարկային համակարգնապահովում է արագ և հուսալի դրամային փոխանցումներ ինչպես մեր համակարգում, այնպես էլ հայաստանյան այլ բանկերի միջև:',
-        'Դրամով փոխանցումները Հայաստանի տարածքում կատարվում են 1 բանկային օրվա ընթացքում:'
-      ]
-    },
-    {
-      title: 'Միջազգային փոխանցումներ',
-      content: [
-        'Իրականացվում են SWIFT համակարգի միջոցով արտարժույթով փոխանցումներ աշխարհի ցանկացած կետ:'
-      ]
-    },
-    {
-      title: 'Վճարային համակարգեր',
-      content: [
-        'Արագ դրամական փոխանցումների համակարգերով փոխանցումների սպասարկում առանց հաշվի բացման:'
-      ]
-    },
-    {
-      title: 'Փոխանցման պայմանների փոփոխում կամ չեղյալացում',
-      content: [
-        'Փոխանցման պայմանների փոփոխումը կամ չեղյալացումը կատարվում է հաճախորդի դիմումի համաձայն:'
-      ]
-    }
-  ];
+  const accordionItems = useFirebasePublicData('siteContent/pageData/MoneyTransfers/accordionItems', pageData_MoneyTransfers_accordionItems);
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

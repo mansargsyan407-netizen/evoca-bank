@@ -6,6 +6,9 @@ import Dropdown from './Dropdown';
 import SiteMenu from './SiteMenu';
 import { useLang } from './i18n';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
 const TopLink = ({ to, children }) => (
   <NavLink
     to={to}
@@ -92,11 +95,13 @@ export default function Header({ onOrderCall, onChangeLanguage }) {
     { onClick: onOrderCall, label: t('Պատվիրել զանգ') },
   ];
 
-  const languageItems = [
+  const languageItemsFirebaseFallbackFirebaseFallback = [
     { onClick: () => changeLanguage('hy'), label: 'ՀԱՅ' },
     { onClick: () => changeLanguage('ru'), label: 'РУС' },
     { onClick: () => changeLanguage('en'), label: 'ENG' },
   ];
+  
+  const languageItems = useFirebasePublicData('siteContent/pageData/Header/languageItems', languageItemsFirebaseFallbackFirebaseFallback);
 
   return (
     <header className="w-full bg-white text-gray-800 font-sans border-b border-gray-200 relative">
@@ -212,9 +217,11 @@ export default function Header({ onOrderCall, onChangeLanguage }) {
           <MainLink to="/evocatouch">EvocaTOUCH</MainLink>
         </nav>
 
-        <button className="bg-purple-700 hover:bg-purple-800 text-white font-bold px-6 py-2.5 rounded-full transition shadow-md">
-          EvocaONLINE
-        </button>
+       <Link to="/evoca-on">
+  <button className="bg-purple-700 hover:bg-purple-800 text-white font-bold px-6 py-2.5 rounded-full transition shadow-md">
+    EvocaONLINE
+  </button>
+</Link>
       </div>
 
       {/* Full-screen site menu */}

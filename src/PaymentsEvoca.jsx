@@ -5,7 +5,9 @@ import {
 } from 'react-icons/fa';
 import { Tr, useLang } from './i18n';
 
-const services = [
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+const servicesFirebaseFallback = [
   {
     id: 'evocabank',
     title: 'EVOCABANK',
@@ -64,7 +66,7 @@ const services = [
   },
 ];
 
-const evocabankSubServices = [
+const evocabankSubServicesFirebaseFallback = [
   {
     id: 'loan-repayment',
     title: 'Վարկի մարում',
@@ -172,7 +174,7 @@ const georgianOperators = [
   },
 ];
 
-const utilityServices = [
+const utilityServicesFirebaseFallback = [
   {
     id: 'phone',
     title: 'Հեռախոս',
@@ -215,7 +217,7 @@ const utilityServices = [
   },
 ];
 
-const phoneServices = [
+const phoneServicesFirebaseFallback = [
   {
     id: 'beeline-fixed',
     title: 'Ֆիքսված հեռախոսակապ',
@@ -234,7 +236,7 @@ const phoneServices = [
   },
 ];
 
-const internetTvServices = [
+const internetTvServicesFirebaseFallback = [
   {
     id: 'hypernet',
     title: 'HyperNet',
@@ -325,7 +327,7 @@ const internetTvServices = [
   },
 ];
 
-const policeServices = [
+const policeServicesFirebaseFallback = [
   {
     id: 'speed-cameras',
     title: 'Արագաչափեր և տեսախցիկներ',
@@ -372,6 +374,13 @@ const loanOrganizations = [
 ];
 
 export default function PaymentsEvoca() {
+  const services = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/services', servicesFirebaseFallback);
+  const evocabankSubServices = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/evocabankSubServices', evocabankSubServicesFirebaseFallback);
+  const utilityServices = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/utilityServices', utilityServicesFirebaseFallback);
+  const phoneServices = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/phoneServices', phoneServicesFirebaseFallback);
+  const internetTvServices = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/internetTvServices', internetTvServicesFirebaseFallback);
+  const policeServices = useFirebasePublicData('siteContent/pageData/PaymentsEvoca/policeServices', policeServicesFirebaseFallback);
+
   const { t } = useLang();
 
   const [selectedCategory, setSelectedCategory] = useState(null);

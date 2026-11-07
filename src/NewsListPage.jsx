@@ -1,3 +1,5 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_NewsListPage_filters, pageData_NewsListPage_newsData } from './sitePageData';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Phone } from 'lucide-react';
@@ -7,115 +9,9 @@ export default function NewsListPage() {
   const { t } = useLang();
   const [activeFilter, setActiveFilter] = useState('Գլխավոր');
 
-  const filters = [
-    'Գլխավոր',
-    'Բանկային',
-    'Հարցազրույցներ',
-    'Պրոդուկտներ',
-    'Նորարարություններ',
-    'Կենսակերպ',
-    'Մրցանակներ',
-    'CSR',
-    'Այլ',
-  ];
+  const filters = useFirebasePublicData('siteContent/pageData/NewsListPage/filters', pageData_NewsListPage_filters);;
 
-  const newsData = [
-    {
-      id: 1,
-      to: '/news/back-to-school',
-      image: 'https://www.evoca.am/images-cache/news/1/17873217684586/439x320.png',
-      category: 'Պրոդուկտներ',
-      categoryColor: 'bg-emerald-500',
-      title: 'Դեպի նոր ուսումնական տարի՝ մինչև 23% cashback-ով',
-      desc: 'Մինչև սեպտեմբերի 15-ը վճարիր Evoca Mastercard-ով ակցիայի մասնակից խանութներում և գրախանութներում ու ստացիր մինչև 23% cashback։',
-      date: '21.08.2026',
-      isHero: true,
-    },
-    {
-      id: 2,
-      to: '/news/amx-awards-2026',
-      image: 'https://www.evoca.am/images-cache/news/1/17815943976247/616x462.png',
-      category: 'Մրցանակներ',
-      categoryColor: 'bg-yellow-400',
-      title: 'Evocabank-ը՝ AMX AWARDS 2026-ի մրցանակակիր',
-      desc: 'Evocabank-ը AMX AWARDS 2026-ի ընթացքում արժանացել է «Դեպոզիտարիայի ավտոմատացված համակարգերի կիրառման լավագույն գործընկեր» մրցանակին:',
-      date: '16.06.2026',
-      isMainGridLeft: true,
-    },
-    {
-      id: 3,
-      to: '/news/best-sme-bank',
-      image: 'https://www.evoca.am/images-cache/news/1/17784860353078/450x295.png',
-      category: 'Մրցանակներ',
-      categoryColor: 'bg-yellow-400',
-      title: 'Evocabank. Լավագույն ՓՄՁ բանկը Հայաստանում՝ երկրորդ...',
-      date: '08.05.2026',
-    },
-    {
-      id: 4,
-      to: '/news/crypto-account',
-      image: 'https://www.evoca.am/images-cache/news/1/17722002491716/450x295.png',
-      category: 'Պրոդուկտներ',
-      categoryColor: 'bg-[#7c3aed]',
-      title: 'Քո Crypto հաշիվը՝ արդեն EvocaTOUCH-ում',
-      date: '27.02.2026',
-    },
-    {
-      id: 5,
-      to: '/news/los-angeles-times',
-      image: 'https://www.evoca.am/images-cache/news/1/17720089281517/450x295.png',
-      category: 'Հարցազրույցներ',
-      categoryColor: 'bg-[#7c3aed]',
-      title: 'Կարեն Եղիազարյանի հարցազրույցը Los Angeles',
-      date: '25.02.2026',
-    },
-    {
-      id: 6,
-      to: '/news/ajapnyak-branch',
-      image: 'https://www.evoca.am/images-cache/news/1/17683825017248/450x295.jpg',
-      category: 'Բանկային',
-      categoryColor: 'bg-[#7c3aed]',
-      title: "Evocabank-ի «Աջափնյակ» մասնաճյուղն արդեն բաց է",
-      date: '12.01.2026',
-    },
-    {
-      id: 7,
-      to: '/news/new-colors',
-      image: 'https://www.evoca.am/images-cache/news/1/17812556342544/780x585.png',
-      category: 'Կենսակերպ',
-      categoryColor: 'bg-lime-400',
-      title: 'Evocabank-ը նոր գույներ է տալիս մեր քաղաքին',
-      desc: 'Street art-երը շուտով կհայտնվեն Երևանի ամենատարբեր անկյուններում՝ քաղաքին հաղորդելով նոր շունչ և նոր գույներ:',
-      date: '12.06.2026',
-    },
-    {
-      id: 8,
-      to: '/news/transactions-blocked',
-      image: 'https://www.evoca.am/images-cache/news/1/17852444643548/438x328.png',
-      category: 'Բանկային',
-      categoryColor: 'bg-[#6b21a8]',
-      title: 'Գործարքների արգելափակում 1 կոճակով',
-      date: '01.06.2026',
-    },
-    {
-      id: 9,
-      to: '/news/esg-framework',
-      image: 'https://www.evoca.am/images-cache/news/1/17757342882486/438x328.png',
-      category: 'Բանկային',
-      categoryColor: 'bg-[#6b21a8]',
-      title: 'ESG կառավարման համակարգը Evocabank-ում',
-      date: '31.03.2026',
-    },
-    {
-      id: 10,
-      to: '/news/amcham-armenia',
-      image: 'https://www.evoca.am/images-cache/news/1/17707319421286/438x328.png',
-      category: 'Բանկային',
-      categoryColor: 'bg-[#6b21a8]',
-      title: 'Evocabank-ը միացել է AmCham Armenia-ին',
-      date: '10.02.2026',
-    },
-  ];
+  const newsData = useFirebasePublicData('siteContent/pageData/NewsListPage/newsData', pageData_NewsListPage_newsData);;
 
   return (
     <Tr>

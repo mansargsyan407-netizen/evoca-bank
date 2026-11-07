@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 /* ------------------------------ DATA ------------------------------ */
 
-const post = {
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_EvocaInvestPost_relatedPosts } from './sitePageData';
+
+const postFirebaseFallback = {
   category: "Ներդրումներ",
   title: "EvocaINVEST. ինչպե՞ս կատարել գործարքներ",
   description:
@@ -30,26 +33,7 @@ const orderTypes = [
   },
 ];
 
-const relatedPosts = [
-  {
-    title: "Ֆիլներ ֆինանսական աշխարհի էնտուզիաստների համար Մաս 1",
-    date: "28.08.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17248413426642/428x321.png",
-    href: "/blog/films-finance-1",
-  },
-  {
-    title: "Ինչպե՛ս կառավարել պորտֆելը: Պորտֆելի կառավարման 3 փուլերը",
-    date: "17.05.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17159356763697/428x321.jpg",
-    href: "/blog/portfolio-management",
-  },
-  {
-    title: "Ներդրումների կարելիներն ու չի կարելիները",
-    date: "23.04.2024",
-    image: "https://www.evoca.am/images-cache/blogs/1/17138737784517/428x321.jpg",
-    href: "/blog/invest-dos-donts",
-  },
-];
+
 
 const updatedAt = "05/06/2026 16:43";
 
@@ -109,6 +93,10 @@ function SubHeading({ children }) {
 /* ------------------------------ PAGE ------------------------------ */
 
 export default function EvocaInvestPost() {
+  const post = useFirebasePublicData('siteContent/pageData/EvocaInvestPost/post', postFirebaseFallback);
+
+  const relatedPosts = useFirebasePublicData('siteContent/pageData/EvocaInvestPost/relatedPosts', pageData_EvocaInvestPost_relatedPosts);
+
   return (
     <div className="w-full bg-white font-sans text-neutral-900">
       <div className="mx-auto max-w-[1000px] px-4 pt-6 pb-10">

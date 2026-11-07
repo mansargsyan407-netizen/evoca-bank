@@ -9,8 +9,12 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
+
 export default function EvocaTouchPage() {
-  const documents = [
+  const documentsFirebaseFallbackFirebaseFallback = [
     { 
       title: "Համալիր բանկային ծառայությունների մատուցման պայմաններ 16.05.2025", 
       link: "https://www.evoca.am/files/global_files/1/provision-terms-for-general-banking-services-arm.pdf" 
@@ -24,9 +28,11 @@ export default function EvocaTouchPage() {
       link: "https://www.evoca.am/files/global_files/1/evocatouch-rus.pdf" 
     }
   ];
+  
+  const documents = useFirebasePublicData('siteContent/pageData/EvocaTouchPage/documents', documentsFirebaseFallbackFirebaseFallback);
 
   // Կարծիքների տվյալների զանգված
-  const reviews = [
+  const reviewsFirebaseFallback = [
     {
       id: 1,
       text: "Հայաստանի իրականության մեջ բացառիկ հրաշք բանկ: Միայն այս հնարավորությունը ընձեռելով երիտասարդ ընտանիքներին ` նման ցածր տոկոսով բնակարան ձեռք բերել, արժանի է մեծ հարգանքի: Շնորհակալ ենք, որ Դուք կաք:",
@@ -58,6 +64,7 @@ export default function EvocaTouchPage() {
       role: "KAMOBLOG մեդիա-հարթակի հիմնադիր, influencer"
     }
   ];
+  const reviews = useFirebasePublicData('siteContent/pageData/EvocaTouchPage/reviews', reviewsFirebaseFallback);
 
   return (
     <div className="w-full bg-white min-h-screen text-gray-800 font-sans flex flex-col justify-between">

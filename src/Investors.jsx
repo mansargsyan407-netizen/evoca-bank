@@ -1,54 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_Investors_subTabs, pageData_Investors_investorData } from './sitePageData';
 const Investors = () => {
   const [activeSubTab, setActiveSubTab] = useState('investors');
 
-   const subTabs = [
-    { id: 'audit', label: 'Աուդիտորական եզրակացություն', link: '/reports' },
-    { id: 'financial', label: 'Ֆինանսական հաշվետվություններ', link: '/financial-reports' },
-    { id: 'investors', label: 'Ներդրողների համար', link: '/investors' },
-    { id: 'semi-annual', label: 'Կիսամյակային հաշվետվություն', link: '/semi-annual-reports' },
-    { id: 'annual', label: 'Տարեկան հաշվետվություն', link: '/annual-reports' },
-  ];
+   const subTabs = useFirebasePublicData('siteContent/pageData/Investors/subTabs', pageData_Investors_subTabs);
 
   // Նկարներում պատկերված տվյալների կառուցվածքը
-  const investorData = [
-    {
-      year: 2026,
-      quarters: [
-        { label: 'Q1 2026', code: '2026 Q1' },
-        { label: 'Q2 2026', code: '2026 Q2' },
-      ],
-    },
-    {
-      year: 2025,
-      quarters: [
-        { label: 'Q1 2025', code: '2025 Q1' },
-        { label: 'Q2 2025', code: '2025 Q2' },
-        { label: 'Q3 2025', code: '2025 Q3' },
-        { label: 'Q4 2025', code: '2025 Q4' },
-      ],
-    },
-    {
-      year: 2024,
-      quarters: [
-        { label: 'Q1 2024', code: '2024 Q1' },
-        { label: 'Q2 2024', code: '2024 Q2' },
-        { label: 'Q3 2024', code: '2024 Q3' },
-        { label: 'Q4 2024', code: '2024 Q4' },
-      ],
-    },
-    {
-      year: 2023,
-      quarters: [
-        { label: 'Q1 2023', code: '2023 Q1' },
-        { label: 'Q2 2023', code: '2023 Q2' },
-        { label: 'Q3 2023', code: '2023 Q3' },
-        { label: 'Q4 2023', code: '2023 Q4' },
-      ],
-    },
-  ];
+  const investorData = useFirebasePublicData('siteContent/pageData/Investors/investorData', pageData_Investors_investorData);
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

@@ -17,6 +17,9 @@ import {
   Factory,
 } from 'lucide-react';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
 export default function KfwGreenFinancePage() {
   const [activeTab, setActiveTab] = useState('about');
   const scrollerRef = useRef(null);
@@ -29,7 +32,7 @@ export default function KfwGreenFinancePage() {
       });
     }
   };
-const otherLoans = [
+const otherLoansFirebaseFallbackFirebaseFallback = [
         {
          icon: Zap,
          img: 'https://www.evoca.am/images-cache/loans/1/16148706367372/415x261.jpg',
@@ -96,6 +99,8 @@ const otherLoans = [
          title: 'Արտադրողականության խթանման ծրագրի ներքո վարկ (գործում է մինչև 31.12.2026թ.)',
        },
      ];
+  
+  const otherLoans = useFirebasePublicData('siteContent/pageData/KfwGreenFinancePage/otherLoans', otherLoansFirebaseFallbackFirebaseFallback);
 
 
   return (

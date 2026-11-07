@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // «Այլ վարկեր» ցանկը
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_ArtsakhDisplacedLoan_termsList } from './sitePageData';
 const otherLoans = [
   {
     id: 1,
@@ -206,14 +208,7 @@ const ArtsakhDisplacedLoan = () => {
   const [activeTab, setActiveTab] = useState('about');
 
   // Պայմանների տվյալներ
-  const termsList = [
-    { id: 1, title: 'Վարկավորման նպատակը', content: 'ՀՀ-ում բնակելի նշանակության անշարժ գույքի` բնակարանի, անհատական բնակելի տան (առաջնային և երկրորդային շուկայից) ձեռքբերում կամ կառուցապատում:' },
-    { id: 2, title: 'Ովքեր կարող են դիմել', content: 'Հավաստագրում ներառված անձը կամ նրա ընտանիքի անդամը: Վարկառուի տարիքային շեմը հաշվի չի առնվում, եթե գործում առկա է համավարկառու, ում 65 տարեկանը չի բոլորի վարկի սպասարկման ողջ ընթացքում:' },
-    { id: 3, title: 'Ծրագրի շահառուներ', content: 'Կառավարության 2022 թ․ փետրվարի 17-ի N 169-L որոշման 4-րդ հոդվածով սահմանված անձիք' },
-    { id: 4, title: 'Վարկավորման արժույթը', content: 'ՀՀ դրամ' },
-    { id: 5, title: 'Վարկավորման գումար', content: '2,000,000.00-30,000,000.00 ՀՀ դրամ' },
-    { id: 6, title: 'Վարկի մարման ժամկետը', content: '120 ամիս' },
-  ];
+  const termsList = useFirebasePublicData('siteContent/pageData/ArtsakhDisplacedLoan/termsList', pageData_ArtsakhDisplacedLoan_termsList);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">

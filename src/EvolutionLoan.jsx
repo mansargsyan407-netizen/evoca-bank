@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // «Այլ վարկեր» ցանկը
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_EvolutionLoan_termsList } from './sitePageData';
 const otherLoans = [
     {
     id: 1,
@@ -206,19 +208,7 @@ const EvolutionLoan = () => {
   const [activeTab, setActiveTab] = useState('about');
 
   // Պայմանների տվյալներ
-  const termsList = [
-    { id: 1, title: 'Ովքեր կարող են դիմել', content: '18 տարին լրացած ՀՀ ռեզիդենտները, որոնց տարիքը վարկի սպասարկման ընթացքում չի գերազանցի 63 տարեկանը: Դիմել կարող են նաև ծնողները՝ իրենց երեխաների /շահառու/ համար:' },
-    { id: 2, title: 'Վարկի նպատակը', content: 'Ուսումնական և վերապատրաստման դասընթացների, թրեյնինգների ֆինանսավորում' },
-    { id: 3, title: 'Վարկավորման արժույթը', content: 'ՀՀ դրամ' },
-    { id: 4, title: 'Վարկավորման գումար', content: '100,000.00-1,000,000.00' },
-    { id: 5, title: 'Վարկի մարման ժամկետը', content: '12-18 ամիս' },
-    { id: 6, title: 'Վարկի տրամադրման եղանակը', content: 'Անկանխիկ' },
-     { id: 7, title: 'Համագործակցության վճար գործընկերոջից', content: 'Վարկի գումարի 0-1%՝ միանվագ, կախված համագործակցության պայմաններից' },
-      { id: 8, title: 'Վարկունակության գնահատման չափանիշներ', content: 'Պարզեցված՝ համաձայն Ֆիզիկական անձանց անհատական վարկավորման կարգ –ի, առավելագույն OTI - 100%:' },
-    
-       { id: 9, title: 'Վարկի վերադարձելիության ապահովման միջոց', content: 'Ըստ անհրաժեշտության կարող է պահանջվել Բանկի համար ընդունելի երաշխավորություն' },
-        { id: 10, title: 'Կանխավճար', content: 'Ըստ անհրաժեշտության' },
-  ];
+  const termsList = useFirebasePublicData('siteContent/pageData/EvolutionLoan/termsList', pageData_EvolutionLoan_termsList);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">

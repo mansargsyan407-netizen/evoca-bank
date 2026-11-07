@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 // Նկարը բեռնվում է Evoca-ի կայքից
+import { useFirebasePublicData } from './useFirebasePublicData';
+
 const HERO_IMG =
   "https://www.evoca.am/images-cache/menu/1/16194611253542/1920x634.jpg";
 
 // Մենյուի տաբերը իրենց հղումներով (լինկերով)
-const TABS = [
+const TABSFirebaseFallback = [
   { label: "Աշխատանք Evoca-ում", path: "/work" },
   { label: "Ուսումնական պրակտիկա", path: "/internship" },
   { label: "EvocaBRIDGE", path: "/evocabridge" },
@@ -15,7 +17,7 @@ const TABS = [
 const HQ = "Երևան, Գլխամասային գրասենյակ";
 const HQ_S = "Երևան, Գլխամասային գրասենյակ, Սեբաստիա 108/3";
 
-const JOBS = [
+const JOBSFirebaseFallback = [
   { title: "Քարտային պրոդուկտների թվայնացման մասնագետ", date: "02.10.2026", place: HQ_S },
   { title: "ՓՄՁ վարկավորման ավագ վարկային մասնագետ", date: "02.10.2026", place: HQ },
   { title: "Վարկերի հաստատման մասնագետ (Իրավաբանական անձանց)", date: "02.10.2026", place: HQ },
@@ -102,7 +104,7 @@ const ICONS = {
   ),
 };
 
-const QUALITIES = [
+const QUALITIESFirebaseFallback = [
   { icon: ICONS.motivated, label: "Մոտիվացված" },
   { icon: ICONS.target, label: "Նպատակասլաց" },
   { icon: ICONS.rocket, label: "Արագ և ճկուն" },
@@ -324,6 +326,10 @@ function Footer() {
 const JOBS_PER_PAGE = 5;
 
 export default function WorkPage() {
+  const TABS = useFirebasePublicData('siteContent/pageData/WorkPage/TABS', TABSFirebaseFallback);
+  const JOBS = useFirebasePublicData('siteContent/pageData/WorkPage/JOBS', JOBSFirebaseFallback);
+  const QUALITIES = useFirebasePublicData('siteContent/pageData/WorkPage/QUALITIES', QUALITIESFirebaseFallback);
+
   const [activeTab, setActiveTab] = useState(0);
 
   /* --- SEARCH & PAGINATION STATES --- */

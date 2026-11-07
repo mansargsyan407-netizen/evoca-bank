@@ -2,12 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Calendar, Home } from 'lucide-react';
 import { newsPages, CATEGORIES } from './newsAllData';
+import { get, ref } from 'firebase/database';
+import { realtimeDb } from './firebase';
 
 const PAGE_SIZE = 36;
 const ALL = 'Բոլորը';
 
-// բոլոր էջերի քարտերը՝ մեկ ցանկով
-const allNews = newsPages.flat();
+const fallbackNews = newsPages.flat();
 
 // "dd.mm.yyyy" -> Date
 const parseDate = (str) => {
@@ -54,6 +55,62 @@ export default function NewsAllPage() {
   const [page, setPage] = useState(1);
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
+  const [allNews, setAllNews] = useState(null);
+  const [dataNotice, setDataNotice] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    get(ref(realtimeDb, 'newsAllPage/items'))
+      .then((snapshot) => {
+        if (!active) return;
+
+        if (!snapshot.exists()) {
+          setAllNews(fallbackNews);
+          setDataNotice(
+            'Firebase-ում նորություններ դեռ չկան․ ցուցադրվում են պահուստային տվյալները։',
+          );
+          return;
+        }
+
+        const data = snapshot.val();
+        const items = Object.values(data);
+        const validItems = items.every(
+          (item) =>
+            item &&
+            typeof item.id === 'string' &&
+            /^p\d+-\d+$/.test(item.id) &&
+            typeof item.title === 'string' &&
+            typeof item.date === 'string' &&
+            typeof item.category === 'string',
+        );
+
+        if (!validItems || items.length === 0) {
+          throw new Error('Realtime Database-ում նորությունների տվյալների ձևաչափը սխալ է։');
+        }
+
+        items.sort((left, right) => {
+          const [, leftPage, leftItem] = left.id.match(/^p(\d+)-(\d+)$/) || [];
+          const [, rightPage, rightItem] = right.id.match(/^p(\d+)-(\d+)$/) || [];
+          return Number(leftPage) - Number(rightPage) || Number(leftItem) - Number(rightItem);
+        });
+
+        setAllNews(items);
+      })
+      .catch((error) => {
+        console.error('Չհաջողվեց նորությունները բեռնել Firebase Realtime Database-ից։', error);
+        if (!active) return;
+
+        setAllNews(fallbackNews);
+        setDataNotice(
+          'Չհաջողվեց բեռնել Firebase-ից․ ցուցադրվում են պահուստային տվյալները։',
+        );
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // filter-ը կամ ամսաթիվը փոխելիս՝ վերադառնում ենք 1-ին էջ
   useEffect(() => {
@@ -69,7 +126,7 @@ export default function NewsAllPage() {
     const fromDate = from ? new Date(from) : null;
     const toDate = to ? new Date(to) : null;
 
-    return allNews.filter((item) => {
+    return (allNews || []).filter((item) => {
       if (category !== ALL && item.category !== category) return false;
 
       if (fromDate || toDate) {
@@ -80,7 +137,7 @@ export default function NewsAllPage() {
       }
       return true;
     });
-  }, [category, from, to]);
+  }, [allNews, category, from, to]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const items = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -163,7 +220,17 @@ export default function NewsAllPage() {
         </div>
 
         {/* GRID */}
-        {items.length > 0 ? (
+        {dataNotice && (
+          <p role="status" className="mb-6 text-sm text-amber-700">
+            {dataNotice}
+          </p>
+        )}
+
+        {allNews === null ? (
+          <p role="status" className="py-24 text-center text-sm text-gray-400">
+            Նորությունները բեռնվում են…
+          </p>
+        ) : items.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
             {items.map((item) => (
               <NewsCard key={item.id} item={item} />

@@ -1,71 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_PaymentSystems_paymentSystemsList } from './sitePageData';
 const PaymentSystems = () => {
-  const paymentSystemsList = [
-    {
-      id: 1,
-      name: 'MoneyTun',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/1738743146575/200x100.png',
-      description:
-        'MoneyTun-ը գործում է 2007 թվականից: Կազմակերպության նպատակն է Ամերիկայի և Հայաստանի միջևապահով ու պաշտպանված գործարքներիապահովումն է՝ հիմնված տասնամյակների փորձի վրա: Դրամական փոխանցումները կազմում են MoneyTun-ի կողմից մատուցվող ծառայությունների զգալի մասը:',
-      supportTitle: 'MoneyTun Հաճախորդների սպասարկման հեռախոսահամար`',
-      phone: '+374 10 27 72 85',
-      scheduleTitle: 'Աշխատանքային գրաֆիկ`',
-      schedule: [
-        'Երկուշաբթի-ուրբաթ 10:00-17:30',
-        'Շաբաթ 10:00-14:00',
-        'Կիրակի 10:00-13:00'
-      ]
-    },
-    {
-      id: 2,
-      name: 'Ria',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/16510581265332/200x100.png',
-      description:
-        'Գործում է 182 երկրի ավելի քան 509,000 սպասարկման կետերում: Փոխանցումները կատարվում են դոլարով և եվրոյով: Միջնորդավճարը գանձվում է՝ ըստ RIA համակարգի սահմանած սակագների:',
-      supportTitle: 'Ria Հաճախորդների սպասարկման հեռախոսահամար Հայաստանի համար`',
-      phone: '+374 94 23 59 00',
-      scheduleTitle: 'Աշխատանքային գրաֆիկ`',
-      schedule: ['Երկուշաբթի-ուրբաթ, 09:00-18:00 (Երևանի ժամանակով)'],
-      languagesTitle: 'Հաճախորդների աջակցության լեզուներ`',
-      languages: 'ռուսերեն, անգլերեն'
-    },
-    {
-      id: 3,
-      name: 'UBPay',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/17304660969195/200x100.png',
-      description:
-        'UBPay - ը արագ դրամական փոխանցումների համակարգ է նախատեսված ֆիզիկական անձանց միջև ոչ առևտրային դրամական փոխանցումների իրականացման համար: Համակարգի միջոցով կարող եք իրականացնել փոխանցումներ Հայաստանից դեպի ՌԴ և հակառակ ուղղությամբ:',
-      supportTitle: 'UBPay Հաճախորդների սպասարկման հեռախոսահամար`',
-      phone: '+374 43 00 49 35'
-    },
-    {
-      id: 4,
-      name: 'INTELEXPRESS',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/16133289933621/200x100.png',
-      description:
-        'Գործում է 90 երկրի ավելի քան 57,000 կետերում (Ռուսաստան, ԱՄՆ այլ երկրներ, Մեծ Բրիտանիա, Չինաստան, Եվրոպական երկրներ և այլն): Փոխանցումները կատարվում են ռուբլով, դոլարով և եվրոյով: Միջնորդավճարը գանձվում է՝ ըստ IntelExpress-ի սահմանած սակագների:',
-      supportTitle: 'INTELEXPRESS Հաճախորդների սպասարկման հեռախոսահամար`',
-      phone: '+995 32 2 49 25 25'
-    },
-    {
-      id: 5,
-      name: 'STAK',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/17651707946608/200x100.png',
-      description:
-        '«ՍՏԱԿ» դրամական փոխանցումների հայաստանյան միասնական համակարգի գործունեության նպատակը ռեզիդենտ և ոչ ռեզիդենտ հաճախորդների համար պատշաճ որակի դրամական փոխանցումների իրականացման կազմակերպումն է:\n\nՀամակարգը հնարավորություն է տալիս կատարել և ստանալ փոխանցումներ դոլարով և, ինչպես նաև եվրոյով:'
-    },
-    {
-      id: 6,
-      name: 'MoneyGram',
-      logo: 'https://www.evoca.am/images-cache/payment_systems/1/17651703221475/200x100.png',
-      description:
-        'Գործում է 170 երկրի ավելի քան 125,000 կետերում: Արտերկրից Հայաստան փոխանցվում է դոլար և եվրո, իսկ Հայաստանից արտերկիր՝ միայն դոլար: Միջնորդավճարը գանձվում է ըստ MoneyGram-ի սահմանած սանդղակի:',
-      supportTitle: 'MoneyGram Հաճախորդների սպասարկման հեռախոսահամար`',
-      phone: '1-800-926-9400'
-    }
-  ];
+  const paymentSystemsList = useFirebasePublicData('siteContent/pageData/PaymentSystems/paymentSystemsList', pageData_PaymentSystems_paymentSystemsList);
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

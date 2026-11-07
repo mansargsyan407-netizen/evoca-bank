@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // «Այլ վարկեր» ցանկը
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_ArtsakhRenovationLoan_termsList } from './sitePageData';
 const otherLoans = [
   {
     id: 1,
@@ -205,18 +207,7 @@ const ArtsakhRenovationLoan = () => {
   const [activeTab, setActiveTab] = useState('about');
 
    // Պայմանների տվյալներ
-  const termsList = [
-    { id: 1, title: 'Ովքեր կարող են դիմել', content: '18 - 65 տարեկան ՀՀ ռեզիդենտ ֆիզիկական անձինք, ովքեր հանդիսանում են բանկի Visa Infinite քարտապան:' },
-    { id: 2, title: 'Ծրագրի շահառուներ', content: 'Կառավարության 2022 թ․ փետրվարի 17-ի N 169-L, 2022 թ․ հունիսի 9-ի N 842-L և 2024 թ․ մայիսի 16-ի N 710-L որոշումներով սահմանված անձիք:' },
-    { id: 3, title: 'Վարկավորման նպատակը', content: 'Ծրագրերի շրջանակում ձեռքբերված բնակարանի/բնակելի տան, կառուցված բնակելի տան վերանորոգում' },
-    { id: 4, title: 'Վարկավորման արժույթը', content: 'ՀՀ դրամ' },
-    { id: 5, title: 'Վարկավորման գումար', content: '100,000.00 – 8,000,000.00 ՀՀ դրամ' },
-    { id: 6, title: 'Վարկի մարման ժամկետը', content: '60 ամիս' },
-    { id: 7, title: 'Տարեկան անվանական տոկոսադրույք', content: '13%' },
-    { id: 8, title: 'Տարեկան փաստացի տոկոսադրույք', content: ' 14.08%' },
-    { id: 9, title: ' Վարկի գումարը պայմանագրով ամրագրված ժամանակացույցից շուտ մարելու համար վճարվող տուգանք', content: 'Տուգանք չի կիրառվում:' },
-    { id: 10, title: 'Վարկի վերադարձելիության ապահովման միջոց', content: 'Առանց անշարժ գույքի գրավադրման, սակայն Բանկի որոշմամբ կարող է պահանջվել երաշխավոր անձ:' },
-  ];
+  const termsList = useFirebasePublicData('siteContent/pageData/ArtsakhRenovationLoan/termsList', pageData_ArtsakhRenovationLoan_termsList);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">

@@ -2,29 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Էջ 1-ի և Էջ 2-ի բոլոր լոգոները
-const allPartners = [
-  // Էջ 1-ի լոգոները
-  { id: 1, logo: "https://www.evoca.am/images-cache/partners/1/17104032198171/348x150_grayscale.png", name: "Chip Store" },
-  { id: 2, logo: "https://www.evoca.am/images-cache/partners/1/17077436606929/348x150_grayscale.png", name: "Ֆաբ Լաբ Հայաստան" },
-  { id: 3, logo: "https://www.evoca.am/images-cache/partners/1/17107493820339/348x150_grayscale.png", name: "IMR" },
-  { id: 4, logo: "https://www.evoca.am/images-cache/partners/1/17072192942611/348x150_grayscale.png", name: "DIGNISI" },
-  { id: 5, isHandBanner: true }, // Կենտրոնի ձեռքով բլոկը
-  { id: 6, logo: "https://www.evoca.am/images-cache/partners/1/17072192635138/348x150_grayscale.png", name: "Wizzy" },
-  { id: 7, logo: "https://www.evoca.am/images-cache/partners/1/17072192435541/348x150_grayscale.png", name: "Kamo Blog" },
-  { id: 8, logo: "https://www.evoca.am/images-cache/partners/1/16104577054001/348x150_grayscale.png", name: "Dalma Garden Mall" },
-  { id: 9, logo: "https://www.evoca.am/images-cache/partners/1/16104583322099/348x150_grayscale.png", name: "Նոր Տուն" },
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_PartnersPage_allPartners } from './sitePageData';
 
-  // Էջ 2-ի լոգոները
-  { id: 10, logo: "https://www.evoca.am/images-cache/partners/1/17689930369925/348x150_grayscale.png", name: "Factory" },
-  { id: 11, logo: "https://www.evoca.am/images-cache/partners/1/16104594273635/348x150_grayscale.png", name: "Indigo" },
-  { id: 12, logo: "https://www.evoca.am/images-cache/partners/1/1610459808737/348x150_grayscale.png", name: "Futuris Home" },
-  { id: 13, logo: "https://www.evoca.am/images-cache/partners/1/16104599802947/348x150_grayscale.png", name: "Adelie & the Stone" },
-  { id: 14, logo: "https://www.evoca.am/images-cache/partners/1/16104603665095/348x150_grayscale.png", name: "Earlyone" },
-  { id: 15, logo: "https://www.evoca.am/images-cache/partners/1/16104604109064/348x150_grayscale.png", name: "EasyPay" },
-  { id: 16, logo: "https://www.evoca.am/images-cache/partners/1/16104604382658/348x150_grayscale.png", name: "Telcell" },
-];
 
 export default function PartnersPage() {
+  const allPartners = useFirebasePublicData('siteContent/pageData/PartnersPage/allPartners', pageData_PartnersPage_allPartners);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 

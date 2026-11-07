@@ -1,3 +1,5 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_TextileLoanPage_symbols } from './sitePageData';
 import React, { useState, useRef } from 'react';
 import {
   ChevronLeft,
@@ -17,9 +19,15 @@ import {
   Factory,
 } from 'lucide-react';
 
+
+
 export default function TextileLoanPage() {
   const [activeTab, setActiveTab] = useState('about');
   const [currency, setCurrency] = useState('AMD');
+  const symbols = useFirebasePublicData(
+    'siteContent/pageData/TextileLoanPage/symbols',
+    pageData_TextileLoanPage_symbols,
+  );
 
   // Carousel ref and scroll function
   const scrollerRef = useRef(null);
@@ -34,7 +42,7 @@ export default function TextileLoanPage() {
   };
 
   // Other loans data with provided items, images, and icons
-  const otherLoans = [
+  const otherLoansFirebaseFallbackFirebaseFallback = [
     {
       icon: Zap,
       img: 'https://www.evoca.am/images-cache/loans/1/16148706367372/415x261.jpg',
@@ -101,6 +109,8 @@ export default function TextileLoanPage() {
       title: 'Արտադրողականության խթանման ծրագրի ներքո վարկ (գործում է մինչև 31.12.2026թ.)',
     },
   ];
+  
+  const otherLoans = useFirebasePublicData('siteContent/pageData/TextileLoanPage/otherLoans', otherLoansFirebaseFallbackFirebaseFallback);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans relative">
@@ -212,7 +222,6 @@ export default function TextileLoanPage() {
             {/* Currency Selector */}
             <div className="flex gap-2">
               {['AMD', 'USD', 'EUR'].map((curr, idx) => {
-                const symbols = ['֏', '$', '€'];
                 return (
                   <button
                     key={curr}

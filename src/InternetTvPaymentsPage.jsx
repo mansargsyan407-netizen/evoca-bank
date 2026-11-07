@@ -2,74 +2,74 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function InternetTvPaymentsPage() {
-  const providers = [
-    {
-      id: 'hypernet',
-      title: 'HyperNet',
-      icon: 'https://resource.evoca.am/images/WebPayment/hypernet.png',
-      link: '#',
-    },
-    {
-      id: 'team',
-      title: 'Team Ինտերնետ',
-      icon: 'https://resource.evoca.am/images/WebPayment/beeline.png',
-      link: '#',
-    },
-    {
-      id: 'vivacell',
-      title: 'VivaCell MTS Internet',
-      icon: 'https://resource.evoca.am/images/WebPayment/vivacell.png',
-      link: '#',
-    },
-    {
-      id: 'rostelecom',
-      title: 'Rostelekom',
-      icon: 'https://resource.evoca.am/images/WebPayment/rostelecom.png',
-      link: '#',
-    },
-    {
-      id: 'interactive',
-      title: 'Interactive TV',
-      icon: 'https://resource.evoca.am/images/webPayment/interactive.png',
-      link: '#',
-    },
-    {
-      id: 'ctv',
-      title: 'CTV',
-      icon: 'https://resource.evoca.am/images/WebPayment/ctv.png',
-      link: '#',
-    },
-    {
-      id: 'yournet',
-      title: 'YOURnet',
-      icon: 'https://resource.evoca.am/images/WebPayment/yournet.png',
-      link: '#',
-    },
-    {
-      id: 'arpinet',
-      title: 'Arpinet',
-      icon: 'https://resource.evoca.am/images/WebPayment/arpinet.png',
-      link: '#',
-    },
-    {
-      id: 'kt',
-      title: 'KT Internet',
-      icon: 'https://resource.evoca.am/images/webPayment/karabakh.png',
-      link: '#',
-    },
-    {
-      id: 'armcom',
-      title: 'Armcom',
-      icon: 'https://resource.evoca.am/images/WebPayment/armcom.png',
-      link: '#',
-    },
-    {
-      id: 'interlink',
-      title: 'Interlink',
-      icon: 'https://resource.evoca.am/images/webPayment/interlinknew.png',
-      link: '#',
-    },
-  ];
+    // const providers = [
+    //   {
+    //     id: 'hypernet',
+    //     title: 'HyperNet',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/hypernet.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'team',
+    //     title: 'Team Ինտերնետ',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/beeline.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'vivacell',
+    //     title: 'VivaCell MTS Internet',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/vivacell.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'rostelecom',
+    //     title: 'Rostelekom',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/rostelecom.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'interactive',
+    //     title: 'Interactive TV',
+    //     icon: 'https://resource.evoca.am/images/webPayment/interactive.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'ctv',
+    //     title: 'CTV',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/ctv.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'yournet',
+    //     title: 'YOURnet',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/yournet.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'arpinet',
+    //     title: 'Arpinet',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/arpinet.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'kt',
+    //     title: 'KT Internet',
+    //     icon: 'https://resource.evoca.am/images/webPayment/karabakh.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'armcom',
+    //     title: 'Armcom',
+    //     icon: 'https://resource.evoca.am/images/WebPayment/armcom.png',
+    //     link: '#',
+    //   },
+    //   {
+    //     id: 'interlink',
+    //     title: 'Interlink',
+    //     icon: 'https://resource.evoca.am/images/webPayment/interlinknew.png',
+    //     link: '#',
+    //   },
+    // ];
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">

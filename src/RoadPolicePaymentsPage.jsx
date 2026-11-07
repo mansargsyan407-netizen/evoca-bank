@@ -1,15 +1,10 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_RoadPolicePaymentsPage_policeServices } from './sitePageData';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function RoadPolicePaymentsPage() {
-  const policeServices = [
-    {
-      id: 'speed_cameras',
-      title: 'Արագաչափեր և տեսախցիկներ',
-      icon: 'https://resource.evoca.am/images/WebPayment/roadpolice.png',
-      link: '#',
-    },
-  ];
+  const policeServices = useFirebasePublicData('siteContent/pageData/RoadPolicePaymentsPage/policeServices', pageData_RoadPolicePaymentsPage_policeServices);;
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">

@@ -7,11 +7,15 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_ActionLoan_otherLoans } from './sitePageData';
+
+
 export default function ActionLoan() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('about'); // 'about' կամ 'conditions'
 
-  const conditionsData = [
+  const conditionsDataFirebaseFallbackFirebaseFallback = [
     {
       id: 1,
       title: '1. Վարկի տրամադրման նպատակը',
@@ -125,201 +129,10 @@ export default function ActionLoan() {
       ),
     },
   ];
+  
+  const conditionsData = useFirebasePublicData('siteContent/pageData/ActionLoan/conditionsData', conditionsDataFirebaseFallbackFirebaseFallback);
 
-  const otherLoans = [
-    {
-    id: 1,
-    title: 'Անգրավ սպառողական վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142452390605/415x261.jpg',
-    path: '/loans/1',
-  },
-  {
-    id: 2,
-    title: 'Դրամական միջոցների գրավով ապահովված անհատական վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/1782886301331/415x261.jpg',
-    path: '/loans/20',
-  },
-  {
-    id: 3,
-    title: 'Action',
-    image: 'https://www.evoca.am/images-cache/loans/1/16994456305602/415x261.png',
-    path: '/loans/9',
-  },
-  {
-    id: 4,
-    title: 'Ոսկու գրավով (լոմբարդային) վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142452902587/415x261.jpg',
-    path: '/loans/5',
-  },
-  {
-    id: 5,
-    title: 'Ավտոմեքենայի ձեռքբերման նպատակով վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142451996694/415x261.jpg',
-    path: '/loans/2',
-  },
-  {
-    id: 6,
-    title: 'Գույքի գրավով ապահովված վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142566831396/415x261.jpg',
-    path: '/loans/3',
-  },
-  {
-    id: 7,
-    title: 'Արևային կայանների ձեռք բերման վարկ EvocaPOWER',
-    image: 'https://www.evoca.am/images-cache/loans/1/17552479364123/415x261.png',
-    path: '/loans/4',
-  },
-  {
-    id: 8,
-    title: 'Տեղում Ապառիկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16131174467985/415x261.jpg',
-    path: '/loans/6',
-  },
-  {
-    id: 9,
-    title: 'Evoca աշխատավարձային փաթեթի շրջականակում տրամադրվող վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142653302177/415x261.jpg',
-    path: '/loans/7',
-  },
-  {
-    id: 10,
-    title: 'Բնակարանային հիփոթեքային վարկեր Բանկի ռեսուրսով',
-    image: 'https://www.evoca.am/images-cache/loans/1/1614244906092/415x261.jpg',
-    path: '/loans/8',
-  },
-  {
-    id: 11,
-    title: 'Հիփոթեքային վարկ ԼՂ-ից բռնի տեղահանված ընտանիքներին',
-    image: 'https://www.evoca.am/images-cache/loans/1/17364209867562/415x261.png',
-    path: '/loans/10',
-  },
-  {
-    id: 12,
-    title: 'Հողամասի ձեռքբերման վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/17421922764367/415x261.jpg',
-    path: '/loans/11',
-  },
-  {
-    id: 13,
-    title: 'Միկրովերանորոգման վարկ Բանկի ռեսուրսներով',
-    image: 'https://www.evoca.am/images-cache/loans/1/17461652642369/415x261.png',
-    path: '/loans/12',
-  },
-  {
-    id: 14,
-    title: 'Ֆիզիկական անձանց տրանսպորտային միջոցների լիզինգ',
-    image: 'https://www.evoca.am/images-cache/loans/1/17764888992084/415x261.png',
-    path: '/loans/13',
-  },
-  {
-    id: 15,
-    title: 'Վճարային քարտով օվերդրաֆտ (վարկային քարտ)',
-    image: 'https://www.evoca.am/images-cache/loans/1/16947885698869/415x261.png',
-    path: '/loans/14',
-  },
-  {
-    id: 16,
-    title: 'Անհատական վարկ «Ներդրումային»',
-    image: 'https://www.evoca.am/images-cache/loans/1/17364087555297/415x261.png',
-    path: '/loans/15',
-  },
-  {
-    id: 17,
-    title: 'Ավտոկայանատեղիի ձեռքբերման վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/17419413852954/415x261.jpg',
-    path: '/loans/16',
-  },
-  {
-    id: 18,
-    title: 'Հեծանիվի ձեռքբերման վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/17701927362001/415x261.png',
-    path: '/loans/17',
-  },
-  {
-    id: 19,
-    title: 'Ոչ ռեզիդենտ ֆիզ․ անձանց համար բնակարանային հիփոթեքային վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/17262174043684/415x261.png',
-    path: '/loans/18',
-  },
-  {
-    id: 20,
-    title: 'Վերանորոգման վարկ EvocaHOME',
-    image: 'https://www.evoca.am/images-cache/loans/1/17198124761415/415x261.png',
-    path: '/loans/19',
-  },
-  {
-    id: 21,
-    title: 'Առևտրային հիփոթեքային վարկեր',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142450609707/415x261.jpg',
-    path: '/loans/21',
-  },
-  {
-    id: 22,
-    title: 'ԱՀԸ-ի ծրագրով ձեռք բերման վարկեր',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142450957048/415x261.jpg',
-    path: '/loans/22',
-  },
-  {
-    id: 23,
-    title: 'ԱՀԸ-ի ծրագրով կառուցապատման վարկեր',
-    image: 'https://www.evoca.am/images-cache/loans/1/17265524369781/415x261.png',
-    path: '/loans/23',
-  },
-  {
-    id: 24,
-    title: 'ԱՀԸ-ի ծրագրով վերանորոգման վարկեր',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142533830767/415x261.jpg',
-    path: '/loans/24',
-  },
-  {
-    id: 25,
-    title: 'Հիփոթեքային վարկ «Երիտասարդ ընտանիքին՝ մատչելի բնակարան»',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142451699164/415x261.jpg',
-    path: '/loans/25',
-  },
-  {
-    id: 26,
-    title: 'Visa Infinite վճարային քարտերով տրամադրվող վարկային սահմանաչափ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142652333164/415x261.jpg',
-    path: '/loans/26',
-  },
-  {
-    id: 27,
-    title: 'Հիփոթեքային վարկ Արցախի շրջաններից տեղահանված ընտանիքներին',
-    image: 'https://www.evoca.am/images-cache/loans/1/16690386016508/415x261.png',
-    path: '/loans/27',
-  },
-  {
-    id: 28,
-    title: 'Վերանորոգման հիփոթեքային վարկ Արցախից տեղահանված ընտանիքներին',
-    image: 'https://www.evoca.am/images-cache/loans/1/17133596531389/415x261.png',
-    path: '/loans/28',
-  },
-  {
-    id: 29,
-    title: '«ՈՒՍԱՆՈՂԱԿԱՆ» սպառողական վարկ',
-    image: 'https://www.evoca.am/images-cache/loans/1/16142452651138/415x261.jpg',
-    path: '/loans/29',
-  },
-  {
-    id: 30,
-    title: 'Հիփոթեքային վարկեր ՀՀ սահմանամերձ և առանձին բնակավայրերում ընտանիքների բնակարանային մատչելիության ապահովման պետական աջակցության ծրագիր',
-    image: 'https://www.evoca.am/images-cache/loans/1/16696265771993/415x261.png',
-    path: '/loans/30',
-  },
-  {
-    id: 31,
-    title: 'Evolution',
-    image: 'https://www.evoca.am/images-cache/loans/1/16644424027338/415x261.png',
-    path: '/loans/31',
-  },
-  {
-    id: 32,
-    title: 'Հիփոթեքային վարկեր Զինծառայողներին',
-    image: 'https://www.evoca.am/images-cache/loans/1/17129179540435/415x261.png',
-    path: '/loans/32',
-  },
-  ];
+  const otherLoans = useFirebasePublicData('siteContent/pageData/ActionLoan/otherLoans', pageData_ActionLoan_otherLoans);
 
   return (
     <div className="w-full font-sans select-none overflow-hidden bg-white text-gray-800 flex flex-col min-h-screen relative">

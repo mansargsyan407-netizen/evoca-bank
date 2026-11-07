@@ -1,45 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_Avand_depositsData } from './sitePageData';
 
 const Avand = () => {
-  const depositsData = [
-    {
-      id: 1,
-      title: 'Դասական ավանդ',
-      description:
-        'Ձեր անհոգ ապագայի համար առաջարկում ենք ավելացնել Ձեր խնայողությունները` ներդնելով Դասական ավանդ` կայուն և բարձր եկամտաբերությամբ:',
-      amount: '100,000 ֏',
-      duration: '31-1,825 օր',
-      rate: '10.5% ֏',
-      replenishment: '100,000 ֏',
-      bgColor: 'bg-purple-200',
-      img: 'https://www.evoca.am/images-cache/deposits/1/1613390220029/415x261.jpg',
-    },
-    {
-      id: 2,
-      title: 'Մանկական ավանդ',
-      description:
-        'Ձեր երեխայի անհոգ ապագայի համար առաջարկում ենք ներդնել «Մանկական» ավանդ: «Մանկական» ժամկետային ավանդն ընդունում ենք ֆիզիկական անձանցից` երեխաների անունով ներդնելու պայմանով:',
-      amount: '100,000 ֏',
-      duration: '18 լրանալը',
-      rate: '9.5% ֏',
-      replenishment: '40,000 ֏',
-      bgColor: 'bg-amber-300',
-      img: 'https://www.evoca.am/images-cache/deposits/1/16133900414285/415x261.jpg',
-    },
-    {
-      id: 3,
-      title: 'Ավանդ Evoca Online',
-      description:
-        'Ցանկանու՞մ եք ներդնել ավանդ բարձր տոկոսադրույքով, բայց չունե՞ք ժամանակ: Ձևակերպե՛ք EvocaONLINE ավանդ` առանց բանկ այցելելու: Իսկ մենք բոլոր փաստաթղթերը կուղարկենք Ձեր էլ. հասցեին:',
-      amount: '100,000 ֏',
-      duration: '31-1,825 օր',
-      rate: '10.75% ֏',
-      replenishment: null,
-      bgColor: 'bg-purple-600',
-      img: 'https://www.evoca.am/images-cache/deposits/1/16133900122121/415x261.jpg',
-    },
-  ];
+  const depositsData = useFirebasePublicData(
+    'siteContent/pageData/Avand/depositsData',
+    pageData_Avand_depositsData,
+  );
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans pb-16">

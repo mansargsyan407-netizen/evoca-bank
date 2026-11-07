@@ -4,7 +4,9 @@ import {
   FaYoutube, FaLinkedinIn, FaPinterestP, FaApple, FaGooglePlay 
 } from 'react-icons/fa';
 
-const services = [
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+const servicesFirebaseFallback = [
        {
       id: 'evocabank',
       title: 'EVOCABANK',
@@ -71,7 +73,7 @@ const services = [
 },
 ];
 
-const evocabankSubServices = [
+const evocabankSubServicesFirebaseFallback = [
       {
   id: 'loan-repayment',
   title: 'Վարկի մարում',
@@ -193,7 +195,7 @@ const georgianOperators = [
  
 ];
 
-const utilityServices = [
+const utilityServicesFirebaseFallback = [
    {
   id: 'phone',
   title: 'Հեռախոս',
@@ -243,7 +245,7 @@ const utilityServices = [
 },
 ];
 
-const phoneServices = [
+const phoneServicesFirebaseFallback = [
    {
   id: 'beeline-fixed',
   title: 'Ֆիքսված հեռախոսակապ',
@@ -264,7 +266,7 @@ const phoneServices = [
 },
 ];
 
-const internetTvServices = [
+const internetTvServicesFirebaseFallback = [
   {
   id: 'hypernet',
   title: 'HyperNet',
@@ -385,7 +387,7 @@ const internetTvServices = [
 },
 ];
 
-const policeServices = [
+const policeServicesFirebaseFallback = [
     {
   id: 'speed-cameras',
   title: 'Արագաչափեր և տեսախցիկներ',
@@ -439,6 +441,13 @@ const loanOrganizations = [
 ];
 
 export default function OnlinePaymentsPage() {
+  const services = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/services', servicesFirebaseFallback);
+  const evocabankSubServices = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/evocabankSubServices', evocabankSubServicesFirebaseFallback);
+  const utilityServices = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/utilityServices', utilityServicesFirebaseFallback);
+  const phoneServices = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/phoneServices', phoneServicesFirebaseFallback);
+  const internetTvServices = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/internetTvServices', internetTvServicesFirebaseFallback);
+  const policeServices = useFirebasePublicData('siteContent/pageData/OnlinePaymentsPage/policeServices', policeServicesFirebaseFallback);
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
   const [selectedForm, setSelectedForm] = useState(null);

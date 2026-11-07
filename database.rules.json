@@ -1,0 +1,30 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "news": {
+      ".read": true,
+      ".write": false
+    },
+    "newsAllPage": {
+      "items": {
+        ".read": true,
+        ".write": false
+      }
+    },
+    "siteContent": {
+      "translations": {
+        ".read": true,
+        ".write": false
+      },
+      "homePage": {
+        ".read": true,
+        ".write": false
+      },
+      "pageData": {
+        ".read": true,
+        ".write": false
+      }
+    }
+  }
+}

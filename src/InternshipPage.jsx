@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { useFirebasePublicData } from './useFirebasePublicData';
+
 const PURPLE = "bg-[#6200e0]";
 
 // Նավիգացիոն մենյուի տաբերը
-const TABS = [
+const TABSFirebaseFallback = [
   { label: "Աշխատանք Evoca-ում", path: "/work" },
   { label: "Ուսումնական պրակտիկա", path: "/internship" },
   { label: "EvocaBRIDGE", path: "/evocabridge" },
 ];
 
 // ԲՈՒՀ-երի ցանկը իրական URL-ներով
-const UNIVERSITIES = [
+const UNIVERSITIESFirebaseFallback = [
   {
     name: "Երևանի պետական համալսարան",
     logo: "https://www.evoca.am/images-cache/partner_universities/1/16192503158745/120x120.jpg",
@@ -31,7 +33,7 @@ const UNIVERSITIES = [
 ];
 
 // Փուլերի տվյալները
-const STAGES = [
+const STAGESFirebaseFallback = [
   {
     id: 1,
     title: "Առաջին փուլ` Համագործակցություն",
@@ -65,6 +67,10 @@ const STAGES = [
 ];
 
 export default function InternshipPage() {
+  const TABS = useFirebasePublicData('siteContent/pageData/InternshipPage/TABS', TABSFirebaseFallback);
+  const UNIVERSITIES = useFirebasePublicData('siteContent/pageData/InternshipPage/UNIVERSITIES', UNIVERSITIESFirebaseFallback);
+  const STAGES = useFirebasePublicData('siteContent/pageData/InternshipPage/STAGES', STAGESFirebaseFallback);
+
   const [openStage, setOpenStage] = useState(1);
   const [selectedUni, setSelectedUni] = useState("");
 

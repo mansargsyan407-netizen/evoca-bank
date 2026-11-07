@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 /* ------------------------------ DATA ------------------------------ */
 
-const post = {
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+
+const postFirebaseFallback = {
   category: "Ներդրումներ",
   title: "Ներդրումների կարելիներն ու չի կարելիները",
   description:
@@ -16,7 +19,7 @@ const quote = {
   author: "George Soros",
 };
 
-const dos = [
+const dosFirebaseFallback = [
   {
     title: "Գնահատել ռիսկերը",
     text: "Շարքեր ներդրողների համար ռիսկի ընդունելի մակարդակը տարբեր է, և նախքան ներդրում կատարելը՝ ինքներդ ձեզ համար պետք է որոշեք, թե առավելագույնը որքան գումար եք պատրաստ կորցնել, եթե հանգամանքները դասավորվեն ոչ ձեր օգտին, ինչպես կանխատեսում էիք:",
@@ -38,7 +41,7 @@ const dos = [
 const dosNoteHeading = "Ինչ պետք է անել ներդրումներ կատարելիս:";
 const dontsHeading = "Ինչ պետք է չանել ներդրումներ կատարելիս:";
 
-const donts = [
+const dontsFirebaseFallback = [
   {
     title: "Մի հետևեք ամբոխին",
     text: "Հետևել որիշներին ու կատարել ներդրումներ, որովհետև մյուսներն են դա անում, սա հաճախ սխալների պատճառ է հանդիսանում: Այն նույն ձևով է կատարում, նույն արդյունքը շառ ընկար ես, կամ ցուցադր ադրավ ներդրումը մաս է իր ընդունելի ներդրումային ռազմավարությանը, որը ձեր ռազմավարությանը, որը ձեր ռազմավարությանը, որը ձեր ռազմաշիմերում չի կարող ինչ արդյունունքներից չընկնված:",
@@ -57,14 +60,14 @@ const donts = [
   },
 ];
 
-const closingParagraphs = [
+const closingParagraphsFirebaseFallback = [
   "Եվ պետք է հիշել, որ լրացանցիոլու ներդրումներ կատարում ենք յուրովի ձևով, ընտանեկան ու ունեցվածքային համապատասխան: Ինքնուրույն, մտածված, հիմնավորված որոշումներն ու ամրողդատ կրթությունն են, որ կարող են բերել ներդրումներից ակնկալվող արդյունքին:",
 ];
 
 const contactLine =
   "Արժեթղթերում ներդրումների հետ կապված հարցերի դեպքում կարող եք կապ հաստատել ներդրումային գործառնությունների բաժնի հետ`";
 
-const finalLines = [
+const finalLinesFirebaseFallback = [
   {
     prefix: "Եթե դեռ ցանկանում եք ",
     linkText: "նախորդ բլոգը",
@@ -73,7 +76,7 @@ const finalLines = [
   },
 ];
 
-const relatedPosts = [
+const relatedPostsFirebaseFallback = [
   {
     title: "Ֆիլներ ֆինանսական աշխարհի էնտուզիաստների համար Մաս 1",
     date: "28.08.2024",
@@ -149,6 +152,14 @@ function DontItem({ item }) {
 /* ------------------------------ PAGE ------------------------------ */
 
 export default function InvestDosDontsPost() {
+  const post = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/post', postFirebaseFallback);
+
+  const dos = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/dos', dosFirebaseFallback);
+  const donts = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/donts', dontsFirebaseFallback);
+  const closingParagraphs = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/closingParagraphs', closingParagraphsFirebaseFallback);
+  const finalLines = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/finalLines', finalLinesFirebaseFallback);
+  const relatedPosts = useFirebasePublicData('siteContent/pageData/InvestDosDontsPost/relatedPosts', relatedPostsFirebaseFallback);
+
   return (
     <div className="w-full bg-white font-sans text-neutral-900">
       <div className="mx-auto max-w-[1000px] px-4 pt-6 pb-10">

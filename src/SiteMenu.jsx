@@ -5,7 +5,9 @@ import { X } from 'lucide-react';
 import { useLang } from './i18n';
 
 // TODO: ճշտիր route-երը քո router-ի համաձայն (ներքևինները կանխադրված/կռահված են)
-const MENU = [
+import { useFirebasePublicData } from './useFirebasePublicData';
+
+const MENUFirebaseFallback = [
   {
     id: 'individual',
     label: 'Անհատ',
@@ -202,6 +204,8 @@ const MENU = [
 ];
 
 export default function SiteMenu({ open, onClose }) {
+  const MENU = useFirebasePublicData('siteContent/pageData/SiteMenu/MENU', MENUFirebaseFallback);
+
   const { t } = useLang();
   const [activeId, setActiveId] = useState('individual');
   const active = MENU.find((m) => m.id === activeId && m.groups) ?? MENU[0];

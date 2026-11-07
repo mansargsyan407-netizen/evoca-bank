@@ -1,39 +1,10 @@
+import { useFirebasePublicData } from './useFirebasePublicData';
+import { pageData_UtilityPaymentsPage_utilities } from './sitePageData';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function UtilityPaymentsPage() {
-  const utilities = [
-    {
-      id: 'phone',
-      title: 'Հեռախոս',
-      icon: 'https://resource.evoca.am/images/WebPayment/phone.png',
-      link: '#',
-    },
-    {
-      id: 'electricity',
-      title: 'Լույս',
-      icon: 'https://resource.evoca.am/images/WebPayment/electricity.png',
-      link: '#',
-    },
-    {
-      id: 'water',
-      title: 'Ջուր',
-      icon: 'https://resource.evoca.am/images/WebPayment/water.png',
-      link: '#',
-    },
-    {
-      id: 'gas_consumption',
-      title: 'Գազի սպառում',
-      icon: 'https://resource.evoca.am/images/WebPayment/gas.png',
-      link: '#',
-    },
-    {
-      id: 'gas_service',
-      title: 'Գազի սպասարկում',
-      icon: 'https://resource.evoca.am/images/WebPayment/gas_service.png',
-      link: '#',
-    },
-  ];
+  const utilities = useFirebasePublicData('siteContent/pageData/UtilityPaymentsPage/utilities', pageData_UtilityPaymentsPage_utilities);;
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-gray-800 font-sans flex flex-col justify-between">
